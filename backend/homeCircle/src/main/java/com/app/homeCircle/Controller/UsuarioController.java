@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.app.homeCircle.Service.UsuarioService;
 import com.app.homeCircle.Usuario.Usuario;
 
 import lombok.RequiredArgsConstructor;
@@ -16,17 +17,17 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class UsuarioController {
 
-    private final UsuarioService usuarioService; /* añadir servicio */
+    private final UsuarioService usuarioService;
 
     @PostMapping
     private void crearUsuario(@RequestBody Usuario usuario){
-        usuarioService.crearUsuario(usuario);
+        usuarioService.createUsuario(usuario);
     }
 
 
     @DeleteMapping("/{id}")
     public void eliminarUsuario(@PathVariable Integer id){
-        usuarioService.eliminarUsuario(id);
+        usuarioService.deleteUsuario(id);
     }
 
 }

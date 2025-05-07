@@ -3,6 +3,7 @@ package com.app.homeCircle.Service;
 import org.springframework.stereotype.Service;
 
 import com.app.homeCircle.Usuario.Usuario;
+import com.app.homeCircle.Usuario.UsuarioRepository;
 
 import lombok.RequiredArgsConstructor;
 
@@ -10,7 +11,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class UsuarioService {
 
-    private final UsuarioRepository usuarioRepository; /* Añadir el Repositorio */
+    private final UsuarioRepository usuarioRepository;
 
     public void createUsuario(Usuario usuario){
         usuarioRepository.save(usuario);

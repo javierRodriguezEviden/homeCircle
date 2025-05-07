@@ -3,6 +3,7 @@ package com.app.homeCircle.Service;
 import org.springframework.stereotype.Service;
 
 import com.app.homeCircle.Casa.Casa;
+import com.app.homeCircle.Casa.CasaRepository;
 
 import lombok.RequiredArgsConstructor;
 
@@ -10,11 +11,11 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class CasaService {
 
-    private final CasaRepository casaRepository; /* Añadir el Repositorio */
+    private final CasaRepository casaRepository;
 
     public void createCasa(Casa casa) {
         casaRepository.save(casa);
-    }   
+    }
 
     public void updateCasa(Integer id, Casa casaData) {
         Casa casa = casaRepository.findById(id).orElseThrow(() -> new RuntimeException("Casa con id: " + id + " no encontrada"));
