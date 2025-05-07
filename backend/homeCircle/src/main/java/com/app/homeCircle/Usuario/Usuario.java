@@ -1,7 +1,5 @@
 package com.app.homeCircle.Usuario;
 
-
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -21,7 +19,13 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "usuario")
+@Table(
+    name = "usuario",
+    uniqueConstraints = {
+        @jakarta.persistence.UniqueConstraint(columnNames = "dni"),
+        @jakarta.persistence.UniqueConstraint(columnNames = "email")
+    }    
+)
 public class Usuario {
 
     @Id
