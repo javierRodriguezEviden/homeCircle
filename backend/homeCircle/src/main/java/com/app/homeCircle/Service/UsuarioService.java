@@ -19,9 +19,14 @@ public class UsuarioService {
         usuarioRepository.save(usuario);
     }
 
+    //? buscar todos los usuarios
     public List<Usuario> searchUsuarios() {
-        System.out.println("entra");
         return usuarioRepository.findAll();
+    }
+
+    //?buscar usuario por email
+    public Usuario searchByEmail(String email){
+        return usuarioRepository.findByEmail(email).orElse(null);
     }
 
     public void updateUsuario(Integer id, Usuario usuarioData){

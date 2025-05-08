@@ -32,6 +32,11 @@ public class UsuarioController {
     public List<Usuario> searchUsuarios(){
         return usuarioService.searchUsuarios();
     }
+
+    @GetMapping("/{email}")
+    public Usuario searchByEmail(@PathVariable String email){
+        return usuarioService.searchByEmail(email);
+    }
     
 
 
