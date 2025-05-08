@@ -3,6 +3,7 @@ package com.app.homeCircle.Service;
 import org.springframework.stereotype.Service;
 
 import com.app.homeCircle.Casa.Casa;
+import com.app.homeCircle.Casa.CasaRepository;
 
 import lombok.RequiredArgsConstructor;
 

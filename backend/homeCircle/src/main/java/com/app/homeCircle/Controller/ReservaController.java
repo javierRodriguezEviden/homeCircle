@@ -7,27 +7,25 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.app.homeCircle.Service.UsuarioService;
-import com.app.homeCircle.Usuario.Usuario;
+import com.app.homeCircle.Reserva.Reserva;
 
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("/usuarios")
+@RequestMapping("/reservas")
 @RequiredArgsConstructor
-public class UsuarioController {
+public class ReservaController {
 
-    private final UsuarioService usuarioService;
+    private final ReservaService reservaService;
 
     @PostMapping
-    private void createUsuario(@RequestBody Usuario usuario){
-        usuarioService.createUsuario(usuario);
+    private void createReserva(@RequestBody Reserva reserva){
+        reservaService.createReserva(reserva);
     }
 
-
     @DeleteMapping("/{id}")
-    public void deleteUsuario(@PathVariable Integer id){
-        usuarioService.deleteUsuario(id);
+    private void deleteReserva(@PathVariable Integer id) {
+        reservaService.deleteReserva(id);
     }
 
 }

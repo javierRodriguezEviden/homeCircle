@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.app.homeCircle.Casa.Casa;
+import com.app.homeCircle.Service.CasaService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -16,17 +17,17 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class CasaController {
 
-    private final CasaServicio casaServicio;
+    private final CasaService casaService;
 
     @PostMapping
-    private void crearCasa(@RequestBody Casa casa){
-        casaServicio.crearCasa(casa);
+    private void createCasa(@RequestBody Casa casa){
+        casaService.createCasa(casa);
     }
 
 
     @DeleteMapping("/{id}")
-    public void eliminarCasa(@PathVariable Integer id){
-        casaServicio.eliminarCasa(id);
+    public void deleteCasa(@PathVariable Integer id){
+        casaService.deleteCasa(id);
     }
 
 
