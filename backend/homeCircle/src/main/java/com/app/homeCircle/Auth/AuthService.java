@@ -22,39 +22,38 @@ public class AuthService {
     public AuthResponse login(LoginRequest request) {
         // Autenticar al usuario con email y contraseña
         authenticationManager.authenticate(
-            new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword())
-        );
+                new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
 
         // Buscar el usuario por email
         Usuario usuario = userRepository.findByEmail(request.getEmail())
-            .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
+                .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
 
         // Generar el token JWT
         String token = jwtService.getToken(usuario.getEmail());
         return AuthResponse.builder()
-            .token(token)
-            .build();
+                .token(token)
+                .build();
     }
 
     public AuthResponse register(RegisterRequest request) {
-        // Crear un nuevo usuario
-        Usuario user = Usuario.builder()
-            .nombre(request.getNombre())
-            .apellidos(request.getApellidos())
-            .email(request.getEmail())
-            .dni(request.getDni())
-            .telefono(request.getTelefono())
-            .sede(request.getSede())
-            .password(passwordEncoder.encode(request.getPassword())) // Encriptar la contraseña
-            .build();
+        Usuario usuario = Usuario.builder()
+                .nombre(request.getNombre())
+                .apellidos(request.getApellidos())
+                .email(request.getEmail())
+                .password(passwordEncoder.encode(request.getPassword())) // Encriptar la contraseña
+                .dni(request.getDni())
+                .telefono(request.getTelefono())
+                .sede(request.getSede())
+                .cuenta_banco(request.getCuenta_banco())
+                .build();
 
         // Guardar el usuario en la base de datos
-        userRepository.save(user);
+        userRepository.save(usuario);
 
         // Generar el token JWT
-        String token = jwtService.getToken(user.getEmail());
+        String token = jwtService.getToken(usuario.getEmail());
         return AuthResponse.builder()
-            .token(token)
-            .build();
+                .token(token)
+                .build();
     }
 }

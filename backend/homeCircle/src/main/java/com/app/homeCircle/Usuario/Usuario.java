@@ -43,7 +43,6 @@ public class Usuario {
     private String email;
 
     @NotBlank(message = "El campo password no puede estar vacio")
-    @Size(min = 8, max = 12, message = "El password debe tener entre 8 y 12 caracteres")
     private String password;
 
     @NotBlank(message = "El campo dni no puede estar vacio")
@@ -67,7 +66,7 @@ public class Usuario {
     private String sede;
 
     @NotBlank(message = "El campo cuenta bancaria no puede estar vacio")
-    @Size(min = 24, max = 24, message = "La cuenta bancaria debe tener 20 caracteres")
+    @Size(min = 24, max = 24, message = "La cuenta bancaria debe tener exactamente 24 caracteres")
     private String cuenta_banco;
 
     @OneToMany(mappedBy = "usuario")
