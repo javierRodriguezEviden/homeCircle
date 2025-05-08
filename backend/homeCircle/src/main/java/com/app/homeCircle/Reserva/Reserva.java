@@ -2,10 +2,15 @@ package com.app.homeCircle.Reserva;
 
 import java.time.LocalDate;
 
+import com.app.homeCircle.Casa.Casa;
+import com.app.homeCircle.Usuario.Usuario;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.Min;
@@ -46,5 +51,13 @@ public class Reserva {
     @NotBlank(message = "El campo precio total")
     @Min(value = 0, message = "el IVA no puede ser negativo")
     private int precio_total;
+
+    @ManyToOne
+    @JoinColumn(name = "id_usuario")
+    private Usuario usuario;
+
+    @ManyToOne
+    @JoinColumn(name = "id_casa")
+    private Casa casa;
 
 }

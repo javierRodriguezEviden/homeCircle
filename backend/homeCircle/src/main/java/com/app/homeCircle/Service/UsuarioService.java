@@ -11,7 +11,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class UsuarioService {
 
-    private final UsuarioRepository usuarioRepository; /* Añadir el Repositorio */
+    private final UsuarioRepository usuarioRepository;
 
     public void createUsuario(Usuario usuario){
         usuarioRepository.save(usuario);

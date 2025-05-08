@@ -1,9 +1,15 @@
 package com.app.homeCircle.Usuario;
 
+import java.util.List;
+
+import com.app.homeCircle.Casa.Casa;
+import com.app.homeCircle.Reserva.Reserva;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -63,5 +69,11 @@ public class Usuario {
     @NotBlank(message = "El campo cuenta bancaria no puede estar vacio")
     @Size(min = 24, max = 24, message = "La cuenta bancaria debe tener 20 caracteres")
     private String cuenta_banco;
+
+    @OneToMany(mappedBy = "usuario")
+    private List<Casa> casas;
+
+    @OneToMany(mappedBy = "usuario")
+    private List<Reserva> reservas;
 
 }
