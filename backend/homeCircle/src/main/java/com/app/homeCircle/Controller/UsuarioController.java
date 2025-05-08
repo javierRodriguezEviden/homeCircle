@@ -1,6 +1,9 @@
 package com.app.homeCircle.Controller;
 
+import java.util.List;
+
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -11,6 +14,7 @@ import com.app.homeCircle.Service.UsuarioService;
 import com.app.homeCircle.Usuario.Usuario;
 
 import lombok.RequiredArgsConstructor;
+
 
 @RestController
 @RequestMapping("/usuarios")
@@ -23,6 +27,12 @@ public class UsuarioController {
     private void createUsuario(@RequestBody Usuario usuario){
         usuarioService.createUsuario(usuario);
     }
+
+    @GetMapping
+    public List<Usuario> searchUsuarios(){
+        return usuarioService.searchUsuarios();
+    }
+    
 
 
     @DeleteMapping("/{id}")
