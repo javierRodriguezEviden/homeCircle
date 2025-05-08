@@ -44,7 +44,7 @@ public class Casa {
 
     @NotBlank(message = "El campo nombre no puede estar vacio")
     @Enumerated(EnumType.STRING)
-    private String tipo;
+    private Tipo_casa tipo;
 
     @NotBlank(message = "El campo direccion no puede estar vacio")
     @Size(max = 50, message = "La direccion no puede tener mas de 50 caracteres")
