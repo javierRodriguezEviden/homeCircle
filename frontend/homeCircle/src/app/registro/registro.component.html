@@ -5,16 +5,16 @@
         <img src="../recursos/casa.png" alt="image" class="login__bg">
     
         <form action="" class="login__form">
-            <h1 class="login__title">Crea tu cuenta</h1>
+            <h1 class="login__title"><strong>Crea tu cuenta</strong></h1>
     
             <div class="login__inputs">
     
                 <div class="login__box">
-                    <input type="text" placeholder="Nombre" required class="login__input">
+                    <input type="text" placeholder="Nombre" required class="login__input" name="nombre" [(ngModel)]="nombre" >
                     <i class="ri-user-3-fill"></i>                </div>
     
                 <div class="login__box">
-                    <input type="text" placeholder="Apellidos" required class="login__input">
+                    <input type="text" placeholder="Apellidos" required class="login__input" name="apellidos" [(ngModel)]="apellidos" >
                     <i class="ri-user-3-fill"></i>                
                 </div>
     
@@ -38,12 +38,19 @@
                 </div>
             </div>
     
-            <button type="submit" class="login_button">Crear cuenta</button>
+            <!--Añadimos el mensaje de registro del usuario-->
+            <button type="submit" class="login_button" value="Registrar" (click)="registrarUsuario()">Crear cuenta</button>
     
+            <br>
+             <!--Se deja este trozo de codigo como mensaje en caso de que  el usuario entre-->
+             <strong><p *ngIf="registrado">{{mensajeRegistro}}</p></strong>
+             
             <div class="login__register">
                 ¿Ya tienes una cuenta? <a href="#">Inicia sesión</a>
             </div>
         </form>
+
+           
        
     </div>
     </div>

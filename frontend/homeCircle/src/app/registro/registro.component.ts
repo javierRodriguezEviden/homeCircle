@@ -8,4 +8,14 @@ import { Component } from '@angular/core';
 })
 export class RegistroComponent {
 
+  mensajeRegistro="";
+  registrado = false;
+  nombre ="";
+  apellidos ="";
+
+  registrarUsuario() {
+
+    this.registrado=true;
+    this.mensajeRegistro ="Bienvendido "+this.nombre+" "+this.apellidos+" a HomeCircle, tu hogar en la nube." ;
+}
 }

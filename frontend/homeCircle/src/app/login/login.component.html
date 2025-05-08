@@ -1,13 +1,18 @@
 
+
+
 <div class="body-login">
+    
     <div class="login">
 
+       
+
         <form action="" class="login__form">
-            <h1 class="login__title, bold">Inicia sesión</h1>
+            <h1 class="login__title bold">Inicia sesión</h1>
  
             <div class="login__inputs">
                 <div class="login__box">
-                    <input type="email" placeholder="Email" required class="login__input">
+                    <input type="email" placeholder="Email" required class="login__input" name="email" [(ngModel)]="email" >
                     <i class="ri-mail-fill"></i>
                 </div>
  
@@ -17,12 +22,19 @@
                 </div>
             </div>
  
-            <button type="submit" class="login_button">Iniciar sesión</button>
+            <button type="submit" class="login_button" value="Loguear" (click)="loguearUsuario()">Iniciar sesión</button>
  
             <div class="login__register">
                 ¿No tienes una cuenta? <a href="#">Regístrate</a>
             </div>
+
+            <!--Se deja este trozo de codigo como mensaje en caso de que  el usuario entre-->
+            <div class="container">
+                <strong><p *ngIf="logueado">{{mensajeLogin}}</p></strong>
+            </div>
         </form></div>
+
+        <!--Hacemos llamamiento en caso de que sea registrado el usuario-->
     
    
 </div>

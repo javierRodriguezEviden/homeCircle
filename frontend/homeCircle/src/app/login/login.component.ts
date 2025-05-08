@@ -8,4 +8,14 @@ import { Component } from '@angular/core';
 })
 export class LoginComponent {
 
+  mensajeLogin="";
+  email="";
+  logueado=false;
+
+  loguearUsuario(){
+    this.logueado=true;
+    this.mensajeLogin="Bievenido a tu perfil, " +this.email;
+  }
+
+
 }

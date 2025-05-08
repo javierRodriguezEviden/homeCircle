@@ -1,125 +1,61 @@
-<main class="bg-white">
+<main class="d-flex flex-column min-vh-100 bg-white">
 
-    <!--Contenedor1: Inicial para buscar casas -->
-    <section class="hero text-white text-center py-5" style="background: linear-gradient(to right, #007BFF, #FFA500);">
-        <div class="container">
-            <h1 class="display-4" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
-                Encuentra tu hogar ideal entre compañeros</h1>
-            <p class="lead" style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">Alquila
-                casas de confianza dentro de tu empresa</p>
-            <a href="/buscar" class="btn btn-lg" style="background-color: #FFA500; color: white;">Buscar ahora</a>
-        </div>
+    <!-- Hero de bienvenida -->
+    <section class="py-5 text-white text-center" style="background: linear-gradient(to right, #FFA500, #007BFF);">
+      <div class="container">
+        <h1 class="display-4 fw-bold">Bienvenid&#64;, <span class="text-warning">+ nombre</span></h1>
+        <p class="lead">Explora todas las opciones que tienes como usuari&#64; dentro de tu perfil</p>
+      </div>
     </section>
-
-    <!-- Contenedor 2: Buscador de casas, aunque haria falta que funcionase ¿API?-->
-    <section class="py-5 bg-light">
-        <div class="container">
-            <h2 class="mb-4" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Busca tu
-                próxima casa</h2>
-            <form class="row g-3">
-                <div class="col-md-4">
-                    <input type="text" class="form-control" placeholder="Ciudad o zona">
-                </div>
-                <div class="col-md-4">
-                    <select class="form-select">
-                        <option selected>Tipo de vivienda</option>
-                        <option>Casa</option>
-                        <option>Piso</option>
-                        <option>Habitación</option>
-                    </select>
-                </div>
-                <div class="col-md-4">
-                    <button type="submit" class="btn btn-primary w-100">Buscar</button>
-                </div>
-            </form>
-        </div>
-    </section>
-
-    <!-- Contenedor 3: Ventajas donde mostramos los motivos para usar nuestra web y compartir casas-->
-    <section class="bg-light py-5">
-        <div class="container">
-            <h2 class="mb-4" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">¿Por qué
-                usar nuestra plataforma?</h2>
-            <div class="row text-center">
-                <div class="col-md-4">
-                    <h3>Confianza</h3>
-                    <i class="ri-user-follow-fill" style="font-size:xxx-large " id="estiloIconos"></i>
-                    <p>Solo empleados verificados pueden publicar.</p>
-                </div>
-                <div class="col-md-4">
-                    <h3>Ahorro</h3>
-                    <i class="bi-m bi-piggy-bank background-color:" style="font-size:xxx-large " id="estiloIconos"></i>
-                    <p>Precios más bajos sin intermediarios.</p>
-                </div>
-                <div class="col-md-4">
-                    <h3>Comunidad</h3>
-                    <i class="ri-team-fill" style="font-size:xxx-large " id="estiloIconos"></i>
-                    <p>Fomenta relaciones dentro de la empresa.</p>
-                </div>
+  
+    <!-- Opciones del menú centradas -->
+    <section class="py-5 bg-light flex-grow-1 d-flex align-items-center">
+      <div class="container-md">
+        <h2 class="text-center mb-5" style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">¿Qué puedes hacer dentro de tu menú como usuario?</h2>
+        <div class="row g-4 justify-content-center">
+  
+          <!-- Tarjeta 1 -->
+          <div class="col-md-4">
+            <div class="card text-center h-100 border-0 shadow-sm">
+              <div class="card-body">
+                <a href="/miPerfil" class="text-decoration-none text-dark">
+                  <i class="ri-user-star-fill display-4 text-primary mb-3"></i>
+                  <h5 class="card-title">Tu perfil</h5>
+                  <p class="card-text">Consulta tu información personal y gestiona tus casas.</p>
+                </a>
+              </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Contenedor 4: Testimonios -->
-    <section class="py-5 bg-light">
-        <div class="container">
-            <h2 class="mb-4" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
-                Lo que dicen nuestros usuarios
-            </h2>
-            <div id="carouselExampleAutoplaying" class="carousel slide">
-
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <div class="container text-center">
-                        <p class="mb-8">"Encontré una casa perfecta gracias a un compañero. ¡Todo fue fácil y seguro!"
-                        </p>
-                        <footer class="blockquote-footer">Javier R., Programador Web Atos</footer>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="container text-center">
-                        <p class="mb-8">"Durante mi estancia, pude desconectar y disfrutar de mis vacaciones. "
-                        </p>
-                        <footer class="blockquote-footer">Irene R., Programadora Web Atos</footer>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="container text-center">
-                        <p class="mb-8">"¡Pasé unos días increíbles y encontré lo que buscaba!"</p>
-                        <footer class="blockquote-footer">Anastasia D., Programadora Web Atos</footer>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="container text-center">
-                        <p class="mb-8">"Una forma genial de encontrar alojamiento entre compañeros de confianza."</p>
-                        <footer class="blockquote-footer">Carlos M., Analista de Datos</footer>
-                        </div>
-                    </div>
-                </div>
-                <button class="carousel-control-prev" type="button"    data-bs-target="#carouselExampleAutoplaying"
-                    data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon"  aria-hidden="true"></span>
-                    <span class="visually-hidden" >Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
-                    data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
+          </div>
+  
+          <!-- Tarjeta 2 -->
+          <div class="col-md-4">
+            <div class="card text-center h-100 border-0 shadow-sm">
+              <div class="card-body">
+                <a href="/reserva" class="text-decoration-none text-dark">
+                  <i class="ri-home-heart-fill display-4 text-warning mb-3"></i>
+                  <h5 class="card-title">Reserva</h5>
+                  <p class="card-text">Encuentra la casa ideal para tu próxima escapada.</p>
+                </a>
+              </div>
             </div>
+          </div>
+  
+          <!-- Tarjeta 3 -->
+          <div class="col-md-4">
+            <div class="card text-center h-100 border-0 shadow-sm">
+              <div class="card-body">
+                <a href="/comunidad" class="text-decoration-none text-dark">
+                  <i class="ri-team-fill display-4 text-primary mb-3"></i>
+                  <h5 class="card-title">Comunidad</h5>
+                  <p class="card-text">Conecta con otros compañeros. ¡Pronto chat disponible!</p>
+                </a>
+              </div>
+            </div>
+          </div>
+  
         </div>
+      </div>
     </section>
-
-
-
-    <!-- Contenedor 5: CTA final -->
-    <section class="text-white text-center py-5" style="background: linear-gradient(to right, #007BFF, #FFA500);">
-        <div class="container">
-            <h2>¿Listo para encontrar tu nuevo hogar?</h2>
-            <p>¿A qué esperas?</p>
-            <a href="/registro" class="btn btn-lg mt-3" style="background-color: #FFA500; color: white;">Empieza
-                ahora</a>
-        </div>
-    </section>
-
-</main>
+  
+  </main>
+  
