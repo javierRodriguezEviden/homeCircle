@@ -1,0 +1,16 @@
+.underline-title {
+    position: relative;
+    display: inline-block;
+    text-align: center;
+  }
+  
+  .underline-title::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%; 
+    transform: translateX(-50%); 
+    width: 150%; 
+    height: 3px; 
+    background-color: #FFA500;
+  }
