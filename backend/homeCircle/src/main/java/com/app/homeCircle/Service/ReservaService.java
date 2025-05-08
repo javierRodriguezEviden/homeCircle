@@ -3,6 +3,7 @@ package com.app.homeCircle.Service;
 import org.springframework.stereotype.Service;
 
 import com.app.homeCircle.Reserva.Reserva;
+import com.app.homeCircle.Reserva.ReservaRepository;
 
 import lombok.RequiredArgsConstructor;
 

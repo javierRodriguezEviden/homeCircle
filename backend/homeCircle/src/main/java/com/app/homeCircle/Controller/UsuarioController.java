@@ -20,13 +20,13 @@ public class UsuarioController {
     private final UsuarioService usuarioService;
 
     @PostMapping
-    private void crearUsuario(@RequestBody Usuario usuario){
+    private void createUsuario(@RequestBody Usuario usuario){
         usuarioService.createUsuario(usuario);
     }
 
 
     @DeleteMapping("/{id}")
-    public void eliminarUsuario(@PathVariable Integer id){
+    public void deleteUsuario(@PathVariable Integer id){
         usuarioService.deleteUsuario(id);
     }
 
