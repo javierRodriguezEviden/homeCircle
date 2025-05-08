@@ -11,8 +11,9 @@ import { FormsModule } from '@angular/forms';
 
 //Import para routes
 import { RouterModule, Routes } from '@angular/router';
-
-
+import { HomeRegistradoComponent } from './home-registrado/home-registrado.component';
+import { MiPerfilComponent } from './mi-perfil/mi-perfil.component';
+import { ReservaComponent } from './reserva/reserva.component';
 
 
 
@@ -26,8 +27,11 @@ const appRoutes:Routes=[
   {path:'sobreNosotros', component:SobreNosotrosComponent},
   {path:'registro', component:RegistroComponent},
   {path:'login', component:LoginComponent},
+  {path:'homeRegistrado', component:HomeRegistradoComponent},
+  {path:'miPerfil', component:MiPerfilComponent},
+  {path:'reserva', component:ReservaComponent},
+
   //Esto le indica a angular que cualquier cosa diferente a lo visto antes, irá aqui
- 
  
 ];
 
@@ -38,6 +42,9 @@ const appRoutes:Routes=[
     HomeComponent,
     RegistroComponent,
     LoginComponent,
+    HomeRegistradoComponent,
+    MiPerfilComponent,
+    ReservaComponent,
   ],
   imports: [
     BrowserModule,
