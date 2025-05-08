@@ -29,26 +29,7 @@ public class UsuarioDetails implements UserDetails {
 
     @Override
     public String getUsername() {
-        return usuario.getEmail(); // Devuelve el email como identificador principal
+        return usuario.getEmail(); // Devuelve el email del usuario como nombre de usuario
     }
 
-    @Override
-    public boolean isAccountNonExpired() {
-        return true; // Cambia según tu lógica de negocio
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return true; // Cambia según tu lógica de negocio
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return true; // Cambia según tu lógica de negocio
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return true; // Cambia según tu lógica de negocio
-    }
 }
