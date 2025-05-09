@@ -1,6 +1,9 @@
 package com.app.homeCircle.Controller;
 
+import java.util.List;
+
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,12 +27,13 @@ public class CasaController {
         casaService.createCasa(casa);
     }
 
+    @GetMapping
+    public List<Casa> searchCasas(){
+        return casaService.searchCasas();
+    }
 
     @DeleteMapping("/{id}")
     public void deleteCasa(@PathVariable Integer id){
         casaService.deleteCasa(id);
     }
-
-
-
 }

@@ -1,16 +1,5 @@
-package com.app.homeCircle.Usuario;
+package com.app.homeCircle.Auth;
 
-import java.util.List;
-
-import com.app.homeCircle.Casa.Casa;
-import com.app.homeCircle.Reserva.Reserva;
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
@@ -22,27 +11,23 @@ import lombok.NoArgsConstructor;
 
 @Data
 @Builder
-@AllArgsConstructor
 @NoArgsConstructor
-@Entity
-@Table(
-    name = "usuario",
-    uniqueConstraints = {
-        @jakarta.persistence.UniqueConstraint(columnNames = "dni"),
-        @jakarta.persistence.UniqueConstraint(columnNames = "email")
-    }    
-)
-public class Usuario {
+@AllArgsConstructor
+public class RegisterRequest {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    // Esta clase actúa como un DTO (Data Transfer Object) para transferir datos desde el cliente al servidor.
+    // Los atributos se definen nuevamente aquí para:
+    // 1. Aplicar validaciones específicas para los datos que se reciben en la solicitud.
+    // 2. Evitar exponer directamente la entidad Usuario, protegiendo datos sensibles o irrelevantes.
+    // 3. Mantener la separación de responsabilidades entre la capa de entrada (DTO) y la capa de persistencia (entidad).
+    // 4. Facilitar la evolución de la API, permitiendo cambios en la estructura de la solicitud sin afectar la entidad.
 
     @NotBlank(message = "El campo email no puede estar vacio")
     @Email(message = "El email debe tener un formato valido")
     private String email;
 
     @NotBlank(message = "El campo password no puede estar vacio")
+    @Size(min = 8, max = 12, message = "El password debe tener entre 8 y 12 caracteres")
     private String password;
 
     @NotBlank(message = "El campo dni no puede estar vacio")
@@ -65,14 +50,6 @@ public class Usuario {
     @Size(max = 15, message = "La sede no puede tener mas de 15 caracteres")
     private String sede;
 
-    /* Quitado el NotBlank ya que queremos que pueda estar vacío */
     @Size(min = 24, max = 24, message = "La cuenta bancaria debe tener exactamente 24 caracteres")
     private String cuenta_banco;
-
-    @OneToMany(mappedBy = "usuario")
-    private List<Casa> casas;
-
-    @OneToMany(mappedBy = "usuario")
-    private List<Reserva> reservas;
-
 }

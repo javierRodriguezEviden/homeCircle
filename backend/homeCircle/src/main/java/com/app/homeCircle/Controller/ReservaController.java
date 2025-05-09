@@ -1,6 +1,9 @@
 package com.app.homeCircle.Controller;
 
+import java.util.List;
+
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,6 +25,11 @@ public class ReservaController {
     @PostMapping
     private void createReserva(@RequestBody Reserva reserva){
         reservaService.createReserva(reserva);
+    }
+
+    @GetMapping
+    private List<Reserva> searchReservas(){
+        return reservaService.searchReservas();
     }
 
     @DeleteMapping("/{id}")

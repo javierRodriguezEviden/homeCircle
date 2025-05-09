@@ -1,5 +1,7 @@
 package com.app.homeCircle.Service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.app.homeCircle.Usuario.Usuario;
@@ -15,6 +17,16 @@ public class UsuarioService {
 
     public void createUsuario(Usuario usuario){
         usuarioRepository.save(usuario);
+    }
+
+    //buscar todos los usuarios
+    public List<Usuario> searchUsuarios() {
+        return usuarioRepository.findAll();
+    }
+
+    //buscar usuario por email
+    public Usuario searchByEmail(String email){
+        return usuarioRepository.findByEmail(email).orElse(null);
     }
 
     public void updateUsuario(Integer id, Usuario usuarioData){
