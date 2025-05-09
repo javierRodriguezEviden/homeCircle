@@ -1,5 +1,7 @@
 package com.app.homeCircle.Service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.app.homeCircle.Reserva.Reserva;
@@ -15,6 +17,11 @@ public class ReservaService {
 
     public void createReserva(Reserva reserva) {
         reservaRepository.save(reserva);
+    }
+
+    //? buscar todas las reservas
+    public List<Reserva> searchReservas() {
+        return reservaRepository.findAll();
     }
 
     public void updateReserva(Integer id, Reserva reservaData) {

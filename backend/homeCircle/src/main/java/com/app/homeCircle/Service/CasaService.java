@@ -1,5 +1,7 @@
 package com.app.homeCircle.Service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.app.homeCircle.Casa.Casa;
@@ -15,6 +17,11 @@ public class CasaService {
 
     public void createCasa(Casa casa) {
         casaRepository.save(casa);
+    }
+
+        //? buscar todas las reservas
+    public List<Casa> searchCasas() {
+        return casaRepository.findAll();
     }
 
     public void updateCasa(Integer id, Casa casaData) {
