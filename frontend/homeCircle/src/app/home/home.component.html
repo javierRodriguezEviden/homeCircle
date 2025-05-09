@@ -38,42 +38,48 @@
         </div>
     </section>
 
-    <!--Contenedor con imágenes de diferentes casas-->
-    <section class="hero text-black text-center py-5" id="casas">
-        <div class="container">
-            <h1 class="mb-4 text-center" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
-                Algunas de las casas que te puedes encontrar
-            </h1>
-            <div id="houseCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img src="https://th.bing.com/th/id/OIP.LI10QlIBObb93mdYFKubCgHaE7?cb=iwp1&rs=1&pid=ImgDetMain" width="40%" height="40p%" class="d-block mx-auto img-fluid" alt="Casa 1"> 
-                    </div>
-                    <div class="carousel-item">
-                        <img src="https://th.bing.com/th/id/OIP.Zb8J0yYKwpakUAE6u8kKGAHaE8?w=290&h=194&c=7&r=0&o=7&cb=iwp1&pid=1.7&rm=3" width="40%" height="40p%" class="d-block mx-auto img-fluid" alt="Casa 2">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="https://img.100r.systems/img/6c7eb8d37721a2d0d0cd39b62ca69e81.jpg" width="40%" height="40p%" class="d-block mx-auto img-fluid" alt="Casa 3">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="https://th.bing.com/th/id/OIP.hw0usxJgDZ3e-bPAROcvjgHaGb?cb=iwp1&rs=1&pid=ImgDetMain" width="40%" height="40p%" class="d-block mx-auto img-fluid" alt="Casa 4">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="https://th.bing.com/th/id/OIP.RVNrpgjUhBeY63UjTCai5gHaFj?cb=iwp1&rs=1&pid=ImgDetMain" width="40%" height="40p%" class="d-block mx-auto img-fluid" alt="Casa 5">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="https://th.bing.com/th/id/R.f58b94e2eb5a99c6ddab2e4a15b106b7?rik=eWSjR4aLLtZQAw&pid=ImgRaw&r=0" width="40%" height="40p%" class="d-block mx-auto img-fluid" alt="Casa 6">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="https://www.elmueble.com/medio/2022/02/25/00533684_4fb1e665_2000x1333.jpg" width="40%" height="40p%" class="d-block mx-auto img-fluid" alt="Casa 6">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="https://s1.eestatic.com/2023/03/28/actualidad/751935526_231999332_1706x960.jpg" width="40%" height="40p%" class="d-block mx-auto img-fluid" alt="Casa 6">
-                    </div>
-                </div>
-            </div>
+   <!-- Sección de destino -->
+<section class="hero py-5" id="casas" style="background-color: #f8f9fa;">
+    <div class="container">
+      <!-- Título -->
+      <h1 class="mb-4 text-center" style="font-family: 'Franklin Gothic Medium', Arial, sans-serif; color: #333;">
+        Algunas de las casas que te puedes encontrar
+      </h1>
+  
+      <!-- Carrusel -->
+      <div id="houseCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+        <div class="carousel-inner">
+          <!-- Item 1 -->
+          <div class="carousel-item active">
+            <img src="https://th.bing.com/th/id/OIP.LI10QlIBObb93mdYFKubCgHaE7?cb=iwp1&rs=1&pid=ImgDetMain" 
+                 class="d-block mx-auto img-fluid rounded-3 shadow-sm" 
+                 alt="Casa 1" 
+                 style="max-width: 600px; height: auto;">
+          </div>
+  
+          <!-- Item 2 -->
+          <div class="carousel-item">
+            <img src="https://th.bing.com/th/id/OIP.Zb8J0yYKwpakUAE6u8kKGAHaE8?w=290&h=194&c=7&r=0&o=7&cb=iwp1&pid=1.7&rm=3" 
+                 class="d-block mx-auto img-fluid rounded-3 shadow-sm" 
+                 alt="Casa 2" 
+                 style="max-width: 600px; height: auto;">
+          </div>
+  
+          <!-- Repite los demás items del carrusel... -->
         </div>
-    </section>
+  
+        <!-- Controles del carrusel -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#houseCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Anterior</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#houseCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Siguiente</span>
+        </button>
+      </div>
+    </div>
+  </section>
 
     <section  class="hero text-black text-center py-5" >
         <div class="container">
