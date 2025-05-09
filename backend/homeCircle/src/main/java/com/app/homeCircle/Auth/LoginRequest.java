@@ -10,6 +10,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class LoginRequest {
-    String email;
-    String password;
+    // Esta clase actúa como un DTO (Data Transfer Object) para manejar los datos de la solicitud de inicio de sesión.
+    // Los atributos definidos aquí representan los datos que el cliente debe enviar para autenticarse.
+
+    String email; // Correo electrónico del usuario que intenta iniciar sesión.
+    String password; // Contraseña del usuario que intenta iniciar sesión.
 }

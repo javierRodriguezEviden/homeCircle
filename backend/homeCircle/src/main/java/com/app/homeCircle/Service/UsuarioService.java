@@ -19,12 +19,12 @@ public class UsuarioService {
         usuarioRepository.save(usuario);
     }
 
-    //? buscar todos los usuarios
+    //buscar todos los usuarios
     public List<Usuario> searchUsuarios() {
         return usuarioRepository.findAll();
     }
 
-    //?buscar usuario por email
+    //buscar usuario por email
     public Usuario searchByEmail(String email){
         return usuarioRepository.findByEmail(email).orElse(null);
     }

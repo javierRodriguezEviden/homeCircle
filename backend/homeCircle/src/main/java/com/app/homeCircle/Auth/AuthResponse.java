@@ -10,5 +10,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AuthResponse {
-    String token;
+    // Esta clase actúa como un DTO (Data Transfer Object) para enviar la respuesta de autenticación al cliente.
+    // Contiene el token JWT generado después de un inicio de sesión o registro exitoso.
+
+    String token; // El token JWT que se devuelve al cliente.
 }

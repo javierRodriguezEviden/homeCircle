@@ -14,6 +14,14 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class RegisterRequest {
+
+    // Esta clase actúa como un DTO (Data Transfer Object) para transferir datos desde el cliente al servidor.
+    // Los atributos se definen nuevamente aquí para:
+    // 1. Aplicar validaciones específicas para los datos que se reciben en la solicitud.
+    // 2. Evitar exponer directamente la entidad Usuario, protegiendo datos sensibles o irrelevantes.
+    // 3. Mantener la separación de responsabilidades entre la capa de entrada (DTO) y la capa de persistencia (entidad).
+    // 4. Facilitar la evolución de la API, permitiendo cambios en la estructura de la solicitud sin afectar la entidad.
+
     @NotBlank(message = "El campo email no puede estar vacio")
     @Email(message = "El email debe tener un formato valido")
     private String email;
@@ -42,7 +50,6 @@ public class RegisterRequest {
     @Size(max = 15, message = "La sede no puede tener mas de 15 caracteres")
     private String sede;
 
-    @NotBlank(message = "El campo cuenta bancaria no puede estar vacio")
     @Size(min = 24, max = 24, message = "La cuenta bancaria debe tener exactamente 24 caracteres")
     private String cuenta_banco;
 }

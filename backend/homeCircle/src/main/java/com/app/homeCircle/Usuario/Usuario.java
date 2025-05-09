@@ -65,7 +65,7 @@ public class Usuario {
     @Size(max = 15, message = "La sede no puede tener mas de 15 caracteres")
     private String sede;
 
-    @NotBlank(message = "El campo cuenta bancaria no puede estar vacio")
+    /* Quitado el NotBlank ya que queremos que pueda estar vacío */
     @Size(min = 24, max = 24, message = "La cuenta bancaria debe tener exactamente 24 caracteres")
     private String cuenta_banco;
 
