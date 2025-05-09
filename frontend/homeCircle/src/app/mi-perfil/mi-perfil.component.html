@@ -1,7 +1,7 @@
 <main>
     <div class="container py-4">
         <div class="card-body">
-            <h3 class="card-title text-center mb-4">¡Bienvenido, <span class="text-warning">+ nombre</span>! </h3>
+            <h3 class="card-title text-center mb-4">¡Bienvenido, <span class="text-primary">+ nombre</span>! </h3>
             <div class="row g-3">
                 <div class="col-md-6">
                     <div class="card border-0 shadow p-3 mb-5 bg-white rounded">
@@ -51,57 +51,8 @@
                 </div>
             </div>
         </div>
-        <div class="d-flex justify-content-center align-items-center py-4">
-            <h4 class="underline-title">Mis casas</h4>
-        </div>
-        <div class="container py-4">
-            <div class="row row-cols-1 justify-content-center row-cols-lg-4 g-4">
-                <div class="col px-0">
-                    <div class="card h-100 shadow" style="width: 20rem;">
-                        <img src="../assets/casa.ejemplo.png" class="card-img-top" alt="Casa de ejemplo">
-                        <div class="card-body d-flex flex-column justify-content-between">
-                            <h5 class="card-title">San Pablo de los Montes, 8</h5>
-                            <div class="d-flex justify-content-between">
-                                <p class="card-text mb-0"><strong>Ciudad:</strong> Burguillos</p>
-                                <p class="card-text mb-0"><strong>Provincia:</strong> Toledo</p>
-                            </div>
-                            <p class="card-text"><strong>CP:</strong> 45112</p>
-                            <div class="d-flex justify-content-between">
-                                <div class="justify-content-start">
-                                    <i class="ri-pencil-line text-primary" style="font-size: xx-large;"></i>
-                                </div>
-                                <div class="justify-content-end">
-                                    <i class="ri-eye-line text-primary" style="font-size: xx-large;"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card shadow h-100" style="width: 20rem;">
-                        <img src="../assets/casa.ejemplo.png" class="card-img-top" alt="Casa de ejemplo">
-                        <div class="card-body d-flex flex-column justify-content-between">
-                            <h5 class="card-title">Otra dirección, 10</h5>
-                            <div class="d-flex justify-content-between">
-                                <p class="card-text mb-0"><strong>Ciudad:</strong> Alcalá</p>
-                                <p class="card-text mb-0"><strong>Provincia:</strong> Madrid</p>
-                            </div>
-                            <p class="card-text"><strong>CP:</strong> 28801</p>
-                            <div class="d-flex justify-content-between">
-                                <div class="justify-content-start">
-                                    <i class="ri-pencil-line text-primary" style="font-size: xx-large;"></i>
-                                </div>
-                                <div class="justify-content-end">
-                                    <i class="ri-eye-line text-primary" style="font-size: xx-large;"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Más cards, caben 4 por fila  -->
-
-            </div>
-        </div>
+        <!--Componente de mis casas-->
+        <app-mis-casas></app-mis-casas>
         <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 100px;">
             <button class="btn btn-primary mb-3" type="button" data-bs-toggle="collapse"
                 data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
@@ -109,7 +60,7 @@
             </button>
             <div class="collapse" id="collapseWidthExample">
                 <div class="card card-body text-center mb-3" style="width: 300px;">
-                    La infromación sobre tus casas solo será visible para los usuarios que ya estén
+                    La información sobre tus casas solo será visible para los usuarios que ya estén
                     registrados.
                 </div>
             </div>
@@ -124,3 +75,5 @@
         </div> 
     </div>
 </main>
+
+
