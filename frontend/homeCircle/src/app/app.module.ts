@@ -14,6 +14,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeRegistradoComponent } from './home-registrado/home-registrado.component';
 import { MiPerfilComponent } from './mi-perfil/mi-perfil.component';
 import { ReservaComponent } from './reserva/reserva.component';
+import { ErrorComponent } from './error/error.component';
+import { MisCasasComponent } from './mis-casas/mis-casas.component';
 
 
 
@@ -30,6 +32,8 @@ const appRoutes:Routes=[
   {path:'homeRegistrado', component:HomeRegistradoComponent},
   {path:'miPerfil', component:MiPerfilComponent},
   {path:'reserva', component:ReservaComponent},
+  {path:'error', component:ErrorComponent},
+  {path:'misCasas', component:MisCasasComponent}
 
   //Esto le indica a angular que cualquier cosa diferente a lo visto antes, irá aqui
  
@@ -45,6 +49,8 @@ const appRoutes:Routes=[
     HomeRegistradoComponent,
     MiPerfilComponent,
     ReservaComponent,
+    ErrorComponent,
+    MisCasasComponent,
   ],
   imports: [
     BrowserModule,
