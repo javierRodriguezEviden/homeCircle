@@ -10,8 +10,9 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import com.app.homeCircle.Usuario.Usuario;
-import com.app.homeCircle.Usuario.UsuarioRepository;
+
+import com.app.homeCircle.Entity.Usuario;
+import com.app.homeCircle.Entity.UsuarioRepository;
 
 import lombok.RequiredArgsConstructor;
 

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.app.homeCircle.Reserva.Reserva;
+import com.app.homeCircle.Entity.Reserva;
 import com.app.homeCircle.Service.ReservaService;
 
 import lombok.RequiredArgsConstructor;

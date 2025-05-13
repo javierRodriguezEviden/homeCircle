@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.app.homeCircle.Usuario.Usuario;
-import com.app.homeCircle.Usuario.UsuarioRepository;
+import com.app.homeCircle.Entity.Usuario;
+import com.app.homeCircle.Entity.UsuarioRepository;
 
 import lombok.RequiredArgsConstructor;
 

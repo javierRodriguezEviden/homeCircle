@@ -1,9 +1,6 @@
-package com.app.homeCircle.Casa;
+package com.app.homeCircle.Entity;
 
 import java.util.List;
-
-import com.app.homeCircle.Reserva.Reserva;
-import com.app.homeCircle.Usuario.Usuario;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
