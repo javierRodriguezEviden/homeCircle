@@ -32,6 +32,8 @@ import lombok.NoArgsConstructor;
         @jakarta.persistence.UniqueConstraint(columnNames = "email")
     }    
 )
+
+/* Entidad del usuario */
 public class Usuario {
 
     @Id
