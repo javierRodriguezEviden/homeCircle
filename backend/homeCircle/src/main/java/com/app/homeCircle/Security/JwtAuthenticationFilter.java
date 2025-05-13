@@ -19,12 +19,14 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 
-@Component // Marca esta clase como un componente de Spring para que pueda ser inyectada automáticamente.
+@Component // Marca esta clase como un componente de Spring para que pueda ser inyectada
+           // automáticamente.
 @RequiredArgsConstructor // Genera un constructor con los campos final para inyección de dependencias.
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     private final JwtService jwtService; // Servicio para manejar la lógica de los tokens JWT.
-    private final UserDetailsService userDetailsService; // Servicio para cargar los detalles del usuario desde la base de datos.
+    private final UserDetailsService userDetailsService; // Servicio para cargar los detalles del usuario desde la base
+                                                         // de datos.
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
@@ -32,6 +34,12 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         // Extrae el token JWT del encabezado de la solicitud.
         final String token = getTokenFromRequest(request);
         final String email;
+
+        String path = request.getRequestURI();
+        if (path.startsWith("/auth/")) {
+            filterChain.doFilter(request, response);
+            return;
+        }
 
         // Si no hay token en la solicitud, continúa con el siguiente filtro.
         if (token == null) {
@@ -70,6 +78,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     /**
      * Extrae el token JWT del encabezado "Authorization" de la solicitud.
+     * 
      * @param request La solicitud HTTP.
      * @return El token JWT si está presente, o null si no lo está.
      */

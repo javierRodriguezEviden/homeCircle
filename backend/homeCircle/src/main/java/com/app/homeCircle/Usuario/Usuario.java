@@ -66,7 +66,7 @@ public class Usuario {
     private String sede;
 
     /* Quitado el NotBlank ya que queremos que pueda estar vacío */
-    @Size(min = 24, max = 24, message = "La cuenta bancaria debe tener exactamente 24 caracteres")
+    @Size(min = 0, max = 24, message = "La cuenta bancaria debe tener exactamente 24 caracteres")
     private String cuenta_banco;
 
     @OneToMany(mappedBy = "usuario")

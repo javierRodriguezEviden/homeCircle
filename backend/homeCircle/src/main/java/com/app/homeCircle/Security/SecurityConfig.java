@@ -22,20 +22,21 @@ import lombok.RequiredArgsConstructor;
 public class SecurityConfig {
 
     private final JwtAuthenticationFilter jwtAuthenticationFilter; // Filtro personalizado para validar tokens JWT.
-    private final UsuarioDetailsService usuarioDetailsService; // Servicio para cargar detalles del usuario desde la base de datos.
+    private final UsuarioDetailsService usuarioDetailsService; // Servicio para cargar detalles del usuario desde la
+                                                               // base de datos.
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
-                .csrf(csrf -> csrf.disable()) // Deshabilita la protección CSRF (no necesaria para APIs REST).
+                .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(authRequest -> authRequest
-                        .requestMatchers("/auth/**").permitAll() // Permite acceso público a las rutas que comienzan con /auth/**.
-                        .anyRequest().authenticated()) // Requiere autenticación para cualquier otra ruta.
+                        .requestMatchers("/auth/**").permitAll()
+                        .anyRequest().authenticated())
                 .sessionManagement(sessionManager -> sessionManager
-                        .sessionCreationPolicy(SessionCreationPolicy.STATELESS)) // Configura las sesiones como "stateless" (sin estado).
-                .authenticationProvider(authenticationProvider()) // Configura el proveedor de autenticación.
-                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class) // Añade el filtro JWT antes del filtro de autenticación por usuario/contraseña.
-                .build(); // Construye y devuelve la cadena de filtros de seguridad.
+                        .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .authenticationProvider(authenticationProvider())
+                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
+                .build();
     }
 
     @Bean
@@ -49,7 +50,8 @@ public class SecurityConfig {
         // Configura el proveedor de autenticación basado en DAO.
         DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider();
         authenticationProvider.setUserDetailsService(usuarioDetailsService); // Usa el servicio de detalles del usuario.
-        authenticationProvider.setPasswordEncoder(passwordEncoder()); // Configura el codificador de contraseñas (BCrypt).
+        authenticationProvider.setPasswordEncoder(passwordEncoder()); // Configura el codificador de contraseñas
+                                                                      // (BCrypt).
         return authenticationProvider;
     }
 

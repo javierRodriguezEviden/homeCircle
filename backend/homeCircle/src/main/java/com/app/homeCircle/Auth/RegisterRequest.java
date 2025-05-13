@@ -50,6 +50,6 @@ public class RegisterRequest {
     @Size(max = 15, message = "La sede no puede tener mas de 15 caracteres")
     private String sede;
 
-    @Size(min = 24, max = 24, message = "La cuenta bancaria debe tener exactamente 24 caracteres")
+    @Size(min = 0, max = 24, message = "La cuenta bancaria debe tener exactamente 24 caracteres")
     private String cuenta_banco;
 }
