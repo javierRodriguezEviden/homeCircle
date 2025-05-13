@@ -17,6 +17,7 @@ import { ReservaComponent } from './reserva/reserva.component';
 import { ErrorComponent } from './error/error.component';
 import { MisCasasComponent } from './mis-casas/mis-casas.component';
 
+import { provideHttpClient } from '@angular/common/http';
 
 
 //Creamos la variable const routes para establecer las rutas
@@ -60,8 +61,10 @@ const appRoutes:Routes=[
     //Para las rutas, para que utilice todas las rutas presentes en la constante
     RouterModule.forRoot(appRoutes),
 
+
   ],
   providers: [
+    provideHttpClient(),
     provideClientHydration(withEventReplay())
   ],
   bootstrap: [AppComponent]

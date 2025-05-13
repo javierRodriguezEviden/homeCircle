@@ -4,7 +4,7 @@
         <img src="../recursos/casa.png" alt="image"
             class="login__bg position-absolute top-0 start-0 w-100 h-100 object-fit-cover opacity-50 z-n1 rounded-3">
 
-        <form action="/api" class="login__form d-flex flex-column gap-3 my-4" method="POST">
+        <form (ngSubmit)="registrarUsuario()" class="login__form d-flex flex-column gap-3 my-4" method="POST">
             <h1 class="login__title fs-2"><strong>Crea tu cuenta</strong></h1>
 
             <div class="row g-3">
