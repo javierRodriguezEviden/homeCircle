@@ -1,9 +1,6 @@
-package com.app.homeCircle.Reserva;
+package com.app.homeCircle.Entity;
 
 import java.time.LocalDate;
-
-import com.app.homeCircle.Casa.Casa;
-import com.app.homeCircle.Usuario.Usuario;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

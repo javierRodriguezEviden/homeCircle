@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.app.homeCircle.Reserva.Reserva;
-import com.app.homeCircle.Reserva.ReservaRepository;
+import com.app.homeCircle.Entity.Reserva;
+import com.app.homeCircle.Entity.ReservaRepository;
 
 import lombok.RequiredArgsConstructor;
 

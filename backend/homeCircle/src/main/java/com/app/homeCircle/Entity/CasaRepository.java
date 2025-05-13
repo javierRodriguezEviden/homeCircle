@@ -1,4 +1,4 @@
-package com.app.homeCircle.Casa;
+package com.app.homeCircle.Entity;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

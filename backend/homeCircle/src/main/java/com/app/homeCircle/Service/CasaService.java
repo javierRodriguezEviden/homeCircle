@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.app.homeCircle.Casa.Casa;
-import com.app.homeCircle.Casa.CasaRepository;
+import com.app.homeCircle.Entity.Casa;
+import com.app.homeCircle.Entity.CasaRepository;
 
 import lombok.RequiredArgsConstructor;
 
