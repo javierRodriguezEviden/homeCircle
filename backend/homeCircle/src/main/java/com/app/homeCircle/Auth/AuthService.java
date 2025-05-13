@@ -79,7 +79,7 @@ public class AuthService {
                         return new ResponseEntity<>(response, HttpStatus.CREATED); // Código 201
                 } catch (DataIntegrityViolationException e) {
                         // Manejo de errores de integridad (duplicados)
-                        response.put("message", "Error: El correo o el teléfono ya están registrados.");
+                        response.put("message", "Error: El correo o el dni ya están registrados.");
                         return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST); // Código 400
                 } catch (Exception e) {
                         // Manejo de errores genéricos
