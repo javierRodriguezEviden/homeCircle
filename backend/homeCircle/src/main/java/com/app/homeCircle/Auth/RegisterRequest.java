@@ -1,5 +1,7 @@
 package com.app.homeCircle.Auth;
 
+import com.app.homeCircle.Validation.ValidIban;
+
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
@@ -15,12 +17,17 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class RegisterRequest {
 
-    // Esta clase actúa como un DTO (Data Transfer Object) para transferir datos desde el cliente al servidor.
+    // Esta clase actúa como un DTO (Data Transfer Object) para transferir datos
+    // desde el cliente al servidor.
     // Los atributos se definen nuevamente aquí para:
-    // 1. Aplicar validaciones específicas para los datos que se reciben en la solicitud.
-    // 2. Evitar exponer directamente la entidad Usuario, protegiendo datos sensibles o irrelevantes.
-    // 3. Mantener la separación de responsabilidades entre la capa de entrada (DTO) y la capa de persistencia (entidad).
-    // 4. Facilitar la evolución de la API, permitiendo cambios en la estructura de la solicitud sin afectar la entidad.
+    // 1. Aplicar validaciones específicas para los datos que se reciben en la
+    // solicitud.
+    // 2. Evitar exponer directamente la entidad Usuario, protegiendo datos
+    // sensibles o irrelevantes.
+    // 3. Mantener la separación de responsabilidades entre la capa de entrada (DTO)
+    // y la capa de persistencia (entidad).
+    // 4. Facilitar la evolución de la API, permitiendo cambios en la estructura de
+    // la solicitud sin afectar la entidad.
 
     @NotBlank(message = "El campo email no puede estar vacio")
     @Email(message = "El email debe tener un formato valido")
@@ -50,6 +57,7 @@ public class RegisterRequest {
     @Size(max = 15, message = "La sede no puede tener mas de 15 caracteres")
     private String sede;
 
-    @Size(min = 0, max = 24, message = "La cuenta bancaria debe tener exactamente 24 caracteres")
+    @ValidIban
     private String cuenta_banco;
+
 }

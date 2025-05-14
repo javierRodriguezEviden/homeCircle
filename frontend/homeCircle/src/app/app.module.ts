@@ -15,19 +15,6 @@ import { MiPerfilComponent } from './mi-perfil/mi-perfil.component';
 import { ReservaComponent } from './reserva/reserva.component';
 import { ErrorComponent } from './error/error.component';
 import { MisCasasComponent } from './mis-casas/mis-casas.component';
-<<<<<<< HEAD
-import { provideHttpClient } from '@angular/common/http';
-const appRoutes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'sobreNosotros', component: SobreNosotrosComponent },
-  { path: 'registro', component: RegistroComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'homeRegistrado', component: HomeRegistradoComponent },
-  { path: 'miPerfil', component: MiPerfilComponent },
-  { path: 'reserva', component: ReservaComponent },
-  { path: 'error', component: ErrorComponent },
-  { path: 'misCasas', component: MisCasasComponent }
-=======
 
 import { provideHttpClient } from '@angular/common/http';
 
@@ -50,7 +37,6 @@ const appRoutes:Routes=[
 
   //Esto le indica a angular que cualquier cosa diferente a lo visto antes, irá aqui
  
->>>>>>> origin/irene
 ];
 
 @NgModule({
@@ -70,22 +56,10 @@ const appRoutes:Routes=[
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-<<<<<<< HEAD
     RouterModule.forRoot(appRoutes)
   ],
   providers: [
     provideHttpClient()
-=======
-
-    //Para las rutas, para que utilice todas las rutas presentes en la constante
-    RouterModule.forRoot(appRoutes),
-
-
-  ],
-  providers: [
-    provideHttpClient(),
-    provideClientHydration(withEventReplay())
->>>>>>> origin/irene
   ],
   bootstrap: [AppComponent]
 })

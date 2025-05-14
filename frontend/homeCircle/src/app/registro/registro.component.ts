@@ -12,6 +12,7 @@ export class RegistroComponent {
   apellidos = '';
   email = '';
   password = '';
+  confirmPassword = '';
   dni = '';
   telefono = '';
   sede = '';
@@ -20,11 +21,21 @@ export class RegistroComponent {
   mensajeRegistro = '';
   registrado = false;
 
+  // Para almacenar los errores de validación
+  errores: { [key: string]: string } = {};
+
   constructor(private http: HttpClient) { }
 
   registrarUsuario(event: Event) {
     event.preventDefault(); // Evita que el formulario recargue la página
 
+    this.errores = {}; // Reinicia los errores
+
+    // Verifica que las contraseñas coincidan
+    if (this.password !== this.confirmPassword) {
+      this.errores['confirmPassword'] = 'Las contraseñas no coinciden.';
+      return;
+    }
 
     const userData = {
       nombre: this.nombre,
@@ -38,15 +49,18 @@ export class RegistroComponent {
     };
 
     this.http.post('http://localhost:8020/auth/register', userData).subscribe({
-      next: (response) => {
+      next: (response:any) => {
         this.registrado = true;
         this.mensajeRegistro = 'Registro exitoso. Bienvenido a HomeCircle.';
       },
       error: (error) => {
         if (error.status === 400) {
-          this.mensajeRegistro = error.error; // Muestra el mensaje del backend
+          this.registrado = false;
+          this.errores = error.error; // Muestra el mensaje del backend
+          this.mensajeRegistro = error.error.message;
         } else {
           this.mensajeRegistro = 'Error inesperado. Inténtalo de nuevo.';
+          this.registrado = false;
         }
       }
     });

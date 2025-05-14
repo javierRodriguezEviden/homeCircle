@@ -59,6 +59,14 @@ public class AuthService {
         public ResponseEntity<Map<String, Object>> register(RegisterRequest request) {
                 Map<String, Object> response = new HashMap<>();
                 try {
+                        if (userRepository.existsByEmail(request.getEmail())) {
+                                response.put("message", "El correo ya está registrado.");
+                                return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+                        }
+                        if (userRepository.existsByDni(request.getDni())) {
+                                response.put("message", "El DNI ya está registrado.");
+                                return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+                        }
                         // Crear el usuario
                         Usuario usuario = Usuario.builder()
                                         .nombre(request.getNombre())
@@ -78,10 +86,6 @@ public class AuthService {
                         response.put("message", "Usuario registrado correctamente");
                         response.put("token", token);
                         return new ResponseEntity<>(response, HttpStatus.CREATED); // Código 201
-                } catch (DataIntegrityViolationException e) {
-                        // Manejo de errores de integridad (duplicados)
-                        response.put("message", "Error: El correo o el dni ya están registrados.");
-                        return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST); // Código 400
                 } catch (Exception e) {
                         // Manejo de errores genéricos
                         response.put("message", "Error al registrar el usuario");

@@ -3,11 +3,8 @@
         <img src="/recursos/casa.png" alt="image"
             class="login__bg position-absolute top-0 start-0 w-100 h-100 object-fit-cover opacity-50 z-n1 rounded-3">
 
-<<<<<<< HEAD
-        <form (ngSubmit)="registrarUsuario($event)" class="login__form d-flex flex-column gap-3 my-4" #registroForm="ngForm">
-=======
-        <form (ngSubmit)="registrarUsuario()" class="login__form d-flex flex-column gap-3 my-4" method="POST">
->>>>>>> origin/irene
+        <form (ngSubmit)="registrarUsuario($event)" class="login__form d-flex flex-column gap-3 my-4"
+            #registroForm="ngForm">
             <h1 class="login__title fs-2"><strong>Crea tu cuenta</strong></h1>
 
             <div class="row g-3">
@@ -16,6 +13,7 @@
                         <input type="text" class="form-control rounded-pill" id="nombre" placeholder="Nombre" required
                             name="nombre" [(ngModel)]="nombre">
                         <label for="nombre"><i class="ri-user-3-fill me-2"></i> Nombre</label>
+                        <div *ngIf="errores['nombre']" class="text-danger mt-1">{{ errores['nombre'] }}</div>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -23,6 +21,7 @@
                         <input type="text" class="form-control rounded-pill" id="apellidos" placeholder="Apellidos"
                             required name="apellidos" [(ngModel)]="apellidos">
                         <label for="apellidos"><i class="ri-user-3-fill me-2"></i> Apellidos</label>
+                        <div *ngIf="errores['apellidos']" class="text-danger mt-1">{{ errores['apellidos'] }}</div>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -30,6 +29,7 @@
                         <input type="text" class="form-control rounded-pill" id="dni" placeholder="DNI" name="dni"
                             [(ngModel)]="dni" required>
                         <label for="dni"><i class="ri-id-card-fill me-2"></i> DNI</label>
+                        <div *ngIf="errores['dni']" class="text-danger mt-1">{{ errores['dni'] }}</div>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -37,6 +37,7 @@
                         <input type="email" class="form-control rounded-pill" id="email" placeholder="Email"
                             name="email" [(ngModel)]="email" required>
                         <label for="email"><i class="ri-mail-fill me-2"></i> Email</label>
+                        <div *ngIf="errores['email']" class="text-danger mt-1">{{ errores['email'] }}</div>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -44,6 +45,7 @@
                         <input type="tel" class="form-control rounded-pill" id="telefono" placeholder="Teléfono"
                             name="telefono" [(ngModel)]="telefono" required>
                         <label for="telefono"><i class="ri-phone-fill me-2"></i> Teléfono</label>
+                        <div *ngIf="errores['telefono']" class="text-danger mt-1">{{ errores['telefono'] }}</div>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -51,13 +53,16 @@
                         <input type="text" class="form-control rounded-pill" id="sede" placeholder="Sede" name="sede"
                             [(ngModel)]="sede" required>
                         <label for="sede"><i class="ri-map-pin-fill me-2"></i> Sede</label>
+                        <div *ngIf="errores['sede']" class="text-danger mt-1">{{ errores['sede'] }}</div>
                     </div>
                 </div>
                 <div class="col-md-12">
                     <div class="form-floating">
-                        <input type="text" class="form-control rounded-pill" id="cuentaBancaria" name="cuenta_bancaria"
-                            placeholder="Cuenta Bancaria">
+                        <input type="text" class="form-control rounded-pill" id="cuentaBancaria" name="cuenta_banco"
+                            [(ngModel)]="cuenta_banco" placeholder="Cuenta Bancaria">
                         <label for="cuentaBancaria"><i class="ri-bank-card-fill me-2"></i> Cuenta Bancaria</label>
+                        <div *ngIf="errores['cuenta_banco']" class="text-danger mt-1">{{ errores['cuenta_banco'] }}
+                        </div>
                         <div class="form-text text-muted text-center">Dato necesario en caso de querer alquilar casa
                         </div>
                     </div>
@@ -68,18 +73,27 @@
                             [(ngModel)]="password" placeholder="Contraseña" required>
 
                         <label for="contrasena"><i class="ri-lock-2-fill me-2"></i> Contraseña</label>
+                        <div *ngIf="errores['password']" class="text-danger mt-1">{{ errores['password'] }}</div>
                     </div>
                 </div>
+
                 <div class="col-md-6">
                     <div class="form-floating">
-                        <input type="password" class="form-control rounded-pill" id="confirmarContrasena" name=""
-                            placeholder="Repite la contraseña" required>
+                        <input type="password" class="form-control rounded-pill" id="confirmarContrasena"
+                            name="confirmPassword" [(ngModel)]="confirmPassword" placeholder="Repite la contraseña"
+                            required>
                         <label for="confirmarContrasena"><i class="ri-lock-2-fill me-2"></i> Repite la
                             contraseña</label>
+                        <div *ngIf="errores['confirmPassword']" class="text-danger mt-1">{{ errores['confirmPassword']
+                            }}</div>
                     </div>
                 </div>
             </div>
 
+            <div *ngIf="mensajeRegistro" class="alert"
+                [ngClass]="{'alert-success': registrado, 'alert-danger': !registrado}">
+                {{ mensajeRegistro }}
+            </div>
             <button type="submit" class="btn btn-primary rounded-pill mt-3" value="Registrar">Crear cuenta</button>
 
             <!-- <button type="submit" class="btn btn-primary rounded-pill mt-3" value="Registrar"
