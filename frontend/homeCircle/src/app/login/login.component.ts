@@ -1,14 +1,16 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { AuthService } from '../auth.service'; // ✅ Importa el servicio
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
-  standalone: false,
+  standalone: false
 })
 export class LoginComponent {
+
   email: string = '';
   password: string = '';
   mensajeLogin: string = '';
@@ -16,39 +18,36 @@ export class LoginComponent {
 
   private apiUrl = '/api/auth/login';
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private authService: AuthService // ✅ Inyecta el servicio
+  ) {}
 
   loguearUsuario(): void {
-    // Limpiar mensajes anteriores
-    this.mensajeLogin = '';
+  this.mensajeLogin = '';
 
-    
+  const credentials = { email: this.email, password: this.password };
 
-    // Datos a enviar
-    const credentials = { email: this.email, password: this.password };
+  this.http.post<any>(this.apiUrl, credentials).subscribe(
+    (response) => {
+      console.log('Login exitoso', response);
 
-    // Llamada al backend
-    this.http.post<any>(this.apiUrl, credentials).subscribe(
-      (response) => {
-        console.log('Login exitoso', response);
+      // ✅ Usamos el servicio para guardar el estado
+      this.authService.login(response);
 
-        // Guardamos el usuario en localStorage
-        localStorage.setItem('usuario', JSON.stringify(response));
+      this.mensajeLogin = 'Bienvenido a tu perfil, ' + this.email;
+      this.logueado = true;
 
-        // Mostrar mensaje de bienvenida
-        this.mensajeLogin = 'Bienvenido a tu perfil, ' + this.email;
-        this.logueado = true;
-
-        // Redirigir después de un breve delay
-        setTimeout(() => {
-          this.router.navigate(['/homeRegistrado']); // Ruta protegida
-        }, 1000);
-      },
-      (error) => {
-        console.error('Error al iniciar sesión', error);
-        this.mensajeLogin = 'Credenciales incorrectas. Inténtalo de nuevo.';
-        this.logueado = false;
-      }
-    );
-  }
+      setTimeout(() => {
+        this.router.navigate(['/homeRegistrado']);
+      }, 0);
+    },
+    (error) => {
+      console.error('Error al iniciar sesión', error);
+      this.mensajeLogin = 'Credenciales incorrectas. Inténtalo de nuevo.';
+      this.logueado = false;
+    }
+  );
+}
 }
