@@ -21,41 +21,11 @@ export class LoginComponent {
 
   private apiUrl = '/api/auth/login';
 
-<<<<<<< HEAD
   constructor(
     private http: HttpClient,
     private router: Router,
     private authService: AuthService // ✅ Inyecta el servicio
-  ) {}
-
-  loguearUsuario(): void {
-  this.mensajeLogin = '';
-
-  const credentials = { email: this.email, password: this.password };
-
-  this.http.post<any>(this.apiUrl, credentials).subscribe(
-    (response) => {
-      console.log('Login exitoso', response);
-
-      // ✅ Usamos el servicio para guardar el estado
-      this.authService.login(response);
-
-      this.mensajeLogin = 'Bienvenido a tu perfil, ' + this.email;
-      this.logueado = true;
-
-      setTimeout(() => {
-        this.router.navigate(['/homeRegistrado']);
-      }, 0);
-    },
-    (error) => {
-      console.error('Error al iniciar sesión', error);
-      this.mensajeLogin = 'Credenciales incorrectas. Inténtalo de nuevo.';
-      this.logueado = false;
-    }
-  );
-}
-=======
-  constructor(private http: HttpClient, private router: Router) { }
+  ) { }
 
   loguearUsuario(): void {
     this.errores = {};
@@ -67,11 +37,18 @@ export class LoginComponent {
     this.http.post<any>(this.apiUrl, credentials).subscribe(
       (response) => {
         localStorage.setItem('usuario', JSON.stringify(response));
+
+        console.log('Login exitoso', response);
+
+        // ✅ Usamos el servicio para guardar el estado
+        this.authService.login(response);
+
         this.mensajeLogin = 'Bienvenido a tu perfil, ' + this.email;
         this.logueado = true;
+
         setTimeout(() => {
           this.router.navigate(['/homeRegistrado']);
-        }, 1000);
+        }, 0);
       },
       (error) => {
         if (error.status === 400 && error.error) {
@@ -91,5 +68,4 @@ export class LoginComponent {
       }
     );
   }
->>>>>>> origin/main
 }

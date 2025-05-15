@@ -6,29 +6,32 @@
 
         <form action="" class="login__form">
             <h1 class="login__title bold"><strong>Inicia sesión</strong></h1>
-<<<<<<< HEAD
- 
+
             <div class="col-md-12">
-                    <div class="form-floating">
-                        <input type="email" class="form-control rounded-pill" id="email" placeholder="Email"
-                            name="email" [(ngModel)]="email" required>
-                        <label for="email"><i class="ri-mail-fill me-2"></i> Email</label>
-                    </div>
+                <div class="form-floating">
+                    <input type="email" class="form-control rounded-pill" id="email" placeholder="Email" name="email"
+                        [(ngModel)]="email" required>
+                    <label for="email"><i class="ri-mail-fill me-2"></i> Email</label>
                 </div>
-                 <div class="col-md-12">
-                    <div class="form-floating">
-                        <input type="password" class="form-control rounded-pill" id="contrasena" name="password"
-                            [(ngModel)]="password" placeholder="Contraseña" required>
+            </div>
+            <div class="col-md-12">
+                <div class="form-floating">
+                    <input type="password" class="form-control rounded-pill" id="contrasena" name="password"
+                        [(ngModel)]="password" placeholder="Contraseña" required>
 
-                        <label for="contrasena"><i class="ri-lock-2-fill me-2"></i> Contraseña</label>
-                    </div>
+                    <label for="contrasena"><i class="ri-lock-2-fill me-2"></i> Contraseña</label>
                 </div>
- 
-            <button type="submit" class="btn btn-primary rounded-pill mt-3 py-2" value="Loguear" (click)="loguearUsuario()">Iniciar sesión</button>
- 
-=======
+            </div>
 
-            <div class="login__inputs">
+            <div *ngIf="mensajeLogin" class="alert alert-danger" style="white-space: pre-line;">
+                {{ mensajeLogin }}
+            </div>
+
+            <button type="submit" class="btn btn-primary rounded-pill mt-3 py-2" value="Loguear"
+                (click)="loguearUsuario()">Iniciar sesión</button>
+
+
+            <!-- <div class="login__inputs">
                 <div class="login__box">
                     <input type="email" placeholder="Email" required class="login__input" name="email"
                         [(ngModel)]="email">
@@ -40,16 +43,13 @@
                         [(ngModel)]="password">
                     <i class="ri-lock-2-fill"></i>
                 </div>
-            </div>
+            </div> -->
 
-            <div *ngIf="mensajeLogin" class="alert alert-danger" style="white-space: pre-line;">
-                {{ mensajeLogin }}
-            </div>
 
-            <button type="submit" class="login_button" value="Loguear" (click)="loguearUsuario()">Iniciar
-                sesión</button>
 
->>>>>>> origin/main
+           <!--  <button type="submit" class="login_button" value="Loguear" (click)="loguearUsuario()">Iniciar
+                sesión</button> -->
+
             <div class="login__register">
                 ¿No tienes una cuenta? <a href="/registro">Regístrate</a>
             </div>
@@ -60,13 +60,11 @@
                     <p *ngIf="logueado">{{mensajeLogin}}</p>
                 </strong>
             </div>
-<<<<<<< HEAD
-        
 
 
-        <!--Hacemos llamamiento en caso de que sea registrado el usuario-->
-    
-=======
+
+            <!--Hacemos llamamiento en caso de que sea registrado el usuario-->
+
         </form>
     </div>
 
@@ -74,4 +72,3 @@
 
 
 </div>
->>>>>>> origin/main
