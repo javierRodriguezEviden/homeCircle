@@ -14,3 +14,13 @@
     height: 3px; 
     background-color: #FFA500;
   }
+  .animacion {
+  transition: transform 0.3s ease; /* Añade una transición suave */
+}
+
+/* Animación al hover */
+.animacion:hover {
+  transform: scale(1.05); /* Aumenta el tamaño del card un 5% */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Añade una sombra más pronunciada al hover */
+}
+
