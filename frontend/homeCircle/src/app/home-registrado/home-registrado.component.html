@@ -1,61 +1,74 @@
 <main class="d-flex flex-column min-vh-100 bg-white">
 
-    <!-- Hero de bienvenida -->
-    <section class="py-5 text-white text-center align-items-center w-100 vh-50" style="background: linear-gradient(to right, #FFA500, #007BFF);">
-      <div class="container">
-        <h1 class="display-4 fw-bold">Bienvenid&#64;, <span class="text-warning">+ nombre</span></h1>
-        <p class="lead">Explora todas las opciones que tienes como usuari&#64; dentro de tu perfil</p>
-      </div>
-    </section>
-  
-    <!-- Opciones del menú centradas -->
-    <section class="py-5 bg-light flex-grow-1 d-flex align-items-center">
-      <div class="container-md">
-        <h2 class="text-center mb-5" style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">¿Qué puedes hacer dentro de tu menú como usuario?</h2>
-        <div class="row g-4 justify-content-center">
-  
-          <!-- Tarjeta 1 -->
-          <div class="col-md-4">
-            <div class="card text-center h-100 border-0 shadow-sm">
-              <div class="card-body">
-                <a href="/miPerfil" class="text-decoration-none text-dark">
-                  <i class="ri-user-star-fill display-4 text-primary mb-3"></i>
-                  <h5 class="card-title">Tu perfil</h5>
-                  <p class="card-text">Consulta tu información personal y gestiona tus casas.</p>
-                </a>
-              </div>
+  <!-- Hero de bienvenida -->
+  <section class="py-5 text-white text-center align-items-center w-100 vh-50"
+    style="background: linear-gradient(to right, #FFA500, #007BFF);">
+    <div class="container">
+      <h1 class="display-4 fw-bold">Bienvenid&#64;, <span class="text-warning">+ nombre</span></h1>
+      <p class="lead">Explora todas las opciones que tienes como usuari&#64; dentro de tu perfil</p>
+    </div>
+  </section>
+
+<!-- EJEMPLO DE COMO FUNCIONA -->
+  <div *ngIf="nombreUsuario && gmailUsuario">
+      <h2>¡Bienvenido, {{ nombreUsuario }}!</h2>
+      <p>Tu correo es: {{ gmailUsuario }}</p>
+      <p>Tu telefono es: {{ tlfUsuario }}</p>
+  </div>
+
+  <div *ngIf="!nombreUsuario || !gmailUsuario">
+      <p>No has iniciado sesión.</p>
+  </div>
+
+
+  <!-- Opciones del menú centradas -->
+  <section class="py-5 bg-light flex-grow-1 d-flex align-items-center">
+    <div class="container-md">
+      <h2 class="text-center mb-5" style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">¿Qué
+        puedes hacer dentro de tu menú como usuario?</h2>
+      <div class="row g-4 justify-content-center">
+
+        <!-- Tarjeta 1 -->
+        <div class="col-md-4">
+          <div class="card text-center h-100 border-0 shadow-sm">
+            <div class="card-body">
+              <a href="/miPerfil" class="text-decoration-none text-dark">
+                <i class="ri-user-star-fill display-4 text-primary mb-3"></i>
+                <h5 class="card-title">Tu perfil</h5>
+                <p class="card-text">Consulta tu información personal y gestiona tus casas.</p>
+              </a>
             </div>
           </div>
-  
-          <!-- Tarjeta 2 -->
-          <div class="col-md-4">
-            <div class="card text-center h-100 border-0 shadow-sm">
-              <div class="card-body">
-                <a href="/reserva" class="text-decoration-none text-dark">
-                  <i class="ri-home-heart-fill display-4 text-warning mb-3"></i>
-                  <h5 class="card-title">Reserva</h5>
-                  <p class="card-text">Encuentra la casa ideal para tu próxima escapada.</p>
-                </a>
-              </div>
-            </div>
-          </div>
-  
-          <!-- Tarjeta 3 -->
-          <div class="col-md-4">
-            <div class="card text-center h-100 border-0 shadow-sm">
-              <div class="card-body">
-                <a href="/comunidad" class="text-decoration-none text-dark">
-                  <i class="ri-team-fill display-4 text-primary mb-3"></i>
-                  <h5 class="card-title">Comunidad</h5>
-                  <p class="card-text">Conecta con otros compañeros. ¡Pronto chat disponible!</p>
-                </a>
-              </div>
-            </div>
-          </div>
-  
         </div>
+
+        <!-- Tarjeta 2 -->
+        <div class="col-md-4">
+          <div class="card text-center h-100 border-0 shadow-sm">
+            <div class="card-body">
+              <a href="/reserva" class="text-decoration-none text-dark">
+                <i class="ri-home-heart-fill display-4 text-warning mb-3"></i>
+                <h5 class="card-title">Reserva</h5>
+                <p class="card-text">Encuentra la casa ideal para tu próxima escapada.</p>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tarjeta 3 -->
+        <div class="col-md-4">
+          <div class="card text-center h-100 border-0 shadow-sm">
+            <div class="card-body">
+              <a href="/comunidad" class="text-decoration-none text-dark">
+                <i class="ri-team-fill display-4 text-primary mb-3"></i>
+                <h5 class="card-title">Comunidad</h5>
+                <p class="card-text">Conecta con otros compañeros. ¡Pronto chat disponible!</p>
+              </a>
+            </div>
+          </div>
+        </div>
+
       </div>
-    </section>
-  
-  </main>
-  
+    </div>
+  </section>
+
+</main>

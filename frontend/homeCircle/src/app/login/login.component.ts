@@ -21,6 +21,7 @@ export class LoginComponent {
 
   constructor(private http: HttpClient, private router: Router) { }
 
+  // Método para iniciar sesión
   loguearUsuario(): void {
     this.errores = {};
     this.mensajeLogin = '';
@@ -30,16 +31,23 @@ export class LoginComponent {
 
     this.http.post<any>(this.apiUrl, credentials).subscribe(
       (response) => {
+        // Si la autenticación es exitosa
+        console.log('Login exitoso', response);
+
+        // Guardamos el usuario en localStorage
         localStorage.setItem('usuario', JSON.stringify(response));
         this.mensajeLogin = 'Bienvenido a tu perfil, ' + this.email;
         this.logueado = true;
+
+        // Redirigir después de un breve delay
         setTimeout(() => {
           this.router.navigate(['/homeRegistrado']);
         }, 1000);
       },
       (error) => {
+        // Manejo de errores de validación y autenticación
         if (error.status === 400 && error.error) {
-          // Si hay un array de errores de validación, los mostramos todos juntos
+          // Si hay un array de errores de validación, los mostramos todos juntos con salto de línea
           if (Array.isArray(error.error.errors)) {
             this.mensajeLogin = error.error.errors.join('\n');
           } else if (error.error.message) {
