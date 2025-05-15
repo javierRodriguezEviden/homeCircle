@@ -22,7 +22,7 @@ export class HomeRegistradoComponent implements OnInit {
     if (usuarioGuardado) {
       const usuarioParseado = JSON.parse(usuarioGuardado);
       // Asigna nombre y apellidos, o 'Usuario' si no existen
-      this.nombreUsuario = usuarioParseado.name + " " + usuarioParseado.apellidos || 'Usuario';
+      this.nombreUsuario = usuarioParseado.name || 'Usuario';
       // Asigna email, o mensaje por defecto si no existe
       this.gmailUsuario = usuarioParseado.email || 'Correo no disponible';
       // Asigna teléfono, o mensaje por defecto si no existe

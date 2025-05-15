@@ -1,7 +1,8 @@
 <header>
   <nav class="navbar navbar-expand-sm navbar-light bg-light ">
     <div class="container-fluid">
-      <a href="/"><img src="../assets/Logo.png" style="width: 80px;"></a>
+      <img src="../assets/Logo.png" style="width: 80px;">
+
 
       <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse"
         data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
@@ -23,8 +24,7 @@
               Registrate</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="/reserva" *ngIf="estaLogueado"> <i class="ri-home-heart-fill text-primary mb-3"></i>
- Reserva</a>
+            <a class="nav-link active" href="/reserva" *ngIf="estaLogueado"> <i class="ri-home-heart-fill text-primary mb-3"></i> Reserva</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/sobreNosotros" *ngIf="!estaLogueado"><i class="bi bi-people-fill" id="estiloIconosHeader"></i> Sobre
