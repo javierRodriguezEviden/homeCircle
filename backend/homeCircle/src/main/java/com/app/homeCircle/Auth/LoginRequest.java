@@ -1,5 +1,8 @@
 package com.app.homeCircle.Auth;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -10,9 +13,16 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class LoginRequest {
-    // Esta clase actúa como un DTO (Data Transfer Object) para manejar los datos de la solicitud de inicio de sesión.
-    // Los atributos definidos aquí representan los datos que el cliente debe enviar para autenticarse.
+    // Esta clase actúa como un DTO (Data Transfer Object) para manejar los datos de
+    // la solicitud de inicio de sesión.
+    // Los atributos definidos aquí representan los datos que el cliente debe enviar
+    // para autenticarse.
 
-    String email; // Correo electrónico del usuario que intenta iniciar sesión.
-    String password; // Contraseña del usuario que intenta iniciar sesión.
+    @NotBlank(message = "El correo está vacío")
+    @Email(message = "Formato de correo inválido")
+    String email;
+
+    @NotBlank(message = "La contraseña está vacía")
+    @Size(min = 8, max = 12, message = "La contraseña debe tener entre 8 y 12 caracteres")
+    String password;
 }
