@@ -41,7 +41,7 @@ export class LoginComponent {
 
         // Redirigir después de un breve delay
         setTimeout(() => {
-          this.router.navigate(['/miPerfil']); // Ruta protegida
+          this.router.navigate(['/homeRegistrado']); // Ruta protegida
         }, 1000);
       },
       (error) => {
