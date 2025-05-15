@@ -3,11 +3,9 @@ package com.app.homeCircle.Auth;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -34,20 +32,35 @@ public class AuthService {
          *                (email y contraseña).
          * @return AuthResponse que contiene el token JWT generado.
          */
-        public AuthResponse login(LoginRequest request) {
-                // Autenticar al usuario con email y contraseña.
-                authenticationManager.authenticate(
-                                new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
+        public ResponseEntity<Map<String, Object>> login(LoginRequest request) {
+                Map<String, Object> response = new HashMap<>();
+                try {
+                        // Buscar el usuario por email
+                        Usuario usuario = userRepository.findByEmail(request.getEmail())
+                                        .orElse(null);
 
-                // Buscar el usuario por email en la base de datos.
-                Usuario usuario = userRepository.findByEmail(request.getEmail())
-                                .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
+                        if (usuario == null) {
+                                response.put("message", "El correo no está registrado.");
+                                return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+                        }
 
-                // Generar el token JWT para el usuario autenticado.
-                String token = jwtService.getToken(usuario.getEmail());
-                return AuthResponse.builder()
-                                .token(token) // Devuelve el token generado.
-                                .build();
+                        // Verificar la contraseña
+                        if (!passwordEncoder.matches(request.getPassword(), usuario.getPassword())) {
+                                response.put("message", "La contraseña es incorrecta.");
+                                return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+                        }
+
+                        // Generar el token JWT para el usuario autenticado.
+                        String token = jwtService.getToken(usuario.getEmail());
+                        response.put("token", token);
+                        response.put("message", "Inicio de sesión exitoso.");
+                        return new ResponseEntity<>(response, HttpStatus.OK);
+
+                } catch (Exception e) {
+                        response.put("message", "Error al iniciar sesión");
+                        response.put("error", e.getMessage());
+                        return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+                }
         }
 
         /**

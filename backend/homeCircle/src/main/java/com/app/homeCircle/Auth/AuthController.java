@@ -28,11 +28,19 @@ public class AuthController {
      *                (email y contraseña).
      * @return Una respuesta HTTP con el token JWT generado.
      */
-    @PostMapping("/login") // Define que este método maneja solicitudes POST en la ruta /auth/login.
-    public ResponseEntity<AuthResponse> login(@RequestBody LoginRequest request) {
-        // Llama al servicio de autenticación para manejar el inicio de sesión y
-        // devuelve el token JWT.
-        return ResponseEntity.ok(authService.login(request));
+    @PostMapping("/login")
+    public ResponseEntity<Map<String, Object>> login(@Valid @RequestBody LoginRequest request,
+            org.springframework.validation.BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            Map<String, Object> response = new java.util.HashMap<>();
+            response.put("errors", bindingResult.getAllErrors()
+                    .stream()
+                    .map(error -> error.getDefaultMessage())
+                    .toArray());
+            return ResponseEntity.badRequest().body(response);
+        }
+        // Solo llama al servicio si no hay errores de validación
+        return authService.login(request);
     }
 
     /**

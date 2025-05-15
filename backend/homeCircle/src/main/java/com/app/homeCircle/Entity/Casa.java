@@ -72,4 +72,6 @@ public class Casa {
     @OneToMany(mappedBy = "casa")
     private List<Reserva> reservas;
 
+    @OneToMany(mappedBy = "casa")
+    private List<ImagenCasa> imagenCasa;
 }
