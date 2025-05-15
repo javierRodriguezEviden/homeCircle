@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-registro',
@@ -24,10 +26,11 @@ export class RegistroComponent {
   // Para almacenar los errores de validación
   errores: { [key: string]: string } = {};
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router:Router) { }
 
   registrarUsuario(event: Event) {
     event.preventDefault(); // Evita que el formulario recargue la página
+
 
     this.errores = {}; // Reinicia los errores
 
@@ -51,7 +54,12 @@ export class RegistroComponent {
     this.http.post('http://localhost:8020/auth/register', userData).subscribe({
       next: (response:any) => {
         this.registrado = true;
-        this.mensajeRegistro = 'Registro exitoso. Bienvenido a HomeCircle.';
+        this.mensajeRegistro = 'Registro exitoso. Redigiendo a la página del login.';
+
+        setTimeout(() => {
+
+          this.router.navigate(['/login']); // Redirige a la página de login después de un registro exitoso, vamos en caso de que este todo dpm.
+        }, 1000);
       },
       error: (error) => {
         if (error.status === 400) {
