@@ -7,7 +7,7 @@ import { SobreNosotrosComponent } from './sobre-nosotros/sobre-nosotros.componen
 import { HomeComponent } from './home/home.component';
 import { RegistroComponent } from './registro/registro.component'; // Importa el componente
 import { LoginComponent } from './login/login.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { RouterModule, Routes } from '@angular/router';
 import { HomeRegistradoComponent } from './home-registrado/home-registrado.component';
@@ -17,6 +17,7 @@ import { ErrorComponent } from './error/error.component';
 import { MisCasasComponent } from './mis-casas/mis-casas.component';
 
 import { provideHttpClient } from '@angular/common/http';
+import { AlquilarComponent } from './alquilar/alquilar.component';
 
 
 //Creamos la variable const routes para establecer las rutas
@@ -33,7 +34,8 @@ const appRoutes:Routes=[
   {path:'miPerfil', component:MiPerfilComponent},
   {path:'reserva', component:ReservaComponent},
   {path:'error', component:ErrorComponent},
-  {path:'misCasas', component:MisCasasComponent}
+  {path:'misCasas', component:MisCasasComponent},
+  {path:'alquilar', component:AlquilarComponent}
 
   //Esto le indica a angular que cualquier cosa diferente a lo visto antes, irá aqui
  
@@ -50,13 +52,15 @@ const appRoutes:Routes=[
     MiPerfilComponent,
     ReservaComponent,
     ErrorComponent,
-    MisCasasComponent
+    MisCasasComponent,
+    AlquilarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    ReactiveFormsModule
   ],
   providers: [
     provideHttpClient()
