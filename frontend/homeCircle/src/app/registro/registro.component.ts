@@ -30,6 +30,7 @@ export class RegistroComponent {
   registrarUsuario(event: Event) {
     event.preventDefault(); // Evita que el formulario recargue la página
 
+
     this.errores = {}; // Reinicia los errores
 
     // Verifica que las contraseñas coincidan
@@ -50,7 +51,7 @@ export class RegistroComponent {
     };
 
     this.http.post('http://localhost:8020/auth/register', userData).subscribe({
-      next: (response:any) => {
+      next: (response: any) => {
         this.registrado = true;
         this.mensajeRegistro = 'Registro exitoso. Bienvenido a HomeCircle.';
         setTimeout(() => {
