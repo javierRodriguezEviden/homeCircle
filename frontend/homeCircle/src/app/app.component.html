@@ -27,16 +27,16 @@
             <a class="nav-link active" href="/reserva" *ngIf="estaLogueado"> <i class="ri-home-heart-fill text-primary mb-3"></i> Reserva</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/sobreNosotros" *ngIf="!estaLogueado"><i class="bi bi-people-fill" id="estiloIconosHeader"></i> Sobre
+            <a class="nav-link" href="/sobreNosotros"><i class="bi bi-people-fill" id="estiloIconosHeader"></i> Sobre
               nosotros</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#contactModal" *ngIf="!estaLogueado"><i
+            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#contactModal"><i
                 class="bi bi-envelope-at-fill" id="estiloIconosHeader"></i> Contacto</a>
           </li>
         </ul>
 
-        <!-- Botón de login alineado a la derecha -->
+        <!-- Botón de login alineado a la derecha para el login y el cierre de sesion-->
         <div class="d-flex">
           <a class="btn btn-outline-primary" *ngIf="!estaLogueado" href="/login">
             <i class="bi bi-box-arrow-in-right me-1"></i> Login

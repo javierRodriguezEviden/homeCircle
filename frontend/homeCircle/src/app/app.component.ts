@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { AuthService } from './auth.service'; // ✅ Importa el servicio
+import { Component, OnInit } from '@angular/core';
+import { AuthService } from './auth.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,23 +8,22 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.css'],
   standalone: false
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
   estaLogueado = false;
 
   constructor(private authService: AuthService, private router: Router) {}
 
- ngOnInit(): void {
-    this.authService.isLoggedIn$.subscribe(loggedIn => {
-      this.estaLogueado = loggedIn; // ✅ Actualizamos el valor aquí
-      console.log('Estado de login:', this.estaLogueado);
+  ngOnInit(): void {
+    // Escuchar cambios en el estado de autenticación
+    this.authService.estaLogueado$.subscribe(loggedIn => {
+      this.estaLogueado = loggedIn;
+      console.log('Estado de autenticación:', this.estaLogueado);
     });
   }
 
-  logout() {
-    this.authService.logout(); // ✅ Llama al logout del servicio
-    this.estaLogueado = false; // ✅ Actualiza el estado
-    //Se puede quitar, el boton funciona perfectamente sin esto, pero con esto reconducimos a la pagina del login.
-    this.router.navigate(['/login'])
+  logout(): void {
+    this.authService.logout(); // Borramos el usuario del localStorage y emite false
+    this.router.navigate(['/login']); // Redirigir a login una vez que se cierra sesión
   }
 }
