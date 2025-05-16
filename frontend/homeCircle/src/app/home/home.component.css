@@ -3,13 +3,7 @@
     color: #FFA500;
 }
 
-.carousel-control-prev{
-    background-color:#FFA500;
-}
 
-.carousel-control-next{
-    background-color: #FFA500;
-}
 
 main {
     scroll-behavior: smooth;
