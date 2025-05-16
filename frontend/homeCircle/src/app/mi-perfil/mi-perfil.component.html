@@ -1,46 +1,64 @@
 <main>
     <div class="container py-4">
         <div class="card-body">
-                <h3 class="card-title text-center mb-4">¡Aqui podras gestionar todas tus acciones <span class="text-primary"> {{nombreUsuario}}</span>! </h3>
+            <h3 class="card-title text-center mb-4">¡Aqui podras gestionar todas tus acciones <span
+                    class="text-primary"> {{nombreUsuario}}</span>! </h3>
             <div class="row g-3">
                 <div class="col-md-6">
                     <div class="card border-0 shadow p-3 mb-5 bg-white rounded">
-
                         <div class="card-body">
                             <h6 class="card-subtitle mb-3 text-muted">Información personal</h6>
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item d-flex align-items-center">
-                                    <i class="ri-user-line me-2 text-primary"></i> Nombre: <strong> {{nombreUsuario}} </strong>
+                                    <i class="ri-user-line me-2 text-primary"></i><span class="me-3">Nombre:
+                                    </span><strong> {{nombreUsuario}} </strong>
                                 </li>
                                 <li class="list-group-item d-flex align-items-center">
-                                    <i class="ri-user-3-line me-2 text-primary"></i> Apellidos: <strong>{{apellidosUsuario}}</strong>
+                                    <i class="ri-user-3-line me-2 text-primary"></i><span class="me-3"> Apellidos:
+                                    </span><strong> {{apellidosUsuario}}</strong>
                                 </li>
                                 <li class="list-group-item d-flex align-items-center">
-                                    <i class="ri-id-card-line me-2 text-primary"></i> DNI: <strong> {{dniUsuario}}</strong>
+                                    <i class="ri-phone-line me-2 text-primary"></i><span class="me-3"> Teléfono:
+                                    </span><strong> {{tlfUsuario}}</strong>
                                 </li>
                                 <li class="list-group-item d-flex align-items-center">
-                                    <i class="ri-mail-line me-2 text-primary"></i> Correo electrónico: <strong> {{gmailUsuario}}</strong>
+                                    <i class="ri-id-card-line me-2 text-primary"></i><span class="me-3">DNI: </span>
+                                    <strong> {{dniUsuario}}</strong>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center">
+                                    <i class="ri-mail-line me-2 text-primary"></i><span class="me-3"> Correo
+                                        electrónico: </span><strong> {{gmailUsuario}}</strong>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center">
+                                    <i class="ri-map-pin-line me-2 text-primary"></i><span class="me-3">Sede:
+                                    </span><strong>{{ sedeUsuario }}</strong>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center">
+                                    <i class="ri-bank-line me-2 text-primary"></i><span class="me-3">Cuenta bancaria:
+                                    </span><strong>{{ cuentabancariaUsuario }}</strong>
                                 </li>
                             </ul>
                         </div>
-
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 py-4">
                     <div class="card border-0 shadow p-3 mb-5 bg-white rounded">
                         <div class="card-body">
                             <h6 class="card-subtitle mb-3 text-muted">Acciones disponibles</h6>
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item d-flex align-items-center">
-                                    <i class="ri-lock-password-line me-2 text-warning"></i>
-                                    <a href="#" class="text-decoration-none">Cambiar contraseña</a>
+                                    <i class="ri-lock-password-line me-2 text-warning mb-2"></i>
+                                    <a href="#" class="text-decoration-none mb-2">Cambiar contraseña</a>
                                 </li>
                                 <li class="list-group-item d-flex align-items-center">
                                     <i class="ri-edit-line me-2 text-warning"></i>
-                                    <a href="#" class="text-decoration-none">Editar perfil</a>
+                                    <button type="button" class="btn btn-link text-decoration-none"
+                                        data-bs-toggle="modal" data-bs-target="#editProfileModal">
+                                        Editar perfil
+                                    </button>
                                 </li>
-                                <li class="list-group-item d-flex align-items-center">
-                                    <i class="ri-home-line me-2 text-warning"></i>
+                                <li class="list-group-item d-flex align-items-center mb-2">
+                                    <i class="ri-home-line me-2 text-warning py-2"></i>
                                     <a href="#" class="text-decoration-none">Gestionar mis casas</a>
                                 </li>
                                 <li class="list-group-item d-flex align-items-center">
@@ -56,6 +74,164 @@
         <!--Componente de mis casas-->
         <app-mis-casas></app-mis-casas>
     </div>
-</main>
 
+    <!-- Modal para editar el perfil de usuario -->
 
+    <div class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="editProfileModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content shadow-lg border-0">
+                <!-- Encabezado de la modal -->
+                <div class="modal-header bg-primary text-white rounded-top">
+                    <h5 class="modal-title fw-bold" id="editProfileModalLabel">
+                        <i class="ri-edit-line me-2"></i>
+                        Editar perfil
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+
+                <!-- Cuerpo de la modal -->
+                <div class="modal-body">
+                    <form [formGroup]="editProfileForm" class="m-auto">
+                        <!-- Nombre -->
+                        <div class="mb-3 align-items-center">
+                            <div class="row d-flex justify-content-center">
+                                <div class="col-11">
+                                    <div class="row offset-1">
+                                        <label for="nombre" class="form-label"><strong>Nombre</strong></label>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-1 d-flex justify-content-center align-items-center">
+                                            <i class="ri-user-line m text-primary fs-4"></i>
+                                        </div>
+                                        <div class="col-10">
+                                            <input type="text" class="form-control" id="nombre" formControlName="nombre">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Apellidos -->
+                        <div class="mb-3 align-items-center">
+                            <div class="row row d-flex justify-content-center">
+                                <div class="col-11">
+                                    <div class="row offset-1">
+                                        <label for="apellidos" class="form-label"><strong>Apellidos</strong></label>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-1 d-flex justify-content-center align-items-center">
+                                            <i class="ri-user-3-line m text-primary fs-4"></i>
+                                        </div>
+                                        <div class="col-10">
+                                            <input type="text" class="form-control" id="apellidos" formControlName="apellidos">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Teléfono -->
+                        <div class="mb-3 align-items-center">
+                            <div class="row row d-flex justify-content-center">
+                                <div class="col-11">
+                                    <div class="row offset-1">
+                                        <label for="telefono" class="form-label"><strong>Teléfono</strong></label>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-1 d-flex justify-content-center align-items-center">
+                                            <i class="ri-phone-line m text-primary fs-4"></i>
+                                        </div>
+                                        <div class="col-10">
+                                            <input type="tel" class="form-control" id="telefono" formControlName="telefono">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- DNI -->
+                        <div class="mb-3 align-items-center">
+                            <div class="row row d-flex justify-content-center">
+                                <div class="col-11">
+                                    <div class="row offset-1">
+                                        <label for="dni" class="form-label"><strong>DNI</strong></label>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-1 d-flex justify-content-center align-items-center">
+                                            <i class="ri-id-card-line m text-primary fs-4"></i>
+                                        </div>
+                                        <div class="col-10">
+                                            <input type="text" class="form-control" id="dni" formControlName="dni" readonly>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Correo electrónico -->
+                        <div class="mb-3 align-items-center">
+                            <div class="row row d-flex justify-content-center">
+                                <div class="col-11">
+                                    <div class="row offset-1">
+                                        <label for="email" class="form-label"><strong>Correo electrónico</strong></label>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-1 d-flex justify-content-center align-items-center">
+                                            <i class="ri-mail-line m text-primary fs-4"></i>
+                                        </div>
+                                        <div class="col-10">
+                                            <input type="email" class="form-control" id="email" formControlName="email">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Sede -->
+                        <div class="mb-3 align-items-center">
+                            <div class="row row d-flex justify-content-center">
+                                <div class="col-11">
+                                    <div class="row offset-1">
+                                        <label for="sede" class="form-label"><strong>Sede</strong></label>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-1 d-flex justify-content-center align-items-center">
+                                            <i class="ri-map-pin-line m text-primary fs-4"></i>
+                                        </div>
+                                        <div class="col-10">
+                                            <input type="text" class="form-control" id="sede" formControlName="sede">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Cuenta bancaria -->
+                        <div class="mb-3 align-items-center">
+                            <div class="row row d-flex justify-content-center">
+                                <div class="col-11">
+                                    <div class="row offset-1">
+                                        <label for="cuentaBancaria" class="form-label"><strong>Cuenta bancaria</strong></label>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-1 d-flex justify-content-center align-items-center">
+                                            <i class="ri-bank-line m text-primary fs-4"></i>
+                                        </div>
+                                        <div class="col-10">
+                                            <input type="text" class="form-control" id="cuentaBancaria" formControlName="cuentaBancaria">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Pie de la modal -->
+                <div class="modal-footer bg-light rounded-bottom">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        <i class="ri-close-line me-2"></i> Cerrar
+                    </button>
+                    <button type="button" class="btn btn-primary" (click)="updateProfile()">
+                        <i class="ri-save-line me-2"></i> Guardar cambios
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
