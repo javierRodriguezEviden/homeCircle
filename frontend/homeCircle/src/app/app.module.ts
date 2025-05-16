@@ -16,11 +16,12 @@ import { MiPerfilComponent } from './mi-perfil/mi-perfil.component';
 import { ReservaComponent } from './reserva/reserva.component';
 import { ErrorComponent } from './error/error.component';
 import { MisCasasComponent } from './mis-casas/mis-casas.component';
-
 import { provideHttpClient } from '@angular/common/http';
 import { AlquilarComponent } from './alquilar/alquilar.component';
 import { MapaCasaComponent } from './mapa-casa/mapa-casa.component';
 import { ClimaCasasComponent } from './clima-casas/clima-casas.component';
+import { FooterComponent } from '../footer.component';
+
 
 //Creamos la variable const routes para establecer las rutas
 const appRoutes:Routes=[
@@ -57,7 +58,9 @@ const appRoutes:Routes=[
     MisCasasComponent,
     AlquilarComponent,
     MapaCasaComponent,
-    ClimaCasasComponent
+    ClimaCasasComponent,
+    FooterComponent
+
   ],
   imports: [
     BrowserModule,
