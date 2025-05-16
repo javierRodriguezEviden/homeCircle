@@ -1,3 +1,4 @@
+
 <header>
   <nav class="navbar navbar-expand-sm navbar-light bg-light ">
     <div class="container-fluid">
@@ -14,16 +15,16 @@
         <!-- Menú de navegación a la izquierda -->
         <ul class="navbar-nav me-auto mt-2 mt-lg-0 px-2">
           <li class="nav-item">
-            <a class="nav-link active" href="/" *ngIf="!estaLogueado"> <i class="bi bi-house-fill" id="estiloIconosHeader"></i> Home</a>
+            <a class="nav-link active" href="/"> <i class="bi bi-house-fill" id="estiloIconosHeader"></i>  Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="/miPerfil" *ngIf="estaLogueado"> <i class="ri-user-star-fill  text-primary mb-3"></i> Perfil</a>
+            <a class="nav-link" href="/registro"><i class="bi bi-person-badge-fill" id="estiloIconosHeader"></i>  Registrate</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/registro" *ngIf="!estaLogueado"><i class="bi bi-person-badge-fill" id="estiloIconosHeader"></i>
-              Registrate</a>
+            <a class="nav-link" href="/sobreNosotros"><i class="bi bi-people-fill" id="estiloIconosHeader"></i>  Sobre nosotros</a>
           </li>
           <li class="nav-item">
+<<<<<<< HEAD
             <a class="nav-link active" href="/reserva" *ngIf="estaLogueado"> <i class="ri-home-heart-fill text-primary mb-3"></i> Reserva</a>
           </li>
           <li class="nav-item">
@@ -34,19 +35,15 @@
             <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#contactModal" *ngIf="!estaLogueado"><i
                 class="bi bi-envelope-at-fill" id="estiloIconosHeader"></i> Contacto</a>
           </li>
+=======
+            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#contactModal" ><i class="bi bi-envelope-at-fill" id="estiloIconosHeader"></i> Contacto</a>
+        </li>
+>>>>>>> 9af82c5bfb96a4a52b20d6266e4c668bae830d8a
         </ul>
 
         <!-- Botón de login alineado a la derecha -->
         <div class="d-flex">
-          <a class="btn btn-outline-primary" *ngIf="!estaLogueado" href="/login">
-            <i class="bi bi-box-arrow-in-right me-1"></i> Login
-          </a>
-        </div>
-
-        <div class="d-flex">
-          <a class="btn btn-outline-primary" *ngIf="estaLogueado" (click)="logout()">
-            <i class="bi bi-box-arrow-right me-1"></i> Cerrar sesión
-          </a>
+          <a class="btn btn-outline-primary" href="/login"><i class="bi bi-box-arrow-in-right me-1"></i> Login</a>
         </div>
       </div>
     </div>
@@ -121,7 +118,7 @@
   <div class="container py-3">
     <div class="row align-items-center">
       <div class="col text-start">
-        <div>
+        <div >
           <i class="ri-building-2-fill"></i><strong>Proyecto Toledo</strong>
         </div>
         <div>
@@ -129,14 +126,10 @@
         </div>
       </div>
       <div class="col text-center">
-        <div>
-          <img
-            src="https://th.bing.com/th/id/R.7114e608d31cc45b93c20ddfe661d10d?rik=G2xXohJVJDGzpQ&riu=http%3a%2f%2fpluspng.com%2fimg-png%2fatos-logo-png-file-atos-svg-1024.png&ehk=xX3qicXIU37M1uIUvbrkI9482RqXKMg29YrKYCPaeFQ%3d&risl=&pid=ImgRaw&r=0"
-            alt="image" width="90" height="30" class="me-2">
-          <img
-            src="https://freepngdesign.com/content/uploads/images/p-1699-5-angular-icon-logo-png-transparent-logo-473615905138.png"
-            alt="image" width="50" height="37">
-        </div>
+        <div >
+          <img src="https://th.bing.com/th/id/R.7114e608d31cc45b93c20ddfe661d10d?rik=G2xXohJVJDGzpQ&riu=http%3a%2f%2fpluspng.com%2fimg-png%2fatos-logo-png-file-atos-svg-1024.png&ehk=xX3qicXIU37M1uIUvbrkI9482RqXKMg29YrKYCPaeFQ%3d&risl=&pid=ImgRaw&r=0" alt="image" width="90" height="30" class="me-2">        
+            <img src="https://freepngdesign.com/content/uploads/images/p-1699-5-angular-icon-logo-png-transparent-logo-473615905138.png" alt="image" width="50" height="37">        
+        </div>    
       </div>
       <div class="col text-end">
         <div>
@@ -147,7 +140,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> 
 </footer>
 
 
@@ -155,7 +148,7 @@
 
 
 <style>
-  .fondoFooter {
+  .fondoFooter{
     background-color: #9acef8;
   }
 </style>
