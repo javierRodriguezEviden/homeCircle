@@ -91,7 +91,7 @@
 </main>
 
 <!-- Botón debajo del main, con margen inferior extra -->
-<div class="container mb-3 mt-3">
+<div class="container mb-3 mt-3" *ngIf="!estaLogueado">
   <div class="row">
     <div class="col-12 d-flex justify-content-center">
       <a [routerLink]="['/']" fragment="casas"
