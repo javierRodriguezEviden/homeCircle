@@ -63,7 +63,8 @@ const appRoutes:Routes=[
     ReactiveFormsModule
   ],
   providers: [
-    provideHttpClient()
+    provideHttpClient(),
+    LoginComponent,
   ],
   bootstrap: [AppComponent]
 })

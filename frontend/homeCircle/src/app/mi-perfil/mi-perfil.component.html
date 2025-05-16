@@ -1,27 +1,29 @@
 <main>
     <div class="container py-4">
         <div class="card-body">
-            <h3 class="card-title text-center mb-4">¡Bienvenido, <span class="text-primary">+ nombre</span>! </h3>
+                <h3 class="card-title text-center mb-4">¡Aqui podras gestionar todas tus acciones <span class="text-primary"> {{nombreUsuario}}</span>! </h3>
             <div class="row g-3">
                 <div class="col-md-6">
                     <div class="card border-0 shadow p-3 mb-5 bg-white rounded">
+
                         <div class="card-body">
                             <h6 class="card-subtitle mb-3 text-muted">Información personal</h6>
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item d-flex align-items-center">
-                                    <i class="ri-user-line me-2 text-primary"></i> Nombre: <strong> </strong>
+                                    <i class="ri-user-line me-2 text-primary"></i> Nombre: <strong> {{nombreUsuario}} </strong>
                                 </li>
                                 <li class="list-group-item d-flex align-items-center">
-                                    <i class="ri-user-3-line me-2 text-primary"></i> Apellidos: <strong></strong>
+                                    <i class="ri-user-3-line me-2 text-primary"></i> Apellidos: <strong>{{apellidosUsuario}}</strong>
                                 </li>
                                 <li class="list-group-item d-flex align-items-center">
-                                    <i class="ri-id-card-line me-2 text-primary"></i> DNI: <strong></strong>
+                                    <i class="ri-id-card-line me-2 text-primary"></i> DNI: <strong> {{dniUsuario}}</strong>
                                 </li>
                                 <li class="list-group-item d-flex align-items-center">
-                                    <i class="ri-mail-line me-2 text-primary"></i> Correo electrónico: <strong></strong>
+                                    <i class="ri-mail-line me-2 text-primary"></i> Correo electrónico: <strong> {{gmailUsuario}}</strong>
                                 </li>
                             </ul>
                         </div>
+
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -43,7 +45,7 @@
                                 </li>
                                 <li class="list-group-item d-flex align-items-center">
                                     <i class="ri-calendar-line me-2 text-warning"></i>
-                                    <a href="#" class="text-decoration-none">Reservar casa</a>
+                                    <a href="/reserva" class="text-decoration-none">Reservar casa</a>
                                 </li>
                             </ul>
                         </div>
@@ -53,26 +55,6 @@
         </div>
         <!--Componente de mis casas-->
         <app-mis-casas></app-mis-casas>
-        <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 100px;">
-            <button class="btn btn-primary mb-3" type="button" data-bs-toggle="collapse"
-                data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
-                Información
-            </button>
-            <div class="collapse" id="collapseWidthExample">
-                <div class="card card-body text-center mb-3" style="width: 300px;">
-                    La información sobre tus casas solo será visible para los usuarios que ya estén
-                    registrados.
-                </div>
-            </div>
-        </div>
-        <h4 class="text-center">Vaya... <i class="ri-emotion-sad-line"></i> Aún no has alquilado ninguna de tus casas
-        </h4>
-        <h5 class="text-center">¿Deseas hacerlo?</h5>
-        <div class="text-center py-3"> 
-        <button type="button" class="btn btn-primary" href="/alquilar">
-            <a href="/alquilar" style="color: white;">¡Alquilala ya!</a>
-        </button>
-        </div> 
     </div>
 </main>
 
