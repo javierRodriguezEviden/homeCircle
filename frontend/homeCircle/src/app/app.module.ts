@@ -15,9 +15,9 @@ import { MiPerfilComponent } from './mi-perfil/mi-perfil.component';
 import { ReservaComponent } from './reserva/reserva.component';
 import { ErrorComponent } from './error/error.component';
 import { MisCasasComponent } from './mis-casas/mis-casas.component';
-
 import { provideHttpClient } from '@angular/common/http';
 import { AlquilarComponent } from './alquilar/alquilar.component';
+import { FooterComponent } from '../footer.component';
 
 
 //Creamos la variable const routes para establecer las rutas
@@ -60,7 +60,8 @@ const appRoutes:Routes=[
     AppRoutingModule,
     FormsModule,
     RouterModule.forRoot(appRoutes),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FooterComponent
   ],
   providers: [
     provideHttpClient(),
