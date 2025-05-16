@@ -1,27 +1,29 @@
 <main>
     <div class="container py-4">
         <div class="card-body">
-            <h3 class="card-title text-center mb-4">¡Bienvenido, <span class="text-primary">+ nombre</span>! </h3>
+                <h3 class="card-title text-center mb-4">¡Aqui podras gestionar todas tus acciones <span class="text-primary"> {{nombreUsuario}}</span>! </h3>
             <div class="row g-3">
                 <div class="col-md-6">
                     <div class="card border-0 shadow p-3 mb-5 bg-white rounded">
+
                         <div class="card-body">
                             <h6 class="card-subtitle mb-3 text-muted">Información personal</h6>
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item d-flex align-items-center">
-                                    <i class="ri-user-line me-2 text-primary">Nombre: </i>   {{nombreUsuario}} 
+                                    <i class="ri-user-line me-2 text-primary"></i> Nombre: <strong> {{nombreUsuario}} </strong>
                                 </li>
                                 <li class="list-group-item d-flex align-items-center">
-                                    <i class="ri-user-3-line me-2 text-primary">Apellidos: </i> {{apellidosUsuario}}
+                                    <i class="ri-user-3-line me-2 text-primary"></i> Apellidos: <strong>{{apellidosUsuario}}</strong>
                                 </li>
                                 <li class="list-group-item d-flex align-items-center">
-                                    <i class="ri-id-card-line me-2 text-primary">DNI: </i> {{dniUsuario}}
+                                    <i class="ri-id-card-line me-2 text-primary"></i> DNI: <strong> {{dniUsuario}}</strong>
                                 </li>
                                 <li class="list-group-item d-flex align-items-center">
-                                    <i class="ri-mail-line me-2 text-primary">Correo electrónico: </i> {{gmailUsuario}}
+                                    <i class="ri-mail-line me-2 text-primary"></i> Correo electrónico: <strong> {{gmailUsuario}}</strong>
                                 </li>
                             </ul>
                         </div>
+
                     </div>
                 </div>
                 <div class="col-md-6">
