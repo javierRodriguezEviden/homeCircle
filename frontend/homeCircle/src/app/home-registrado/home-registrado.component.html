@@ -4,7 +4,9 @@
   <section class="py-5 text-white text-center align-items-center w-100 vh-50"
     style="background: linear-gradient(to right, #FFA500, #007BFF);">
     <div class="container">
-      <h1 class="display-4 fw-bold">Bienvenid&#64;, <span class="text-warning">+ nombre</span></h1>
+      <div *ngIf="nombreUsuario && gmailUsuario">
+      <h1 class="display-4 fw-bold">Bienvenid&#64;, <span class="text-warning">{{ nombreUsuario }}</span></h1>
+      </div>
       <p class="lead">Explora todas las opciones que tienes como usuari&#64; dentro de tu perfil</p>
     </div>
   </section>
