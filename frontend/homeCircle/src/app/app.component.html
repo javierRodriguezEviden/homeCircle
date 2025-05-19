@@ -47,25 +47,22 @@
 
         <!-- Botón de login alineado a la derecha para el login y el cierre de sesion-->
         <div class="d-flex">
-          <a class="btn btn-outline-primary" *ngIf="estaLogueado; else areaPersonal" href="/login"><i
+          <a class="btn btn-outline-primary" *ngIf="!estaLogueado; else areaPersonal" href="/login"><i
               class="bi bi-box-arrow-in-right me-1"></i> Login</a>
           <ng-template #areaPersonal>
 
             <div class="dropdown">
               <a class="btn btn-outline-primary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                 aria-expanded="false">
-                Dropdown link
+                Area personal
               </a>
-
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
+              <ul class="dropdown-menu dropdown-menu-end area-personal-dropdown">
+                <li><a class="dropdown-item" href="#">Perfil</a></li>
+                <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
               </ul>
             </div>
           </ng-template>
         </div>
-
 
 
       </div>
@@ -142,5 +139,13 @@
 <style>
   .fondoFooter {
     background-color: #9acef8;
+  }
+    /* Por defecto, el menú se alinea a la derecha (sale hacia la izquierda) */
+  @media (max-width: 990px) {
+    /* En pantallas pequeñas, el menú se alinea a la izquierda (sale hacia la derecha) */
+    .area-personal-dropdown {
+      right: auto !important;
+      left: 0 !important;
+    }
   }
 </style>
