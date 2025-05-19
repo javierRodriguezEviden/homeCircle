@@ -1,5 +1,5 @@
 <div class="body-login ">
-    <div class="login " >
+    <div class="login ">
 
         <form (ngSubmit)="registrarUsuario($event)" class="login__form d-flex flex-column gap-3 my-4"
             #registroForm="ngForm">
@@ -61,7 +61,8 @@
                         <label for="cuentaBancaria"><i class="ri-bank-card-fill me-2"></i> Cuenta Bancaria</label>
                         <div *ngIf="errores['cuenta_banco']" class="text-danger mt-1">{{ errores['cuenta_banco'] }}
                         </div>
-                        <div class="form-text text-muted text-center">  Será necesario para gestionar cualquier pago o cobro relacionado con el alquiler.
+                        <div class="form-text text-muted text-center"> Será necesario para gestionar cualquier pago o
+                            cobro relacionado con el alquiler.
 
                         </div>
                     </div>
