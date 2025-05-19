@@ -21,6 +21,7 @@ import { AlquilarComponent } from './alquilar/alquilar.component';
 import { MapaCasaComponent } from './mapa-casa/mapa-casa.component';
 import { ClimaCasasComponent } from './clima-casas/clima-casas.component';
 import { FooterComponent } from '../footer.component';
+import { FormBuilder } from '@angular/forms';
 
 
 //Creamos la variable const routes para establecer las rutas

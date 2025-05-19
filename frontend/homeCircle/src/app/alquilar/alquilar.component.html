@@ -2,61 +2,103 @@
   <div class="container mt-5 py-4">
     <div class="card shadow-lg rounded-3 p-4">
       <h3 class="text-center mb-4 text-primary"><strong>Poner mi casa en alquiler</strong></h3>
- 
+
       <!-- Formulario -->
-      <form [formGroup]="rentForm" class="row g-3 py-2 mb-2">
+      <form (ngSubmit)="registrarCasa($event)" [formGroup]="rentForm" class="row g-3 py-2 mb-2">
         <!-- Dirección -->
         <div class="col-md-6">
           <div class="form-floating">
             <input type="text" class="form-control rounded-pill" id="direccion" placeholder="Dirección"
-              formControlName="direccion" required>
+              formControlName="direccion">
             <label for="direccion"><i class="ri-map-pin-line me-2"></i> Dirección</label>
           </div>
+          <div *ngIf="rentForm.get('direccion')?.invalid && rentForm.get('direccion')?.touched" class="text-danger">
+            La dirección es requerida.
+          </div>
         </div>
- 
+
         <!-- Ciudad -->
         <div class="col-md-6">
           <div class="form-floating">
             <input type="text" class="form-control rounded-pill" id="ciudad" placeholder="Ciudad"
-              formControlName="ciudad" required>
+              formControlName="ciudad">
             <label for="ciudad"><i class="ri-building-line"></i> Ciudad</label>
           </div>
+          <div *ngIf="rentForm.get('ciudad')?.invalid && rentForm.get('ciudad')?.touched" class="text-danger">
+            La ciudad es requerida.
+          </div>
         </div>
- 
+
         <!-- Provincia -->
         <div class="col-md-6">
           <div class="form-floating">
-            <input type="text" class="form-control rounded-pill" id="provincia" placeholder="Provincia"
-              formControlName="provincia" required>
-            <label for="provincia"><i class="ri-map-pin-2-line me-2"></i> Provincia</label>
+            <input type="text" class="form-control rounded-pill" id="localidad" placeholder="localidad"
+              formControlName="localidad">
+            <label for="localidad"><i class="ri-map-pin-2-line me-2"></i> Localidad</label>
+          </div>
+          <div *ngIf="rentForm.get('localidad')?.invalid && rentForm.get('localidad')?.touched" class="text-danger">
+            La localidad es requerida.
           </div>
         </div>
- 
+
         <!-- Código Postal -->
         <div class="col-md-6">
           <div class="form-floating">
-            <input type="text" class="form-control rounded-pill" id="codigoPostal" placeholder="Código Postal"
-              formControlName="codigoPostal" required>
-            <label for="codigoPostal"><i class="ri-mail-line me-2"></i> Código Postal</label>
+            <input type="text" class="form-control rounded-pill" id="cp" placeholder="Código Postal"
+              formControlName="cp">
+            <label for="cp"><i class="ri-mail-line me-2"></i> Código Postal</label>
+          </div>
+          <div *ngIf="rentForm.get('cp')?.invalid && rentForm.get('cp')?.touched" class="text-danger">
+            El código postal es requerido.
           </div>
         </div>
- 
+
         <!-- País -->
         <div class="col-md-6">
           <div class="form-floating">
-            <input type="text" class="form-control rounded-pill" id="pais" placeholder="País" formControlName="pais"
-              required>
+            <input type="text" class="form-control rounded-pill" id="pais" placeholder="País" formControlName="pais">
             <label for="pais"><i class="ri-earth-line me-2"></i> País</label>
           </div>
-        </div>
-        <div class="col-md-6">
-          <div class="form-floating">
-            <input type="text" class="form-control rounded-pill" id="pais" placeholder="Precio" formControlName="precio"
-              required>
-            <label for="pais"><i class="ri-money-euro-circle-line"></i> Precio</label>
+          <div *ngIf="rentForm.get('pais')?.invalid && rentForm.get('pais')?.touched" class="text-danger">
+            El país es requerido.
           </div>
         </div>
- 
+
+        <!-- Precio -->
+        <div class="col-md-6">
+          <div class="form-floating">
+            <input type="number" class="form-control rounded-pill" id="precio" placeholder="Precio"
+              formControlName="precio">
+            <label for="precio"><i class="ri-money-euro-circle-line"></i> Precio</label>
+          </div>
+          <div *ngIf="rentForm.get('precio')?.invalid && rentForm.get('precio')?.touched" class="text-danger">
+            El precio es requerido.
+          </div>
+        </div>
+
+        <!--Tipo de casa-->
+      
+        <div class="col-md-6">
+          <div class="form-floating">
+            <select class="form-select rounded-pill" id="tipo" formControlName="tipo" placeholder="Tipo de vivienda">
+              <option value="" disabled selected>Selecciona una opción</option>
+              <option value="Casa">Casa</option>
+              <option value="Piso">Piso</option>
+            </select>
+            <label for="tipo"><i class="ri-home-line me-2"></i> Tipo de vivienda</label>
+          </div>
+
+          <!-- Mensaje de error -->
+          <div *ngIf="rentForm.get('tipo')?.invalid && rentForm.get('tipo')?.touched"
+            class="text-danger mt-1">
+            El tipo de vivienda es requerido.
+          </div>
+        </div>
+
+
+
+
+
         <!-- Foto Principal (Drag & Drop) -->
         <div class="col-md-12">
           <label for="fotoPrincipal" class="form-label"><strong>Foto principal</strong></label>
@@ -70,8 +112,8 @@
             <img [src]="selectedImage" alt="Preview" class="img-thumbnail w-100">
           </div>
         </div>
- 
-        <!-- Fotos -->
+
+        <!-- Fotos adicionales -->
         <div class="col-md-12">
           <label for="fotosAdicionales" class="form-label"><strong>Fotos adicionales</strong></label>
           <input type="file" id="fotosAdicionales" multiple accept="image/*" (change)="onAdditionalFilesChange($event)"
@@ -82,13 +124,19 @@
             </div>
           </div>
         </div>
- 
-        <!-- Botón de Subir -->
+
+        <!-- Botones -->
         <div class="col-md-12 text-center">
+          <button type="submit" class="btn btn-primary rounded-pill px-5 py-2 me-3">
+            <i class="ri-upload-cloud-2-line me-2"></i> Crear casa
+          </button>
           <button type="submit" class="btn btn-primary rounded-pill px-5 py-2" [disabled]="rentForm.invalid">
             <i class="ri-upload-cloud-2-line me-2"></i> Subir
           </button>
         </div>
+
+        <!-- Mensaje de resultado -->
+
       </form>
     </div>
   </div>
