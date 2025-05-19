@@ -57,6 +57,8 @@ public class AuthService {
             response.put("email", usuario.getEmail());
             response.put("telefono", usuario.getTelefono());
             response.put("dni", usuario.getDni());
+            response.put("sede", usuario.getSede());
+            response.put("cuenta_banco", usuario.getCuenta_banco());
             response.put("message", "Inicio de sesión exitoso.");
             return new ResponseEntity<>(response, HttpStatus.OK);
 
