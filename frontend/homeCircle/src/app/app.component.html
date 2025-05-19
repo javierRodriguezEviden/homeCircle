@@ -13,7 +13,7 @@
         aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-
+ 
       <div class="collapse navbar-collapse " id="collapsibleNavId">
         <!-- Menú de navegación a la izquierda -->
         <ul class="navbar-nav me-auto mt-2 mt-lg-0 px-2">
@@ -44,7 +44,7 @@
                 class="bi bi-envelope-at-fill" id="estiloIconosHeader"></i> Contacto</a>
           </li>
         </ul>
-
+ 
         <!-- Botón de login alineado a la derecha para el login y el cierre de sesion-->
         <div class="d-flex">
           <a class="btn btn-outline-primary" *ngIf="!estaLogueado; else areaPersonal" href="/login"><i
@@ -62,6 +62,9 @@
               </ul>
             </div>
           </ng-template>
+                    <a class="btn btn-outline-primary" *ngIf="estaLogueado" (click)="logout()">
+            <i class="bi bi-box-arrow-right me-1"></i> Cerrar sesión
+          </a>
         </div>
 
 
@@ -69,7 +72,7 @@
     </div>
   </nav>
 </header>
-
+ 
 <div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content shadow-lg rounded-4">
@@ -78,14 +81,14 @@
         <h1 class="modal-title fs-5 fw-bold text-primary" id="contactModalLabel">Contacto</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-
+ 
       <!-- Cuerpo -->
       <div class="modal-body">
         <p class="mb-4">
           Si tienes alguna duda, problema o sugerencia, no dudes en contactarnos. Estamos aquí para ayudarte. A
           continuación, encontrarás nuestros correos electrónicos:
         </p>
-
+ 
         <ul class="list-group list-group-flush lista-contactos">
           <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-2">
             <span><i class="ri-mail-fill me-2 text-primary"></i> javier.rodriguez.external&#64;eviden.com</span>
@@ -119,7 +122,7 @@
           </li>
         </ul>
       </div>
-
+ 
       <!-- Pie -->
       <div class="modal-footer border-0 pt-0">
         <button type="button" class="btn btn-primary rounded-pill" data-bs-dismiss="modal">Cerrar</button>
@@ -127,19 +130,21 @@
     </div>
   </div>
 </div>
-
+ 
 <div class="main-container">
   <router-outlet></router-outlet>
 </div>
-
+ 
 <footer class="fondoFooter ">
   <app-footer></app-footer>
 </footer>
+
 
 <style>
   .fondoFooter {
     background-color: #9acef8;
   }
+
     /* Por defecto, el menú se alinea a la derecha (sale hacia la izquierda) */
   @media (max-width: 990px) {
     /* En pantallas pequeñas, el menú se alinea a la izquierda (sale hacia la derecha) */

@@ -13,8 +13,8 @@
                         <p class="card-text mb-0"><strong>Provincia:</strong> Toledo</p>
                     </div>
                     <div class="d-flex justify-content-between">
-                    <p class="card-text"><strong>CP:</strong> 28801</p>
-                    <p class="card-text"><strong>País:</strong> Espala</p>
+                        <p class="card-text"><strong>CP:</strong> 28801</p>
+                        <p class="card-text"><strong>País:</strong> Espala</p>
                     </div>
                     <div class="d-flex justify-content-between">
                         <div class="justify-content-start">
@@ -37,8 +37,8 @@
                         <p class="card-text mb-0"><strong>Provincia:</strong> Madrid</p>
                     </div>
                     <div class="d-flex justify-content-between">
-                    <p class="card-text"><strong>CP:</strong> 28801</p>
-                    <p class="card-text"><strong>País:</strong> Espala</p>
+                        <p class="card-text"><strong>CP:</strong> 28801</p>
+                        <p class="card-text"><strong>País:</strong> Espala</p>
                     </div>
                     <div class="d-flex justify-content-between">
                         <div class="justify-content-start">
@@ -52,26 +52,44 @@
             </div>
         </div>
         <!-- Más cards, caben 4 por fila  -->
+    </div>
 
+    <!--AQUI METEMOS LA LOGICA DE LA CASAS PARA VER SI UN USUARIO TIENE O NO TIENE CASAS-->
+
+    <h2>Mis Casas</h2>
+
+    <div *ngIf="casas.length === 0" class="no-casas">
+        No tienes ninguna casa registrada.
+    </div>
+
+    <div class="lista-casas">
+        <div class="casa-card" *ngFor="let casa of casas">
+            <h3>{{ casa.tipo }}</h3>
+            <p><strong>Dirección:</strong> {{ casa.direccion }}</p>
+            <p><strong>Código Postal:</strong> {{ casa.cp }}</p>
+            <p><strong>Localidad:</strong> {{ casa.localidad }}</p>
+            <p><strong>Precio:</strong> {{ casa.precio }} € / noche</p>
+            <hr>
+        </div>
     </div>
     <div class="d-flex flex-column align-items-center justify-content-center py-4" style="min-height: 100px;">
-            <button class="btn btn-primary mb-3" type="button" data-bs-toggle="collapse"
-                data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
-                Información
-            </button>
-            <div class="collapse" id="collapseWidthExample">
-                <div class="card card-body text-center mb-3" style="width: 300px;">
-                    La información sobre tus casas solo será visible para los usuarios que ya estén
-                    registrados.
-                </div>
+        <button class="btn btn-primary mb-3" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
+            Información
+        </button>
+        <div class="collapse" id="collapseWidthExample">
+            <div class="card card-body text-center mb-3" style="width: 300px;">
+                La información sobre tus casas solo será visible para los usuarios que ya estén
+                registrados.
             </div>
         </div>
-        <h4 class="text-center">Vaya... <i class="ri-emotion-sad-line"></i> Aún no has alquilado ninguna de tus casas
-        </h4>
-        <h5 class="text-center">¿Deseas hacerlo?</h5>
-        <div class="text-center py-3"> 
+    </div>
+    <h4 class="text-center">Vaya... <i class="ri-emotion-sad-line"></i> Aún no has alquilado ninguna de tus casas
+    </h4>
+    <h5 class="text-center">¿Deseas hacerlo?</h5>
+    <div class="text-center py-3">
         <button type="button" class="btn btn-primary">
-        <a href="/alquilar" class="text-white text-decoration-none">¡Alquilala ya!</a>
+            <a href="/alquilar" class="text-white text-decoration-none">¡Alquilala ya!</a>
         </button>
-        </div> 
+    </div>
 </div>

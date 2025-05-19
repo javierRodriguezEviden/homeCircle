@@ -1,0 +1,19 @@
+.dias-semana {
+  display: flex;
+  flex-direction: row; /* Muestra los días en fila */
+  flex-wrap: wrap;     /* Opcional, por si hay muchos elementos */
+  gap: 1rem;           /* Espacio entre cada día */
+  margin-top: 1rem;
+}
+
+.dia {
+  flex: 1 1 auto;      /* Se ajustan automáticamente */
+  min-width: 120px;    /* Ancho mínimo para que no se vean muy pequeños */
+  text-align: center;
+  padding: 0.5rem;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
