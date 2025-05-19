@@ -49,20 +49,21 @@
 }
 
 .login__title {
-  font-size: 30px;
-  color: #333;
+  font-size: 26px;
+  color: #223a78;
   margin-bottom: 30px;
-  background-color: rgba(255, 255, 255, 0.7);
+/*   background-color: rgba(255, 255, 255, 0.6);
   box-shadow: 2px 4px 5px 0 rgba(194, 194, 194, 0.9);
 
   border-radius: 30px;
-  padding: 5px 0px 5px 0px;
+  padding: 5px 0px 5px 0px */;
 }
 
 .login__form {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  margin: 20px 0px;
 }
 
 .login__inputs {
