@@ -20,7 +20,7 @@ export class MiPerfilComponent implements OnInit {
   // Formulario reactivo para editar el perfil
   editProfileForm!: FormGroup;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
     // Obtiene el usuario guardado en localStorage (si existe)
@@ -36,7 +36,7 @@ export class MiPerfilComponent implements OnInit {
       this.tlfUsuario = usuarioParseado.telefono || null;
       this.dniUsuario = usuarioParseado.dni || 'DNI no disponible';
       this.sedeUsuario = usuarioParseado.sede || 'Sede no disponible';
-      this.cuentabancariaUsuario = usuarioParseado.cuentaBancaria || null;;
+      this.cuentabancariaUsuario = usuarioParseado.cuenta_banco || null;
 
       // Inicializa el formulario con los datos del usuario
       this.editProfileForm = this.fb.group({
@@ -46,7 +46,7 @@ export class MiPerfilComponent implements OnInit {
         telefono: [this.tlfUsuario, Validators.required],
         dni: [this.dniUsuario, Validators.required],
         sede: [this.sedeUsuario, Validators.required],
-        banco: [this.cuentabancariaUsuario, Validators.required],
+        cuenta_banco: [this.cuentabancariaUsuario, Validators.required],
       });
     } else {
       console.log('No hay usuario guardado en localStorage');
@@ -54,38 +54,38 @@ export class MiPerfilComponent implements OnInit {
   }
 
   // Método para actualizar el perfil
-updateProfile(): void {
-  if (this.editProfileForm.valid) {
-    const updatedData = this.editProfileForm.value;
+  updateProfile(): void {
+    if (this.editProfileForm.valid) {
+      const updatedData = this.editProfileForm.value;
 
-    // Actualiza los datos en localStorage
-    const usuarioGuardado = localStorage.getItem('usuario');
-    if (usuarioGuardado) {
-      const usuarioParseado = JSON.parse(usuarioGuardado);
+      // Actualiza los datos en localStorage
+      const usuarioGuardado = localStorage.getItem('usuario');
+      if (usuarioGuardado) {
+        const usuarioParseado = JSON.parse(usuarioGuardado);
 
-      // Actualiza los datos en el objeto parseado
-      usuarioParseado.name = updatedData.nombre;
-      usuarioParseado.apellidos = updatedData.apellidos;
-      usuarioParseado.email = updatedData.email;
-      usuarioParseado.telefono = updatedData.telefono;
-      usuarioParseado.sede = updatedData.sede;
-      usuarioParseado.cuentaBancaria = updatedData.banco; // Usar 'cuentaBancaria' en lugar de 'banco'
+        // Actualiza los datos en el objeto parseado
+        usuarioParseado.name = updatedData.nombre;
+        usuarioParseado.apellidos = updatedData.apellidos;
+        usuarioParseado.email = updatedData.email;
+        usuarioParseado.telefono = updatedData.telefono;
+        usuarioParseado.sede = updatedData.sede;
+        usuarioParseado.cuenta_banco = updatedData.cuenta_banco; // <-- usa siempre cuenta_bancaria
 
-      // Guarda los datos actualizados en localStorage
-      localStorage.setItem('usuario', JSON.stringify(usuarioParseado));
+        // Guarda los datos actualizados en localStorage
+        localStorage.setItem('usuario', JSON.stringify(usuarioParseado));
 
-      // Actualiza las variables del componente
-      this.nombreUsuario = updatedData.nombre;
-      this.apellidosUsuario = updatedData.apellidos;
-      this.gmailUsuario = updatedData.email;
-      this.tlfUsuario = updatedData.telefono;
-      this.sedeUsuario = updatedData.sede;
-      this.cuentabancariaUsuario = updatedData.banco;
+        // Actualiza las variables del componente
+        this.nombreUsuario = updatedData.nombre;
+        this.apellidosUsuario = updatedData.apellidos;
+        this.gmailUsuario = updatedData.email;
+        this.tlfUsuario = updatedData.telefono;
+        this.sedeUsuario = updatedData.sede;
+        this.cuentabancariaUsuario = updatedData.cuenta_banco;
 
-      alert('Perfil actualizado correctamente');
+        alert('Perfil actualizado correctamente');
+      }
+    } else {
+      alert('Por favor, corrige los errores en el formulario.');
     }
-  } else {
-    alert('Por favor, corrige los errores en el formulario.');
   }
-}
 }
