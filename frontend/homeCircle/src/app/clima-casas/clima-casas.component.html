@@ -1,0 +1,27 @@
+<div class="clima-casas text-center">
+  <h1>Clima en {{ciudad}}</h1>
+  <p>Consulta el clima actual y el pronóstico semanal.</p>
+</div>
+
+<div class="buscador-clima text-center">
+  <input type="text" [(ngModel)]="ciudad" placeholder="Ej: Madrid, Sevilla..." />
+  <button (click)="obtenerClima()">Buscar</button>
+</div>
+
+<div *ngIf="loading" class="loading">Cargando clima...</div>
+
+<div *ngIf="error" class="error">{{ error }}</div>
+
+<!-- Pronóstico semanal -->
+<div class="semana" *ngIf="climaSemanal.length > 0">
+
+  <div class="dias-semana">
+    <div class="dia" *ngFor="let dia of climaSemanal">
+      <p><strong>{{ dia.fecha }}</strong></p>
+      <img [src]="dia.icono" alt="Icono" />
+      <p>Máx: {{ dia.maxTemp }} °C</p>
+      <p>Mín: {{ dia.minTemp }} °C</p>
+      <p>{{ dia.descripcion }}</p>
+    </div>
+  </div>
+</div>

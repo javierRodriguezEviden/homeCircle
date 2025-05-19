@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule, withEventReplay } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,6 +18,8 @@ import { ErrorComponent } from './error/error.component';
 import { MisCasasComponent } from './mis-casas/mis-casas.component';
 import { provideHttpClient } from '@angular/common/http';
 import { AlquilarComponent } from './alquilar/alquilar.component';
+import { MapaCasaComponent } from './mapa-casa/mapa-casa.component';
+import { ClimaCasasComponent } from './clima-casas/clima-casas.component';
 import { FooterComponent } from '../footer.component';
 
 
@@ -46,14 +49,18 @@ const appRoutes:Routes=[
     AppComponent,
     SobreNosotrosComponent,
     HomeComponent,
-    RegistroComponent, // Declara el componente aquí
+    RegistroComponent, 
     LoginComponent,
     HomeRegistradoComponent,
     MiPerfilComponent,
     ReservaComponent,
     ErrorComponent,
     MisCasasComponent,
-    AlquilarComponent
+    AlquilarComponent,
+    MapaCasaComponent,
+    ClimaCasasComponent,
+    FooterComponent
+
   ],
   imports: [
     BrowserModule,
@@ -61,7 +68,7 @@ const appRoutes:Routes=[
     FormsModule,
     RouterModule.forRoot(appRoutes),
     ReactiveFormsModule,
-    FooterComponent
+    HttpClientModule 
   ],
   providers: [
     provideHttpClient(),
