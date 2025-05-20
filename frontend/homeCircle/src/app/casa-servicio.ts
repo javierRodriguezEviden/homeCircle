@@ -18,11 +18,13 @@ export interface Casa {
 })
 export class CasaServicio {
 
-  private apiUrl = 'http://localhost:8080/api/casas'; //aqui se deberia meter la api de la casa si esta ya
+  private apiUrl = 'http://localhost:8080/api/casas'; //Metemos la api de las casas y la dejamos, mirar en el back por si acaso
 
   constructor(private http: HttpClient) {}
 
   getCasasPorUsuario(idUsuario: number): Observable<Casa[]> {
     return this.http.get<Casa[]>(`${this.apiUrl}/usuario/${idUsuario}`);
   }
+
+  
 }

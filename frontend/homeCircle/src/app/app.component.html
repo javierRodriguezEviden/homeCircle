@@ -8,11 +8,11 @@
         <a href="/"><img src="../assets/Logo.png" style="width: 80px;"></a>
       </ng-template>
 
-      <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse"
-        data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
-        aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+        <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse"
+          data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
       <div class="collapse navbar-collapse " id="collapsibleNavId">
         <!-- Menú de navegación a la izquierda -->
@@ -133,14 +133,15 @@
   </div>
 </div>
 
-<div class="main-container">
-  <router-outlet></router-outlet>
-</div>
+<main class="flex-grow-1">
+  <div class="main-container">
+    <router-outlet></router-outlet>
+  </div>
+</main>
 
-<footer class="fondoFooter ">
+<footer class="fondoFooter">
   <app-footer></app-footer>
 </footer>
-
 
 <style>
   .fondoFooter {
