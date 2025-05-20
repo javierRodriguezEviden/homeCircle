@@ -39,6 +39,7 @@ public class Usuario {
 
     @NotBlank(message = "El campo email no puede estar vacio")
     @Email(message = "El email debe tener un formato valido")
+    @Pattern(regexp = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$", message = "El email debe tener un dominio válido")
     private String email;
 
     @NotBlank(message = "El campo password no puede estar vacio")
@@ -49,7 +50,7 @@ public class Usuario {
     private String dni;
 
     @NotBlank(message = "El campo telefono no puede estar vacio")
-    @Pattern(regexp = "\\d{9}", message = "El telefono debe tener 9 digitos")
+    @Pattern(regexp = "\\d{8}[A-HJ-NP-TV-Z]", message = "El DNI debe tener 8 números seguidos de una letra mayúscula válida")
     private String telefono;
 
     @NotBlank(message = "El campo nombre no puede estar vacio")
