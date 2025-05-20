@@ -21,7 +21,10 @@ import { ErrorComponent } from './error/error.component';
 import { MisCasasComponent } from './mis-casas/mis-casas.component';
 import { provideHttpClient } from '@angular/common/http';
 import { AlquilarComponent } from './alquilar/alquilar.component';
+import { MapaCasaComponent } from './mapa-casa/mapa-casa.component';
+import { ClimaCasasComponent } from './clima-casas/clima-casas.component';
 import { FooterComponent } from '../footer.component';
+import { FormBuilder } from '@angular/forms';
 
 
 //Creamos la variable const routes para establecer las rutas
@@ -50,14 +53,18 @@ const appRoutes:Routes=[
     AppComponent,
     SobreNosotrosComponent,
     HomeComponent,
-    RegistroComponent, // Declara el componente aquí
+    RegistroComponent, 
     LoginComponent,
     HomeRegistradoComponent,
     MiPerfilComponent,
     ReservaComponent,
     ErrorComponent,
     MisCasasComponent,
-    AlquilarComponent
+    AlquilarComponent,
+    MapaCasaComponent,
+    ClimaCasasComponent,
+    FooterComponent
+
   ],
   imports: [
     BrowserModule,

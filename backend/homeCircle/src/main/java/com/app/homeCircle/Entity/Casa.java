@@ -40,7 +40,7 @@ public class Casa {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @NotNull(message = "El campo nombre no puede estar vacio")
+    @NotNull(message = "El tipo de casa no puede estar vacío")
     @Enumerated(EnumType.STRING)
     private Tipo_casa tipo;
 
@@ -63,7 +63,7 @@ public class Casa {
     @Size(max = 20, message = "El pais no puede tener mas de 20 caracteres")
     private String pais;
 
-    @NotNull(message = "El campo precio no puede estar vacio")
+    @NotNull
     private int precio;
 
     @ManyToOne

@@ -41,7 +41,7 @@ export class MiPerfilComponent implements OnInit {
       this.sedeUsuario = usuarioParseado.sede || 'Sede no disponible';
       this.cuentabancariaUsuario = usuarioParseado.cuenta_banco || null;
 
-      
+
       // Inicializa el formulario con los datos del usuario
       this.editProfileForm = this.fb.group({
         id: [this.idUsuario, Validators.required],
