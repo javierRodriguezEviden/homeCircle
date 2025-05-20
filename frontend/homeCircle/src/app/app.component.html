@@ -23,17 +23,13 @@
           </li>
 
           <li class="nav-item">
-            <a class="nav-link active" href="/miPerfil" *ngIf="estaLogueado"> <i
-                class="ri-user-star-fill  text-primary mb-3"></i> Perfil</a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link" href="/registro" *ngIf="!estaLogueado"><i class="bi bi-person-badge-fill"
                 id="estiloIconosHeader"></i>
               Registrate</a>
           </li>
           <li class="nav-item">
             <a class="nav-link active" href="/reserva" *ngIf="estaLogueado"> <i
-                class="ri-home-heart-fill text-primary mb-3"></i> Reserva</a>
+                class="ri-home-heart-fill mb-3" id="estiloIconosHeader"></i> Reserva</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/sobreNosotros"><i class="bi bi-people-fill" id="estiloIconosHeader"></i> Sobre
@@ -47,12 +43,12 @@
 
         <!-- Botón de login alineado a la derecha para el login y el cierre de sesion-->
         <div class="d-flex">
-          <a class="btn btn-outline-primary" *ngIf="!estaLogueado; else areaPersonal" href="/login"><i
+          <a class="btn btn-outline-azul" *ngIf="!estaLogueado; else areaPersonal" href="/login"><i
               class="bi bi-box-arrow-in-right me-1"></i> Login</a>
           <ng-template #areaPersonal>
 
             <div class="dropdown">
-              <a class="btn btn-outline-primary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+              <a class="btn btn-outline-azul dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                 aria-expanded="false">
                 Area personal
               </a>
@@ -84,11 +80,11 @@
     <div class="modal-content shadow-lg rounded-4">
       <!-- Encabezado -->
       <div class="modal-header border-0 pb-0">
-        <h1 class="modal-title fs-5 fw-bold text-primary" id="contactModalLabel">Contacto</h1>
+        <h1 class="modal-title fs-5 fw-bold text-azul" id="contactModalLabel">Contacto</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
-      <!-- Cuerpo -->
+      <!-- Contacto -->
       <div class="modal-body">
         <p class="mb-4">
           Si tienes alguna duda, problema o sugerencia, no dudes en contactarnos. Estamos aquí para ayudarte. A
@@ -97,32 +93,32 @@
 
         <ul class="list-group list-group-flush lista-contactos">
           <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-2">
-            <span><i class="ri-mail-fill me-2 text-primary"></i> javier.rodriguez.external&#64;eviden.com</span>
-            <button class="btn btn-sm btn-outline-primary copy-btn" data-email="javier.rodriguez.external@eviden.com">
+            <span><i class="ri-mail-fill me-2 text-azul"></i> javier.rodriguez.external&#64;eviden.com</span>
+            <button class="btn btn-sm btn-outline-azul copy-btn" data-email="javier.rodriguez.external@eviden.com">
               <i class="ri-file-copy-line"></i> Copiar
             </button>
           </li>
           <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-2">
-            <span><i class="ri-mail-fill me-2 text-primary"></i> irene.del.external&#64;eviden.com</span>
-            <button class="btn btn-sm btn-outline-primary copy-btn" data-email="irene.del.external@eviden.com">
+            <span><i class="ri-mail-fill me-2 text-azul"></i> irene.del.external&#64;eviden.com</span>
+            <button class="btn btn-sm btn-outline-azul copy-btn" data-email="irene.del.external@eviden.com">
               <i class="ri-file-copy-line"></i> Copiar
             </button>
           </li>
           <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-2">
-            <span><i class="ri-mail-fill me-2 text-primary"></i> anastasia.datsko.external&#64;eviden.com</span>
-            <button class="btn btn-sm btn-outline-primary copy-btn" data-email="anastasia.datsko.external@eviden.com">
+            <span><i class="ri-mail-fill me-2 text-azul"></i> anastasia.datsko.external&#64;eviden.com</span>
+            <button class="btn btn-sm btn-outline-azul copy-btn" data-email="anastasia.datsko.external@eviden.com">
               <i class="ri-file-copy-line"></i> Copiar
             </button>
           </li>
           <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-2">
-            <span><i class="ri-mail-fill me-2 text-primary"></i> miguel.de.external&#64;eviden.com</span>
-            <button class="btn btn-sm btn-outline-primary copy-btn" data-email="miguel.de.external@eviden.com">
+            <span><i class="ri-mail-fill me-2 text-azul"></i> miguel.de.external&#64;eviden.com</span>
+            <button class="btn btn-sm btn-outline-azul copy-btn" data-email="miguel.de.external@eviden.com">
               <i class="ri-file-copy-line"></i> Copiar
             </button>
           </li>
           <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-2">
-            <span><i class="ri-mail-fill me-2 text-primary"></i> alberto.campanero.external&#64;eviden.com</span>
-            <button class="btn btn-sm btn-outline-primary copy-btn" data-email="alberto.campanero.external@eviden.com">
+            <span><i class="ri-mail-fill me-2 text-azul"></i> alberto.campanero.external&#64;eviden.com</span>
+            <button class="btn btn-sm btn-outline-azul copy-btn" data-email="alberto.campanero.external@eviden.com">
               <i class="ri-file-copy-line"></i> Copiar
             </button>
           </li>
@@ -131,7 +127,7 @@
 
       <!-- Pie -->
       <div class="modal-footer border-0 pt-0">
-        <button type="button" class="btn btn-primary rounded-pill" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-azul rounded-pill" data-bs-dismiss="modal">Cerrar</button>
       </div>
     </div>
   </div>

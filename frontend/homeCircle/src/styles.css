@@ -1,2 +1,67 @@
 /* You can add global styles to this file, and also import other style files */
 @import "leaflet/dist/leaflet.css";
+
+/* Estilos generales de colores para iconos */
+:root{
+  --color-azul: #2e7da1;
+  --color-amarillo: #fd9a0b;
+}
+
+/* Colores meidnae id (iconos) */
+#color-azul{
+  color: var(--color-azul);
+}
+
+#color-amarillo{
+  color: var(--color-amarillo);
+}
+
+/* Colores de texto */
+.text-azul {
+  color: var(--color-azul);
+}
+.text-amarillo {
+  color: var(--color-amarillo);
+}
+
+
+/* Botones azules de tipo btn btn-azul */
+.btn-azul {
+  color: #fff;
+  background-color: var(--color-azul);
+  border-color: var(--color-azul);
+  transition: background 0.2s, color 0.2s;
+}
+.btn-azul:hover,
+.btn-azul:focus {
+  background-color: #17506e; /* Un azul más oscuro para el hover */
+  border-color: #17506e;
+  color: #fff;
+}
+
+/* Botones amarillos de tipo btn btn-amarillo */
+.btn-amarillo {
+  color: #fff;
+  background-color: var(--color-amarillo);
+  border-color: var(--color-amarillo);
+  transition: background 0.2s, color 0.2s;
+}
+.btn-amarillo:hover,
+.btn-amarillo:focus {
+  background-color: #e68906; /* Amarillo más oscuro para hover */
+  border-color: #e68906;
+  color: #fff;
+}
+
+/* Botones  tipon btn btn-outline-azul */
+.btn-outline-azul {
+  color: var(--color-azul);
+  border-color: var(--color-azul);
+  background-color: transparent;
+}
+.btn-outline-azul:hover,
+.btn-outline-azul:focus {
+  color: #fff;
+  background-color: var(--color-azul);
+  border-color: var(--color-azul);
+}

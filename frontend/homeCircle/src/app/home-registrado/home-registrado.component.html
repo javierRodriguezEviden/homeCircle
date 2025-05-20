@@ -1,11 +1,10 @@
 <main class="d-flex flex-column min-vh-100 bg-white">
 
   <!-- Hero de bienvenida -->
-  <section class="py-5 text-white text-center align-items-center w-100 vh-50"
-    style="background: linear-gradient(to right, #FFA500, #007BFF);">
+  <section class="py-5 text-white text-center align-items-center w-100 vh-50" id="section-banner-bienvenida">
     <div class="container">
       <div *ngIf="nombreUsuario && gmailUsuario">
-      <h1 class="display-4 fw-bold">Bienvenid&#64;, <span class="text-warning">{{ nombreUsuario }}</span></h1>
+      <h1 class="display-4 fw-bold">Bienvenid&#64;, <span class="text-ligth">{{ nombreUsuario }}</span></h1>
       </div>
       <p class="lead">Explora todas las opciones que tienes como usuari&#64; dentro de tu perfil</p>
     </div>
@@ -35,7 +34,7 @@
           <div class="card text-center h-100 border-0 shadow-sm">
             <div class="card-body">
               <a href="/miPerfil" class="text-decoration-none text-dark">
-                <i class="ri-user-star-fill display-4 text-primary mb-3"></i>
+                <i class="ri-user-star-fill display-4 mb-3" id="color-azul"></i>
                 <h5 class="card-title">Tu perfil</h5>
                 <p class="card-text">Consulta tu información personal y gestiona tus casas.</p>
               </a>
@@ -48,7 +47,7 @@
           <div class="card text-center h-100 border-0 shadow-sm">
             <div class="card-body">
               <a href="/reserva" class="text-decoration-none text-dark">
-                <i class="ri-home-heart-fill display-4 text-warning mb-3"></i>
+                <i class="ri-home-heart-fill display-4  mb-3" id="color-amarillo"></i>
                 <h5 class="card-title">Reserva</h5>
                 <p class="card-text">Encuentra la casa ideal para tu próxima escapada.</p>
               </a>
@@ -61,7 +60,7 @@
           <div class="card text-center h-100 border-0 shadow-sm">
             <div class="card-body">
               <a href="/comunidad" class="text-decoration-none text-dark">
-                <i class="ri-team-fill display-4 text-primary mb-3"></i>
+                <i class="ri-team-fill display-4  mb-3" id="color-azul"></i>
                 <h5 class="card-title">Comunidad</h5>
                 <p class="card-text">Conecta con otros compañeros. ¡Pronto chat disponible!</p>
               </a>

@@ -1,5 +1,10 @@
-#estiloIconos{
-    color: #007BFF;
+#section-banner-bienvenida{
+    background: linear-gradient(
+        to right,
+        var(--color-amarillo) 0%,
+        var(--color-amarillo) 30%,
+        var(--color-azul) 95%
+    );
 }
 
 /* Contenedor carrusel de fuera */
