@@ -13,12 +13,25 @@ export class MisCasasComponent implements OnInit {
   casas: Casa[] = [];
   idUsuario: number | null = null;
 
-  constructor(
-    private casaServicio: CasaServicio
-  ) {}
+  constructor(private casaServicio: CasaServicio) {}
 
   ngOnInit(): void {
-    this.obtenerCasas();
+    this.obtenerIdUsuarioDesdeToken();
+  }
+
+  obtenerIdUsuarioDesdeToken(): void {
+    const token = localStorage.getItem('auth_token'); //Guardo el token
+    if (token) {
+      try {
+        const payload = JSON.parse(atob(token.split('.')[1])); 
+        this.idUsuario = payload.id_usuario; // Este campo tiene que estar
+        this.obtenerCasas();
+      } catch (e) {
+        console.error('Error al decodificar el token');
+      }
+    } else {
+      console.error('No hay token en localStorage');
+    }
   }
 
   obtenerCasas(): void {
