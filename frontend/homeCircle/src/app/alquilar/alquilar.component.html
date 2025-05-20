@@ -16,6 +16,74 @@
             La dirección es requerida.
           </div>
         </div>
+ 
+        <!-- Localidad -->
+        <div class="col-md-6">
+          <div class="form-floating">
+            <input type="text" class="form-control rounded-pill" id="localidad" placeholder="localidad"
+              formControlName="localidad">
+            <label for="localidad"><i class="ri-map-pin-2-line me-2"></i> Localidad</label>
+          </div>
+          <div *ngIf="rentForm.get('localidad')?.invalid && rentForm.get('localidad')?.touched" class="text-danger">
+            La localidad es requerida.
+          </div>
+        </div>
+ 
+        <!-- Código Postal -->
+        <div class="col-md-6">
+          <div class="form-floating">
+            <input type="text" class="form-control rounded-pill" id="cp" placeholder="Código Postal"
+              formControlName="cp">
+            <label for="cp"><i class="ri-mail-line me-2"></i> Código Postal</label>
+          </div>
+          <div *ngIf="rentForm.get('cp')?.invalid && rentForm.get('cp')?.touched" class="text-danger">
+            El código postal es requerido.
+          </div>
+        </div>
+ 
+        <!-- País -->
+        <div class="col-md-6">
+          <div class="form-floating">
+            <input type="text" class="form-control rounded-pill" id="pais" placeholder="País" formControlName="pais">
+            <label for="pais"><i class="ri-earth-line me-2"></i> País</label>
+          </div>
+          <div *ngIf="rentForm.get('pais')?.invalid && rentForm.get('pais')?.touched" class="text-danger">
+            El país es requerido.
+          </div>
+        </div>
+ 
+        <!-- Precio -->
+        <div class="col-md-6">
+          <div class="form-floating">
+            <input type="number" class="form-control rounded-pill" id="precio" placeholder="Precio"
+              formControlName="precio">
+            <label for="precio"><i class="ri-money-euro-circle-line"></i> Precio</label>
+          </div>
+          <div *ngIf="rentForm.get('precio')?.invalid && rentForm.get('precio')?.touched" class="text-danger">
+            El precio es requerido.
+          </div>
+        </div>
+ 
+        <!--Tipo de casa-->
+ 
+        <div class="col-md-6">
+          <div class="form-floating">
+            <select class="form-select rounded-pill" id="tipo" formControlName="tipo" placeholder="Tipo de vivienda">
+              <option value="" disabled selected>Selecciona una opción</option>
+              <option value="apartamento">Apartamento</option>
+              <option value="chalet">Chalet</option>
+              <option value="casa_rural">Casa Rural</option>
+              <option value="cabaña">Cabaña</option>
+              <option value="bungalow">Bungalow</option>
+            </select>
+            <label for="tipo"><i class="ri-home-line me-2"></i> Tipo de vivienda</label>
+          </div>
+ 
+          <!-- Mensaje de error -->
+          <div *ngIf="rentForm.get('tipo')?.invalid && rentForm.get('tipo')?.touched" class="text-danger mt-1">
+            El tipo de vivienda es requerido.
+          </div>
+        </div>
 
 
         <!-- Localidad -->
@@ -97,11 +165,11 @@
             La provincia es requerida.
           </div>
         </div>
-
-
-
-
-
+ 
+ 
+ 
+ 
+ 
         <!-- Foto Principal (Drag & Drop) -->
         <div class="col-md-12">
           <label for="fotoPrincipal" class="form-label"><strong>Foto principal</strong></label>
@@ -115,7 +183,7 @@
             <img [src]="selectedImage" alt="Preview" class="img-thumbnail w-100">
           </div>
         </div>
-
+ 
         <!-- Fotos adicionales -->
         <div class="col-md-12">
           <label for="fotosAdicionales" class="form-label"><strong>Fotos adicionales</strong></label>
@@ -127,7 +195,7 @@
             </div>
           </div>
         </div>
-
+ 
         <!-- Botones -->
         <div class="col-md-12 text-center">
           <button type="submit" class="btn btn-primary rounded-pill px-5 py-2 me-3">
@@ -137,9 +205,9 @@
             <i class="ri-upload-cloud-2-line me-2"></i> Subir
           </button>
         </div>
-
+ 
         <!-- Mensaje de resultado -->
-
+ 
       </form>
     </div>
   </div>

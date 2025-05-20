@@ -1,8 +1,9 @@
 
-#estiloIconos{
-    color: #FFA500;
-}
+#section-banner-home{
+/* background: linear-gradient(to right, #007BFF, #FFA500);
+ */background: linear-gradient(to right, var(--color-azul), var(--color-amarillo));
 
+}
 
 main {
     scroll-behavior: smooth;
