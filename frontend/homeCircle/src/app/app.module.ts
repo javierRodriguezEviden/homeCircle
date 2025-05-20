@@ -72,7 +72,6 @@ const appRoutes:Routes=[
     FormsModule,
     RouterModule.forRoot(appRoutes),
     ReactiveFormsModule,
-    FooterComponent,
     HttpClientModule
   ],
   providers: [
