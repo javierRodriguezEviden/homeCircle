@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { BrowserModule, withEventReplay } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -61,7 +62,8 @@ const appRoutes:Routes=[
     FormsModule,
     RouterModule.forRoot(appRoutes),
     ReactiveFormsModule,
-    FooterComponent
+    FooterComponent,
+    HttpClientModule
   ],
   providers: [
     provideHttpClient(),
