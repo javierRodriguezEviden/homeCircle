@@ -42,7 +42,7 @@ export class LoginComponent {
 
         // Guardamos el usuario en localStorage
         localStorage.setItem('usuario', JSON.stringify(response));
-
+        localStorage.setItem('token', response.token);
         console.log('Login exitoso', response);
 
         // ✅ Usamos el servicio para guardar el estado

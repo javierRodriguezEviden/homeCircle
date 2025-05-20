@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
 import { BrowserModule, withEventReplay } from '@angular/platform-browser';
+
+import { AuthInterceptor } from './auth.interceptor';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -66,8 +69,14 @@ const appRoutes:Routes=[
     HttpClientModule
   ],
   providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    },
     provideHttpClient(),
     LoginComponent,
+    
   ],
   bootstrap: [AppComponent]
 })

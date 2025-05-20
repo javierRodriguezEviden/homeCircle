@@ -12,10 +12,10 @@ export class MiPerfilComponent implements OnInit {
   // Variables para almacenar los datos del usuario
   idUsuario?: number;
   nombreUsuario: string | null = null;
+  apellidosUsuario: string | null = null;
   gmailUsuario: string | null = null;
   tlfUsuario: number | null = null;
   dniUsuario: string | null = null;
-  apellidosUsuario: string | null = null;
   sedeUsuario: string | null = null;
   cuentabancariaUsuario: string | null = null;
 
@@ -33,7 +33,7 @@ export class MiPerfilComponent implements OnInit {
 
       // Asigna los datos del usuario a las variables
       this.idUsuario = usuarioParseado.id;
-      this.nombreUsuario = usuarioParseado.name || 'Usuario';
+      this.nombreUsuario = usuarioParseado.nombre || usuarioParseado.name || 'Usuario';
       this.apellidosUsuario = usuarioParseado.apellidos || 'Apellidos no disponibles';
       this.gmailUsuario = usuarioParseado.email || 'Correo no disponible';
       this.tlfUsuario = usuarioParseado.telefono || null;
@@ -62,22 +62,23 @@ export class MiPerfilComponent implements OnInit {
     if (this.editProfileForm.valid) {
       const updatedData = this.editProfileForm.value;
       const usuarioGuardado = localStorage.getItem('usuario');
+
       if (usuarioGuardado) {
         const usuarioParseado = JSON.parse(usuarioGuardado);
         const userId = usuarioParseado.id;
 
-        // Llama al backend para actualizar el usuario
         this.http.put<any>(`http://localhost:8020/usuarios/${userId}`, updatedData).subscribe(
           (response) => {
             // Actualiza localStorage y variables solo si el backend responde OK
             localStorage.setItem('usuario', JSON.stringify(response));
             this.idUsuario = response.id;
-            this.nombreUsuario = response.name;
-            this.apellidosUsuario = response.apellidos;
-            this.gmailUsuario = response.email;
-            this.tlfUsuario = response.telefono;
-            this.sedeUsuario = response.sede;
-            this.cuentabancariaUsuario = response.cuenta_banco;
+            this.nombreUsuario = response.nombre || response.name || 'Usuario';
+            this.apellidosUsuario = response.apellidos || 'Apellidos no disponibles';
+            this.gmailUsuario = response.email || 'Correo no disponible';
+            this.tlfUsuario = response.telefono || null;
+            this.dniUsuario = response.dni || 'DNI no disponible';
+            this.sedeUsuario = response.sede || 'Sede no disponible';
+            this.cuentabancariaUsuario = response.cuenta_banco || null;
             alert('Perfil actualizado correctamente');
           },
           (error) => {
