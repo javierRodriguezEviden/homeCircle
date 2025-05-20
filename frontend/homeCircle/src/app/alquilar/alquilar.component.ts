@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -7,7 +7,8 @@ import { Router } from '@angular/router';
   selector: 'app-alquilar',
   templateUrl: './alquilar.component.html',
   styleUrls: ['./alquilar.component.css'],
-  standalone: false})
+  standalone: false
+})
 export class AlquilarComponent {
   rentForm: FormGroup;
   selectedImage: string | null = null;
@@ -16,7 +17,11 @@ export class AlquilarComponent {
   mensajeCreacion = '';
   añadido = false;
 
-  constructor(private fb: FormBuilder, private http: HttpClient, private router: Router) {
+  constructor(
+    private fb: FormBuilder,
+    private http: HttpClient,
+    private router: Router
+  ) {
     this.rentForm = this.fb.group({
       direccion: ['', Validators.required],
       localidad: ['', Validators.required],
@@ -39,7 +44,17 @@ export class AlquilarComponent {
 
     const userData = this.rentForm.value;
 
-    this.http.post('http://localhost:8020/casas', userData).subscribe({
+    // Obtener el token desde localStorage
+    const token = localStorage.getItem('token');
+
+    // Configurar las cabeceras con el token
+    const headers = new HttpHeaders({
+      'Authorization': 'Bearer ' + token,
+      'Content-Type': 'application/json'
+    });
+
+    // Hacer la petición POST con las cabeceras
+    this.http.post('http://localhost:8020/casas', userData, { headers }).subscribe({
       next: (response: any) => {
         this.añadido = true;
         this.mensajeCreacion = 'Casa creada con éxito. Redirigiendo...';
@@ -49,8 +64,13 @@ export class AlquilarComponent {
       },
       error: (error) => {
         console.error('Error al crear la casa:', error);
+
         this.añadido = false;
-        if (error.status === 400 && error.error && error.error.message) {
+        if (error.status === 401) {
+          this.mensajeCreacion = 'No estás autenticado. Inicia sesión.';
+        } else if (error.status === 403) {
+          this.mensajeCreacion = 'Acceso denegado. No tienes permisos suficientes.';
+        } else if (error.status === 400 && error.error?.message) {
           this.mensajeCreacion = error.error.message;
         } else {
           this.mensajeCreacion = 'Error inesperado. Inténtalo más tarde.';

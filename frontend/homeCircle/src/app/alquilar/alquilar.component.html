@@ -17,19 +17,8 @@
           </div>
         </div>
 
-        <!-- Ciudad -->
-        <div class="col-md-6">
-          <div class="form-floating">
-            <input type="text" class="form-control rounded-pill" id="ciudad" placeholder="Ciudad"
-              formControlName="ciudad">
-            <label for="ciudad"><i class="ri-building-line"></i> Ciudad</label>
-          </div>
-          <div *ngIf="rentForm.get('ciudad')?.invalid && rentForm.get('ciudad')?.touched" class="text-danger">
-            La ciudad es requerida.
-          </div>
-        </div>
 
-        <!-- Provincia -->
+        <!-- Localidad -->
         <div class="col-md-6">
           <div class="form-floating">
             <input type="text" class="form-control rounded-pill" id="localidad" placeholder="localidad"
@@ -77,21 +66,35 @@
         </div>
 
         <!--Tipo de casa-->
-      
+
         <div class="col-md-6">
           <div class="form-floating">
             <select class="form-select rounded-pill" id="tipo" formControlName="tipo" placeholder="Tipo de vivienda">
               <option value="" disabled selected>Selecciona una opción</option>
-              <option value="Casa">Casa</option>
-              <option value="Piso">Piso</option>
+              <option value="apartamento">Apartamento</option>
+              <option value="chalet">Chalet</option>
+              <option value="casa_rural">Casa Rural</option>
+              <option value="cabaña">Cabaña</option>
+              <option value="bungalow">Bungalow</option>
             </select>
             <label for="tipo"><i class="ri-home-line me-2"></i> Tipo de vivienda</label>
           </div>
 
           <!-- Mensaje de error -->
-          <div *ngIf="rentForm.get('tipo')?.invalid && rentForm.get('tipo')?.touched"
-            class="text-danger mt-1">
+          <div *ngIf="rentForm.get('tipo')?.invalid && rentForm.get('tipo')?.touched" class="text-danger mt-1">
             El tipo de vivienda es requerido.
+          </div>
+        </div>
+
+        <!-- Provincia -->
+        <div class="col-md-6">
+          <div class="form-floating">
+            <input type="text" class="form-control rounded-pill" id="provincia" placeholder="Provincia"
+              formControlName="provincia">
+            <label for="provincia"><i class="ri-map-pin-2-line me-2"></i> Provincia</label>
+          </div>
+          <div *ngIf="rentForm.get('provincia')?.invalid && rentForm.get('provincia')?.touched" class="text-danger">
+            La provincia es requerida.
           </div>
         </div>
 

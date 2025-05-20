@@ -30,7 +30,7 @@ export class MiPerfilComponent implements OnInit {
       const usuarioParseado = JSON.parse(usuarioGuardado);
 
       // Asigna los datos del usuario a las variables
-      this.nombreUsuario = usuarioParseado.name || 'Usuario';
+      this.nombreUsuario = usuarioParseado.nombre || 'Usuario';
       this.apellidosUsuario = usuarioParseado.apellidos || 'Apellidos no disponibles';
       this.gmailUsuario = usuarioParseado.email || 'Correo no disponible';
       this.tlfUsuario = usuarioParseado.telefono || null;

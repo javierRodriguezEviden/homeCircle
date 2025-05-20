@@ -11,7 +11,7 @@ import { CasaServicio, Casa } from '../casa-servicio';
 export class MisCasasComponent implements OnInit {
 
   casas: Casa[] = [];
-  idUsuario: number = 1; // Aquí puedes obtener el ID del usuario logueado desde AuthService o localStorage
+  idUsuario: number | null = null;
 
   constructor(
     private casaServicio: CasaServicio
@@ -22,13 +22,15 @@ export class MisCasasComponent implements OnInit {
   }
 
   obtenerCasas(): void {
-    this.casaServicio.getCasasPorUsuario(this.idUsuario).subscribe(
-      (data) => {
-        this.casas = data;
-      },
-      (error) => {
-        console.error('Error al cargar las casas', error);
-      }
-    );
+    if (this.idUsuario !== null) {
+      this.casaServicio.getCasasPorUsuario(this.idUsuario).subscribe(
+        (data) => {
+          this.casas = data;
+        },
+        (error) => {
+          console.error('Error al cargar las casas', error);
+        }
+      );
+    }
   }
 }
