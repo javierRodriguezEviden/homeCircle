@@ -2,7 +2,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-
 @Component({
   selector: 'app-alquilar',
   templateUrl: './alquilar.component.html',
@@ -13,10 +12,8 @@ export class AlquilarComponent {
   rentForm: FormGroup;
   selectedImage: string | null = null;
   additionalImages: string[] = [];
-
   mensajeCreacion = '';
   añadido = false;
-
   constructor(
     private fb: FormBuilder,
     private http: HttpClient,
