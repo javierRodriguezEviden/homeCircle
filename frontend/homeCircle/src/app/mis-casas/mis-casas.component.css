@@ -1,3 +1,4 @@
+
 .underline-title {
     position: relative;
     display: inline-block;
@@ -42,4 +43,16 @@
 .no-casas {
   color: #777;
   font-style: italic;
+}
+
+.modal-lg {
+  max-width: 1000px; /* Ajusta el ancho máximo */
+}
+
+.modal-content {
+  border-radius: 15px; /* Bordes redondeados */
+}
+
+.modal-header {
+  border-bottom: none; /* Elimina la línea inferior del encabezado */
 }
