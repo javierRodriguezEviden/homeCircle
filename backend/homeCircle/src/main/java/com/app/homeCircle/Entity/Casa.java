@@ -2,6 +2,10 @@ package com.app.homeCircle.Entity;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIncludeProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -26,6 +30,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 @Table(name = "casa")
+@JsonIncludeProperties({
+    "id", "tipo", "direccion", "cp", "localidad", "provincia", "pais", "precio"
+})
 public class Casa {
 
     public enum Tipo_casa {

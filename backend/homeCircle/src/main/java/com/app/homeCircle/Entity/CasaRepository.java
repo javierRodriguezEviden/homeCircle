@@ -9,4 +9,5 @@ public interface CasaRepository extends JpaRepository <Casa, Integer> {
 
         List<Casa> findByUsuarioId(Long id);
 
+        List<Casa> findAll();
 }
