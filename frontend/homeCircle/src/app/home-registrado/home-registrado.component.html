@@ -1,61 +1,169 @@
 <main class="d-flex flex-column min-vh-100 bg-white">
 
-    <!-- Hero de bienvenida -->
-    <section class="py-5 text-white text-center align-items-center w-100 vh-50" style="background: linear-gradient(to right, #FFA500, #007BFF);">
-      <div class="container">
-        <h1 class="display-4 fw-bold">Bienvenid&#64;, <span class="text-warning">+ nombre</span></h1>
-        <p class="lead">Explora todas las opciones que tienes como usuari&#64; dentro de tu perfil</p>
+  <!-- Hero de bienvenida -->
+  <section class="py-5 text-white text-center align-items-center w-100 vh-50" id="section-banner-bienvenida">
+    <div class="container">
+      <div *ngIf="nombreUsuario && gmailUsuario">
+      <h1 class="display-4 fw-bold">Bienvenid&#64;, <span class="text-ligth">{{ nombreUsuario }}</span></h1>
       </div>
-    </section>
-  
-    <!-- Opciones del menú centradas -->
-    <section class="py-5 bg-light flex-grow-1 d-flex align-items-center">
-      <div class="container-md">
-        <h2 class="text-center mb-5" style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">¿Qué puedes hacer dentro de tu menú como usuario?</h2>
-        <div class="row g-4 justify-content-center">
-  
-          <!-- Tarjeta 1 -->
-          <div class="col-md-4">
-            <div class="card text-center h-100 border-0 shadow-sm">
-              <div class="card-body">
-                <a href="/miPerfil" class="text-decoration-none text-dark">
-                  <i class="ri-user-star-fill display-4 text-primary mb-3"></i>
-                  <h5 class="card-title">Tu perfil</h5>
-                  <p class="card-text">Consulta tu información personal y gestiona tus casas.</p>
-                </a>
-              </div>
+      <p class="lead">Explora todas las opciones que tienes como usuari&#64; dentro de tu perfil</p>
+    </div>
+  </section>
+
+<!-- EJEMPLO DE COMO FUNCIONA
+  <div *ngIf="nombreUsuario && gmailUsuario">
+      <h2>¡Bienvenido, {{ nombreUsuario }}!</h2>
+      <p>Tu correo es: {{ gmailUsuario }}</p>
+      <p>Tu telefono es: {{ tlfUsuario }}</p>
+  </div> -->
+
+  <div *ngIf="!nombreUsuario || !gmailUsuario">
+      <p>No has iniciado sesión.</p>
+  </div>
+
+
+  <!-- Opciones del menú centradas -->
+  <section class="py-5 bg-light flex-grow-1 d-flex align-items-center">
+    <div class="container-md">
+      <h2 class="text-center mb-5" style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">¿Qué
+        puedes hacer dentro de tu menú como usuario?</h2>
+      <div class="row g-4 justify-content-center">
+
+        <!-- Tarjeta 1 -->
+        <div class="col-md-4">
+          <div class="card text-center h-100 border-0 shadow-sm">
+            <div class="card-body">
+              <a href="/miPerfil" class="text-decoration-none text-dark">
+                <i class="ri-user-star-fill display-4 mb-3" id="color-azul"></i>
+                <h5 class="card-title">Tu perfil</h5>
+                <p class="card-text">Consulta tu información personal y gestiona tus casas.</p>
+              </a>
             </div>
           </div>
-  
-          <!-- Tarjeta 2 -->
-          <div class="col-md-4">
-            <div class="card text-center h-100 border-0 shadow-sm">
-              <div class="card-body">
-                <a href="/reserva" class="text-decoration-none text-dark">
-                  <i class="ri-home-heart-fill display-4 text-warning mb-3"></i>
-                  <h5 class="card-title">Reserva</h5>
-                  <p class="card-text">Encuentra la casa ideal para tu próxima escapada.</p>
-                </a>
-              </div>
-            </div>
-          </div>
-  
-          <!-- Tarjeta 3 -->
-          <div class="col-md-4">
-            <div class="card text-center h-100 border-0 shadow-sm">
-              <div class="card-body">
-                <a href="/comunidad" class="text-decoration-none text-dark">
-                  <i class="ri-team-fill display-4 text-primary mb-3"></i>
-                  <h5 class="card-title">Comunidad</h5>
-                  <p class="card-text">Conecta con otros compañeros. ¡Pronto chat disponible!</p>
-                </a>
-              </div>
-            </div>
-          </div>
-  
         </div>
+
+        <!-- Tarjeta 2 -->
+        <div class="col-md-4">
+          <div class="card text-center h-100 border-0 shadow-sm">
+            <div class="card-body">
+              <a href="/reserva" class="text-decoration-none text-dark">
+                <i class="ri-home-heart-fill display-4  mb-3" id="color-amarillo"></i>
+                <h5 class="card-title">Reserva</h5>
+                <p class="card-text">Encuentra la casa ideal para tu próxima escapada.</p>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tarjeta 3 -->
+        <div class="col-md-4">
+          <div class="card text-center h-100 border-0 shadow-sm">
+            <div class="card-body">
+              <a href="/comunidad" class="text-decoration-none text-dark">
+                <i class="ri-team-fill display-4  mb-3" id="color-azul"></i>
+                <h5 class="card-title">Comunidad</h5>
+                <p class="card-text">Conecta con otros compañeros. ¡Pronto chat disponible!</p>
+              </a>
+            </div>
+          </div>
+        </div>
+
       </div>
+    </div>
+  </section>
+
+    <!-- Sección ciudades -->
+    <section  class="hero text-black text-center py-5">
+        <div class="container">
+            <h1 class="mb-4 text-center"
+                style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
+                ¿En qué ciudades nos puedes encontrar?
+            </h1>
+            <div id="houseCarouselCiudades" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5500">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="../assets/madrid.jpg"
+                            class="d-block mx-auto img-fluid rounded-3" alt="Madrid">
+                        <div class=" text-black p-3">
+                            <h3>Madrid</h3>
+                            <p>La capital de España, llena de historia y cultura.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="../assets/toledo.jpg"
+                            class="d-block mx-auto img-fluid rounded-3" alt="Toledo">
+                        <div class=" text-black p-3">
+                            <h3>Toledo</h3>
+                            <p>Conocida como la ciudad de las tres culturas.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="../assets/barcelona.jpg"
+                            class="d-block mx-auto img-fluid rounded-3" alt="Barcelona">
+                        <div class=" text-black p-3">
+                            <h3>Barcelona</h3>
+                            <p>Famosa por su arquitectura modernista y playas.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="../assets/sevilla.jpg"
+                            class="d-block mx-auto img-fluid rounded-3" alt="Sevilla">
+                        <div class=" text-black p-3">
+                            <h3>Sevilla</h3>
+                            <p>La ciudad del flamenco y la Giralda.</p>
+                        </div>
+                    </div>
+
+                    <div class="carousel-item">
+                        <img src="../assets/tenerife.jpg"
+                            class="d-block mx-auto img-fluid rounded-3" alt="La Coruña">
+                        <div class="  text-black p-3">
+                            <h3>Tenerife</h3>
+                            <p>Una ciudad costera con vistas espectaculares.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
-  
-  </main>
-  
+
+    <!-- Sección de casas -->
+    <section  class="py-5" style="background-color: #f8f9fa;">
+        <div class="container">
+            <h1 class="mb-4 text-center" style="font-family: 'Franklin Gothic Medium', Arial, sans-serif; color: #333;">
+                Algunas de las casas que te puedes encontrar
+            </h1>
+            <div id="houseCarouselCasas" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3800">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="../assets/casaPlaya.jpg"
+                            class="d-block mx-auto img-fluid rounded-3 shadow-sm" alt="Casa 1">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="../assets/cabaña.jpg"
+                            class="d-block mx-auto img-fluid rounded-3 shadow-sm" alt="Casa 2">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="../assets/casaCiudad.jpg"
+                            class="d-block mx-auto img-fluid rounded-3 shadow-sm" alt="Casa 3">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="../assets/casaRural.jpg"
+                            class="d-block mx-auto img-fluid rounded-3 shadow-sm" alt="Casa 4">
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="text-center">
+      <h1 class="mb-4 text-center" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Encuentra tu casa ideal</h1>
+      <p class="mb-4 text-center" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Explora casas disponibles cerca de ti</p>
+    </section>
+
+
+    <!--NO BORRAR, API PARA EL MAPA-->
+<app-mapa-casa></app-mapa-casa>
+
+</main>

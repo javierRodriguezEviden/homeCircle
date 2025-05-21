@@ -13,6 +13,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 
@@ -36,7 +37,7 @@ public class Casa {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @NotBlank(message = "El campo nombre no puede estar vacio")
+    @NotNull(message = "El tipo de casa no puede estar vacío")
     @Enumerated(EnumType.STRING)
     private Tipo_casa tipo;
 
@@ -59,7 +60,7 @@ public class Casa {
     @Size(max = 20, message = "El pais no puede tener mas de 20 caracteres")
     private String pais;
 
-    @NotBlank(message = "El campo precio no puede estar vacio")
+    @NotNull
     private int precio;
 
     @ManyToOne

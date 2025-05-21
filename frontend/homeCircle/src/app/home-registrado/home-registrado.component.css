@@ -1,11 +1,27 @@
-#estiloIconos{
-    color: #007BFF;
+#section-banner-bienvenida{
+    background: linear-gradient(
+        to right,
+        var(--color-amarillo) 0%,
+        var(--color-amarillo) 30%,
+        var(--color-azul) 95%
+    );
 }
 
-.carousel-control-prev{
-    background-color:#FFA500;
+/* Contenedor carrusel de fuera */
+#houseCarousel{
+    text-align: center;
+    padding: 10px;
 }
 
-.carousel-control-next{
-    background-color: #FFA500;
+/* Contenedor de cada item */
+.carousel-item{
+    background-color: transparent;
+}
+
+/* imagenes deltro de cada item */
+.carousel-item img{
+    min-height: 40vh;
+    max-height: 40vh;
+
+    object-fit: cover;
 }

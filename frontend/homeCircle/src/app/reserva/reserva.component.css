@@ -3,14 +3,36 @@
     display: inline-block;
     text-align: center;
   }
-  
+ 
   .underline-title::after {
     content: '';
     position: absolute;
     bottom: -15px;
-    left: 50%; 
-    transform: translateX(-50%); 
-    width: 150%; 
-    height: 3px; 
-    background-color: #FFA500;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150%;
+    height: 3px;
+    background-color: var(--color-amarillo);
   }
+ 
+  .no-border-bottom {
+  border-bottom: none !important; /* Elimina el borde inferior */
+}
+ 
+.list-group-flush .list-group-item {
+  border: none; /* Elimina todos los bordes */
+}
+ 
+.list-group-flush .list-group-item:last-child {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125); /* Mantén el borde inferior solo en el último elemento */
+}
+ 
+ .card {
+  transition: transform 0.3s ease; /* Añade una transición suave */
+}
+ 
+/* Animación al hover */
+.card:hover {
+  transform: scale(1.02); /* Aumenta el tamaño del card un 5% */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Añade una sombra más pronunciada al hover */
+}

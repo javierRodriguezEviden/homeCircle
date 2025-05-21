@@ -19,6 +19,10 @@ public class UsuarioService {
         usuarioRepository.save(usuario);
     }
 
+    public Usuario searchById(Integer id) {
+        return usuarioRepository.findById(id).orElse(null);
+    }
+
     // buscar todos los usuarios
     public List<Usuario> searchUsuarios() {
         return usuarioRepository.findAll();
@@ -29,12 +33,18 @@ public class UsuarioService {
         return usuarioRepository.findByEmail(email).orElse(null);
     }
 
-    public void updateUsuario(Integer id, Usuario usuarioData) {
-        Usuario usuario = usuarioRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Usuario con id: " + id + " no encontrado"));
-
-        usuarioData.setId(usuario.getId());
-        usuarioRepository.save(usuarioData);
+    public Usuario updateUsuario(Integer id, Usuario usuarioData) {
+        return usuarioRepository.findById(id).map(usuario -> {
+            usuario.setNombre(usuarioData.getNombre());
+            usuario.setApellidos(usuarioData.getApellidos());
+            usuario.setEmail(usuarioData.getEmail());
+            usuario.setTelefono(usuarioData.getTelefono());
+            usuario.setDni(usuarioData.getDni());
+            usuario.setSede(usuarioData.getSede());
+            usuario.setCuenta_banco(usuarioData.getCuenta_banco());
+            // ...otros campos si los tienes...
+            return usuarioRepository.save(usuario);
+        }).orElse(null);
     }
 
     public void deleteUsuario(Integer id) {

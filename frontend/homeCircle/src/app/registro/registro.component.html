@@ -1,11 +1,9 @@
 <div class="body-login ">
-    <div class="login " style="max-width: 600px; width: 100%;">
-        <img src="/recursos/casa.png" alt="image"
-            class="login__bg position-absolute top-0 start-0 w-100 h-100 object-fit-cover opacity-50 z-n1 rounded-3">
+    <div class="login ">
 
         <form (ngSubmit)="registrarUsuario($event)" class="login__form d-flex flex-column gap-3 my-4"
             #registroForm="ngForm">
-            <h1 class="login__title fs-2"><strong>Crea tu cuenta</strong></h1>
+            <!-- <h1 class="login__title fs-2"><strong>Crea tu cuenta</strong></h1> -->
 
             <div class="row g-3">
                 <div class="col-md-6">
@@ -63,7 +61,9 @@
                         <label for="cuentaBancaria"><i class="ri-bank-card-fill me-2"></i> Cuenta Bancaria</label>
                         <div *ngIf="errores['cuenta_banco']" class="text-danger mt-1">{{ errores['cuenta_banco'] }}
                         </div>
-                        <div class="form-text text-muted text-center">Dato necesario en caso de querer alquilar casa
+                        <div class="form-text text-muted text-center"> Será necesario para gestionar cualquier pago o
+                            cobro relacionado con el alquiler.
+
                         </div>
                     </div>
                 </div>
@@ -94,17 +94,10 @@
                 [ngClass]="{'alert-success': registrado, 'alert-danger': !registrado}">
                 {{ mensajeRegistro }}
             </div>
-            <button type="submit" class="btn btn-primary rounded-pill mt-3" value="Registrar">Crear cuenta</button>
-
-            <!-- <button type="submit" class="btn btn-primary rounded-pill mt-3" value="Registrar"
-                (click)="registrarUsuario()">Crear cuenta</button> -->
-
-            <!--             <strong *ngIf="registrado">
-                <p class="text-success">{{mensajeRegistro}}</p>
-            </strong> -->
+            <button type="submit" class="btn btn-azul rounded-pill mt-3" value="Registrar">Crear cuenta</button>
 
             <div class="login__register mt-2">
-                ¿Ya tienes una cuenta? <a href="#" class="text-decoration-none">Inicia sesión</a>
+                ¿Ya tienes una cuenta? <a href="/login" class="text-decoration-none">Inicia sesión</a>
             </div>
         </form>
 
