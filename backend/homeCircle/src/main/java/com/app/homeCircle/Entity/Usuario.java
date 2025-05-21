@@ -38,8 +38,8 @@ public class Usuario {
     private int id;
 
     @NotBlank(message = "El campo email no puede estar vacio")
-    @Email(message = "El email debe tener un formato valido")
-    //@Pattern(regexp = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$", message = "El email debe tener un dominio válido")
+    //@Email(message = "El email debe tener un formato valido")
+    @Pattern(regexp = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$", message = "El email debe tener un dominio válido")
     private String email;
 
     @NotBlank(message = "El campo password no puede estar vacio")

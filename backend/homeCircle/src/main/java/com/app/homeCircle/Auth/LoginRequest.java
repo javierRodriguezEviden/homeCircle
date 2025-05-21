@@ -2,6 +2,7 @@ package com.app.homeCircle.Auth;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -19,7 +20,8 @@ public class LoginRequest {
     // para autenticarse.
 
     @NotBlank(message = "El correo está vacío")
-    @Email(message = "Formato de correo inválido")
+    //@Email(message = "Formato de correo inválido")
+    @Pattern(regexp = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$", message = "El email debe tener un dominio válido")
     String email;
 
     @NotBlank(message = "La contraseña está vacía")
