@@ -1,11 +1,20 @@
 main {
-    min-height: 71.4vh;
-    width: 100%;
-    background-image: url('https://th.bing.com/th/id/R.7114e608d31cc45b93c20ddfe661d10d?rik=G2xXohJVJDGzpQ&riu=http%3a%2f%2fpluspng.com%2fimg-png%2fatos-logo-png-file-atos-svg-1024.png&ehk=xX3qicXIU37M1uIUvbrkI9482RqXKMg29YrKYCPaeFQ%3d&risl=&pid=ImgRaw&r=0');
-    background-repeat: no-repeat;
-    background-position: 50% 70%;
-    background-size: 35%;
+
+
 }
+
+#atos {
+    width: 40%;
+    background-color: transparent;
+    margin: 0 auto;
+    padding: 0;
+}
+
+#atos img {
+    max-height: 100%;
+    max-width: 100%;
+}
+
 
 /* Mejora visual del acordeón */
 #accordionFlushExample {
@@ -14,6 +23,7 @@ main {
     box-shadow: 0 4px 24px 0 rgba(0,0,0,0.08);
     border: 1px solid #e0e0e0;
     padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+
 }
 
 #accordionFlushExample .accordion-item {

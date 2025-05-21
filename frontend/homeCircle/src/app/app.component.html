@@ -1,12 +1,14 @@
-<header>
-  <nav class="navbar navbar-expand-sm navbar-light bg-light ">
-    <div class="container-fluid">
-      <!-- Si esta logueado el icono de homeCircle manda a /homeUsuario, si no manda al home normal -->
-      <a href="/homeRegistrado" *ngIf="estaLogueado; else homeUsuario"><img src="../assets/Logo.png"
-          style="width: 80px;"></a>
-      <ng-template #homeUsuario>
-        <a href="/"><img src="../assets/Logo.png" style="width: 80px;"></a>
-      </ng-template>
+<body class="d-flex flex-column min-vh-100">
+
+  <header>
+    <nav class="navbar navbar-expand-sm navbar-light bg-light ">
+      <div class="container-fluid">
+        <!-- Si esta logueado el icono de homeCircle manda a /homeUsuario, si no manda al home normal -->
+        <a href="/homeRegistrado" *ngIf="estaLogueado; else homeUsuario"><img src="../assets/Logo.png"
+            style="width: 80px;"></a>
+        <ng-template #homeUsuario>
+          <a href="/"><img src="../assets/Logo.png" style="width: 80px;"></a>
+        </ng-template>
 
         <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse"
           data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
@@ -14,134 +16,137 @@
           <span class="navbar-toggler-icon"></span>
         </button>
 
-      <div class="collapse navbar-collapse " id="collapsibleNavId">
-        <!-- Menú de navegación a la izquierda -->
-        <ul class="navbar-nav me-auto mt-2 mt-lg-0 px-2">
-          <li class="nav-item">
-            <a class="nav-link active" href="/" *ngIf="!estaLogueado"> <i class="bi bi-house-fill"
-                id="estiloIconosHeader"></i> Home</a>
-          </li>
+        <div class="collapse navbar-collapse " id="collapsibleNavId">
+          <!-- Menú de navegación a la izquierda -->
+          <ul class="navbar-nav me-auto mt-2 mt-lg-0 px-2">
+            <li class="nav-item">
+              <a class="nav-link active" href="/" *ngIf="!estaLogueado"> <i class="bi bi-house-fill"
+                  id="estiloIconosHeader"></i> Home</a>
+            </li>
 
-          <li class="nav-item">
-            <a class="nav-link" href="/registro" *ngIf="!estaLogueado"><i class="bi bi-person-badge-fill"
-                id="estiloIconosHeader"></i>
-              Registrate</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" href="/reserva" *ngIf="estaLogueado"> <i
-                class="ri-home-heart-fill mb-3" id="estiloIconosHeader"></i> Reserva</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/sobreNosotros"><i class="bi bi-people-fill" id="estiloIconosHeader"></i> Sobre
-              nosotros</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#contactModal"><i
-                class="bi bi-envelope-at-fill" id="estiloIconosHeader"></i> Contacto</a>
-          </li>
-        </ul>
+            <li class="nav-item">
+              <a class="nav-link" href="/registro" *ngIf="!estaLogueado"><i class="bi bi-person-badge-fill"
+                  id="estiloIconosHeader"></i>
+                Registrate</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="/reserva" *ngIf="estaLogueado"> <i class="ri-home-heart-fill mb-3"
+                  id="estiloIconosHeader"></i> Reserva</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/sobreNosotros"><i class="bi bi-people-fill" id="estiloIconosHeader"></i> Sobre
+                nosotros</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#contactModal"><i
+                  class="bi bi-envelope-at-fill" id="estiloIconosHeader"></i> Contacto</a>
+            </li>
+          </ul>
 
-        <!-- Botón de login alineado a la derecha para el login y el cierre de sesion-->
-        <div class="d-flex">
-          <a class="btn btn-lg btn-outline-azul fw-bold" *ngIf="!estaLogueado; else areaPersonal" href="/login"><i
-              class="bi bi-box-arrow-in-right me-1"></i> Login</a>
-          <ng-template #areaPersonal>
+          <!-- Botón de login alineado a la derecha para el login y el cierre de sesion-->
+          <div class="d-flex">
+            <a class="btn btn-lg btn-outline-azul fw-bold" *ngIf="!estaLogueado; else areaPersonal" href="/login"><i
+                class="bi bi-box-arrow-in-right me-1"></i> Login</a>
+            <ng-template #areaPersonal>
 
-            <div class="dropdown">
-              <a class="btn btn-lg btn-outline-azul dropdown-toggle fw-bold" href="#" role="button" data-bs-toggle="dropdown"
-                aria-expanded="false">
-                Area personal
-              </a>
-              <ul class="dropdown-menu dropdown-menu-end area-personal-dropdown">
-                <li>
-                  <a class="dropdown-item" href="/miPerfil">
-                    <i class="bi bi-person-circle me-2"></i> Perfil
-                  </a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#" (click)="logout()">
-                    <i class="bi bi-box-arrow-right me-2"></i> Cerrar sesión
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </ng-template>
+              <div class="dropdown">
+                <a class="btn btn-lg btn-outline-azul dropdown-toggle fw-bold" href="#" role="button"
+                  data-bs-toggle="dropdown" aria-expanded="false">
+                  Area personal
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end area-personal-dropdown">
+                  <li>
+                    <a class="dropdown-item" href="/miPerfil">
+                      <i class="bi bi-person-circle me-2"></i> Perfil
+                    </a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#" (click)="logout()">
+                      <i class="bi bi-box-arrow-right me-2"></i> Cerrar sesión
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </ng-template>
+
+          </div>
+
 
         </div>
-
-
       </div>
-    </div>
-  </nav>
-</header>
+    </nav>
+  </header>
 
-<div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content shadow-lg rounded-4">
-      <!-- Encabezado -->
-      <div class="modal-header border-0 pb-0">
-        <h1 class="modal-title fs-5 fw-bold text-azul" id="contactModalLabel">Contacto</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
+  <div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content shadow-lg rounded-4">
+        <!-- Encabezado -->
+        <div class="modal-header border-0 pb-0">
+          <h1 class="modal-title fs-5 fw-bold text-azul" id="contactModalLabel">Contacto</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
 
-      <!-- Contacto -->
-      <div class="modal-body">
-        <p class="mb-4">
-          Si tienes alguna duda, problema o sugerencia, no dudes en contactarnos. Estamos aquí para ayudarte. A
-          continuación, encontrarás nuestros correos electrónicos:
-        </p>
+        <!-- Contacto -->
+        <div class="modal-body">
+          <p class="mb-4">
+            Si tienes alguna duda, problema o sugerencia, no dudes en contactarnos. Estamos aquí para ayudarte. A
+            continuación, encontrarás nuestros correos electrónicos:
+          </p>
 
-        <ul class="list-group list-group-flush lista-contactos">
-          <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-2">
-            <span><i class="ri-mail-fill me-2 text-azul"></i> javier.rodriguez.external&#64;eviden.com</span>
-            <button class="btn btn-sm btn-outline-azul copy-btn" data-email="javier.rodriguez.external@eviden.com">
-              <i class="ri-file-copy-line"></i> Copiar
-            </button>
-          </li>
-          <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-2">
-            <span><i class="ri-mail-fill me-2 text-azul"></i> irene.del.external&#64;eviden.com</span>
-            <button class="btn btn-sm btn-outline-azul copy-btn" data-email="irene.del.external@eviden.com">
-              <i class="ri-file-copy-line"></i> Copiar
-            </button>
-          </li>
-          <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-2">
-            <span><i class="ri-mail-fill me-2 text-azul"></i> anastasia.datsko.external&#64;eviden.com</span>
-            <button class="btn btn-sm btn-outline-azul copy-btn" data-email="anastasia.datsko.external@eviden.com">
-              <i class="ri-file-copy-line"></i> Copiar
-            </button>
-          </li>
-          <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-2">
-            <span><i class="ri-mail-fill me-2 text-azul"></i> miguel.de.external&#64;eviden.com</span>
-            <button class="btn btn-sm btn-outline-azul copy-btn" data-email="miguel.de.external@eviden.com">
-              <i class="ri-file-copy-line"></i> Copiar
-            </button>
-          </li>
-          <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-2">
-            <span><i class="ri-mail-fill me-2 text-azul"></i> alberto.campanero.external&#64;eviden.com</span>
-            <button class="btn btn-sm btn-outline-azul copy-btn" data-email="alberto.campanero.external@eviden.com">
-              <i class="ri-file-copy-line"></i> Copiar
-            </button>
-          </li>
-        </ul>
-      </div>
+          <ul class="list-group list-group-flush lista-contactos">
+            <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-2">
+              <span><i class="ri-mail-fill me-2 text-azul"></i> javier.rodriguez.external&#64;eviden.com</span>
+              <button class="btn btn-sm btn-outline-azul copy-btn" data-email="javier.rodriguez.external@eviden.com">
+                <i class="ri-file-copy-line"></i> Copiar
+              </button>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-2">
+              <span><i class="ri-mail-fill me-2 text-azul"></i> irene.del.external&#64;eviden.com</span>
+              <button class="btn btn-sm btn-outline-azul copy-btn" data-email="irene.del.external@eviden.com">
+                <i class="ri-file-copy-line"></i> Copiar
+              </button>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-2">
+              <span><i class="ri-mail-fill me-2 text-azul"></i> anastasia.datsko.external&#64;eviden.com</span>
+              <button class="btn btn-sm btn-outline-azul copy-btn" data-email="anastasia.datsko.external@eviden.com">
+                <i class="ri-file-copy-line"></i> Copiar
+              </button>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-2">
+              <span><i class="ri-mail-fill me-2 text-azul"></i> miguel.de.external&#64;eviden.com</span>
+              <button class="btn btn-sm btn-outline-azul copy-btn" data-email="miguel.de.external@eviden.com">
+                <i class="ri-file-copy-line"></i> Copiar
+              </button>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-2">
+              <span><i class="ri-mail-fill me-2 text-azul"></i> alberto.campanero.external&#64;eviden.com</span>
+              <button class="btn btn-sm btn-outline-azul copy-btn" data-email="alberto.campanero.external@eviden.com">
+                <i class="ri-file-copy-line"></i> Copiar
+              </button>
+            </li>
+          </ul>
+        </div>
 
-      <!-- Pie -->
-      <div class="modal-footer border-0 pt-0">
-        <button type="button" class="btn btn-azul rounded-pill" data-bs-dismiss="modal">Cerrar</button>
+        <!-- Pie -->
+        <div class="modal-footer border-0 pt-0">
+          <button type="button" class="btn btn-azul rounded-pill" data-bs-dismiss="modal">Cerrar</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<main class="flex-grow-1">
-  <div class="main-container">
-    <router-outlet></router-outlet>
-  </div>
-</main>
+  <!-- Contenido principal -->
+  <main class="flex-grow-1">
+    <div class="main-container">
+      <router-outlet></router-outlet>
+    </div>
+  </main>
 
-<footer class="fondoFooter">
-  <app-footer></app-footer>
-</footer>
+  <footer class="fondoFooter">
+    <app-footer></app-footer>
+  </footer>
+
+</body>
 
 <style>
   .fondoFooter {
