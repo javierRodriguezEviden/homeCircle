@@ -15,4 +15,8 @@ export class CasaService {
   getCasas(): Observable<Casa[]> {
     return this.http.get<Casa[]>(this.apiUrl);
   }
+
+  getCasasPorUsuario(idUsuario: number): Observable<Casa[]> {
+    return this.http.get<Casa[]>(`${this.apiUrl}/usuario/${idUsuario}`);
+  }
 }
