@@ -1,57 +1,82 @@
 <main>
-<section class="py-5" >
-        <div class="container">
-            <h2 class="mb-4" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Busca tu
-                próxima reserva</h2>
-            <form class="row g-3">
-                <div class="col-md-4">
-                    <input type="text" class="form-control" placeholder="Ciudad o zona">
-                </div>
-                <div class="col-md-4">
-                    <select class="form-select">
-                        <option selected>Tipo de vivienda</option>
-                        <option>Casa</option>
-                        <option>Piso</option>
-                        <option>Habitación</option>
-                    </select>
-                </div>
-                <div class="col-md-4">
-                    <button type="submit" class="btn btn-azul w-100">Buscar</button>
-                </div>
-            </form>
+  <section class="py-5">
+    <div class="container">
+      <h2 class="mb-4" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Busca tu
+        próxima reserva</h2>
+      <form class="row g-3">
+        <div class="col-md-4">
+          <input type="text" class="form-control" placeholder="Ciudad o zona">
         </div>
-    </section>
+        <div class="col-md-4">
+          <select class="form-select">
+            <option selected>Tipo de vivienda</option>
+            <option>Casa</option>
+            <option>Piso</option>
+            <option>Habitación</option>
+          </select>
+        </div>
+        <div class="col-md-4">
+          <button type="submit" class="btn btn-azul w-100">Buscar</button>
+        </div>
+      </form>
+    </div>
+  </section>
 
-    <div class="d-flex justify-content-center align-items-center py-4">
-        <h4 class="underline-title">Apartamentos</h4>
+  <div class="d-flex justify-content-center align-items-center py-4">
+    <h4 class="underline-title">Apartamentos</h4>
+  </div>
+
+  <!--Aqui es donde nos vamos a encontrar con las casas y el cajón-->
+
+  <!-- reserva.component.html -->
+
+  <div class="container py-4">
+    <h2 class="text-center">Navega y encuentra la opción que más te interese</h2>
+
+    <div *ngIf="loading" class="loading">
+      Cargando casas...
     </div>
 
-<!--Aqui es donde nos vamos a encontrar con las casas y el cajón-->
+    <div *ngIf="!loading && casas.length === 0" class="no-casas">
+      No hay casas disponibles en este momento.
+    </div>
 
-<!-- reserva.component.html -->
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4 justify-content-center">
+      <div class="col px-2" *ngFor="let casa of casas">
+        <div class="card h-100 shadow" style="width: 19rem;">
+          <img src="../assets/casa.ejemplo.png" class="card-img-top w-100" alt="Casa de ejemplo">
 
-<h2>Navega y encuentra la opción que más te interese</h2>
+          <div class="card-body d-flex flex-column gap-2">
+            <h5 class="card-title m-0">{{ casa.direccion }}</h5>
 
-<div *ngIf="loading" class="loading">
-  Cargando casas...
-</div>
+            <div class="d-flex justify-content-between">
+              <p class="card-text m-0"><strong>Localidad:</strong> {{ casa.localidad }}</p>
+              <p class="card-text m-0"><strong>Provincia:</strong> {{ casa.provincia }}</p>
+            </div>
 
-<div *ngIf="!loading && casas.length === 0" class="no-casas">
-  No hay casas disponibles en este momento.
-</div>
+            <div class="d-flex justify-content-between">
+              <p class="card-text m-0"><strong>CP:</strong> {{ casa.cp }}</p>
+              <p class="card-text m-0"><strong>País:</strong> {{ casa.pais }}</p>
+            </div>
 
-<div class="casas-container">
-  <div class="casa-card" *ngFor="let casa of casas">
-    <h3>{{ casa.tipo }}</h3>
-    <p><strong>Dirección:</strong> {{ casa.direccion }}</p>
-    <p><strong>Provincia:</strong> {{ casa.provincia }}</p>
-    <p><strong>Localidad:</strong> {{ casa.localidad }}</p>
-    <p><strong>Precio por noche:</strong> ${{ casa.precio }}</p>
-    <p><strong>País:</strong> {{ casa.pais }}</p>
-    <button (click)="seleccionarCasa(casa)">Ver detalles / Reservar</button>
-    <hr>
+            <div class="d-flex justify-content-between align-items-center mt-auto">
+              <!--Este boton de editar casa tiene que estar fuera, no tiene sentido que este el editar en el menú general, cualquier usuario puede editar la casa de cualquiera-->
+              <button data-bs-toggle="modal" data-bs-target="#editarCasaModal"
+                class="btn btn-link p-0 m-0 text-decoration-none">
+                <i class="ri-pencil-line text-primary" style="font-size: xx-large;"></i>
+              </button>
+
+              <button class="btn btn-primary btn-sm px-3" (click)="seleccionarCasa(casa)">
+                Reservar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
-      <!--NO BORRAR, API PARA EL CLIMA-->
-      <app-clima-casas></app-clima-casas>
+
+
+  <!--NO BORRAR, API PARA EL CLIMA-->
+  <app-clima-casas></app-clima-casas>
 </main>

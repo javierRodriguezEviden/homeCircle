@@ -32,6 +32,8 @@ export class ReservaComponent implements OnInit {
 
   seleccionarCasa(casa: Casa) {
   console.log('Casa seleccionada:', casa);
-  // Aqui podriamos poner algo más especifico como unas caracteristicas de la casa, un componente que sea más especifico a la casa o la reserva directamente
+  /* Aqui podriamos poner algo más especifico como unas caracteristicas de la casa, un componente que sea más especifico a la casa o la reserva directamente
+  Una ruta que conduzca a algún sitio o un insertar en una base de datos en concreto para reservar
+  */
 }
 }
