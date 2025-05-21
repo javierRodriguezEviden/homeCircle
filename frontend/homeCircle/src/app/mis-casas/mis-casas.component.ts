@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { CasaServicio, Casa } from '../casa-servicio';
+import { CasaService } from '../casa-servicio';
+import { Casa } from '../models/casa.model';
+import { Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-mis-casas',
@@ -12,8 +14,12 @@ export class MisCasasComponent implements OnInit {
 
   casas: Casa[] = [];
   idUsuario: number | null = null;
+  rentForm: any;
+  fb: any;
+  selectedImage: any;
+  additionalImages: any;
 
-  constructor(private casaServicio: CasaServicio) {}
+  constructor(private casaServicio: CasaService) {}
 
   ngOnInit(): void {
     this.obtenerIdUsuarioDesdeToken();
@@ -34,6 +40,19 @@ export class MisCasasComponent implements OnInit {
     }
   }
 
+  // Inicializa el formulario reactivo
+  inicializarFormulario(): void {
+    this.rentForm = this.fb.group({
+      direccion: ['', Validators.required],
+      localidad: ['', Validators.required],
+      cp: ['', Validators.required],
+      pais: ['', Validators.required],
+      precio: ['', Validators.required],
+      tipo: ['', Validators.required]
+    });
+  }
+
+  // Obtiene las casas del usuario
   obtenerCasas(): void {
     if (this.idUsuario !== null) {
       this.casaServicio.getCasasPorUsuario(this.idUsuario).subscribe(
@@ -44,6 +63,55 @@ export class MisCasasComponent implements OnInit {
           console.error('Error al cargar las casas', error);
         }
       );
+    }
+  }
+
+  // Manejar cambio de archivo en el input oculto (foto principal)
+  onFileChange(event: any): void {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        this.selectedImage = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+
+  // Manejar archivos adicionales
+  onAdditionalFilesChange(event: any): void {
+    const files = event.target.files;
+    for (let i = 0; i < files.length; i++) {
+      const file = files[i];
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        this.additionalImages.push(e.target.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+
+  onDragOver(event: DragEvent): void {
+    event.preventDefault();
+    event.stopPropagation();
+  }
+
+  onDragLeave(event: DragEvent): void {
+    event.preventDefault();
+    event.stopPropagation();
+  }
+
+  onDrop(event: DragEvent): void {
+    event.preventDefault();
+    event.stopPropagation();
+    const files = event.dataTransfer?.files;
+    if (files && files.length > 0) {
+      const file = files[0];
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        this.selectedImage = e.target.result;
+      };
+      reader.readAsDataURL(file);
     }
   }
 }

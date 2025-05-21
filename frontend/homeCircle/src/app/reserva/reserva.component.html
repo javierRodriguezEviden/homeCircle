@@ -1,5 +1,5 @@
 <main>
-<section class="py-5" >
+    <section class="py-5">
         <div class="container">
             <h2 class="mb-4" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Busca tu
                 próxima reserva</h2>
@@ -26,44 +26,59 @@
         <h4 class="underline-title">Apartamentos</h4>
     </div>
 
-  <div class="col-md-4 px-5 mb-4">
-        <div class="card shadow-lg rounded-3 text-center overflow-hidden" style="border: none;">
-          <div class="card-header bg-light text-azul fw-bold">
-            <h5 class="card-title fw-bold">Avenida de Barber nº 8</h5>
-          </div>
-          <div class="card-body" style="background: linear-gradient(to bottom, #ffa60086, #FFFFFF);">
-            <img src="../assets/casa.ejemplo.png" class="img-fluid rounded-3 mb-3" alt="Apartamento">
-          </div>
-          <div class="row px-3">
-            <div class="col">
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item d-flex ms-3">
-                  <span><strong>Ciudad:</strong> Burguillos</span>
-                </li>
-                <li class="list-group-item d-flex no-border-bottom ms-3">
-                  <span><strong>Código postal:</strong> 45112</span>
-                </li>
-              </ul>
-            </div>
-            <div class="col">
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item d-flex ms-5">
-                  <span><strong>Provincia:</strong> Toledo</span>
-                </li>
-                <li class="list-group-item d-flex no-border-bottom ms-5">
-                  <span><strong>País:</strong> España</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="card-footer bg-transparent d-flex justify-content-between align-items-center py-3">
-            <p class="mb-0 text-start text-success fw-bold fs-5">300€</p>
-            <a href="#" class="btn btn-azul rounded-pill px-4">
-              <i class="ri-calendar-check-line me-2"></i> Reservar
-            </a>
-          </div>
+    <!--Aqui es donde nos vamos a encontrar con las casas y el cajón-->
+
+    <!-- reserva.component.html -->
+
+    <div class="container py-4">
+        <div *ngIf="loading" class="loading">
+            Cargando casas...
         </div>
-      </div>
-      <!--NO BORRAR, API PARA EL CLIMA-->
-      <app-clima-casas></app-clima-casas>
+
+        <div *ngIf="!loading && casas.length === 0" class="no-casas">
+            No hay casas disponibles en este momento.
+        </div>
+        <div class="col-12 col-md-6 text-center d-flex justify-content-center mb-4" *ngFor="let casa of casas">
+        <div class="card shadow-lg rounded-3 text-center overflow-hidden" style="border: none;">
+            <div class="card-header bg-light text-azul fw-bold">
+                <h5 class="card-title fw-bold">{{ casa.direccion }}</h5>
+            </div>
+            <div class="card-body" style="background: linear-gradient(to bottom, #ffa60086, #FFFFFF);">
+                <img src="../assets/casa.ejemplo.png" class="img-fluid rounded-3 mb-3" alt="Apartamento">
+            </div>
+            <div class="row px-3">
+                <div class="col">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item d-flex ms-3">
+                            <span><strong>Localidad:</strong>{{ casa.localidad }}</span>
+                        </li>
+                        <li class="list-group-item d-flex no-border-bottom ms-3">
+                            <span><strong>Código postal:</strong> {{ casa.cp }}</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item d-flex ms-5">
+                            <span><strong>Provincia:</strong> Toledo</span>
+                        </li>
+                        <li class="list-group-item d-flex no-border-bottom ms-5">
+                            <span><strong>País:</strong> {{ casa.pais }}</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card-footer bg-transparent d-flex justify-content-between align-items-center py-3">
+                <p class="mb-0 text-start text-success fw-bold fs-5">{{casa.precio}}€</p>
+                <a href="#" class="btn btn-azul rounded-pill px-4">
+                    <i class="ri-calendar-check-line me-2"></i> Reservar
+                </a>
+            </div>
+        </div>
+    </div>
+
+    </div>
+    
+    <!--NO BORRAR, API PARA EL CLIMA-->
+    <app-clima-casas></app-clima-casas>
 </main>

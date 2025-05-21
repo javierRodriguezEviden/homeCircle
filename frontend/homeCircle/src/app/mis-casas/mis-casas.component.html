@@ -1,57 +1,35 @@
-<div class="d-flex justify-content-center align-items-center py-4">
+<div class="d-flex justify-content-center py-4">
     <h4 class="underline-title">Mis casas</h4>
 </div>
 <div class="container py-4">
-    <div class="row row-cols-1 justify-content-center row-cols-lg-4 g-4">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4 justify-content-center">
         <div class="col px-0">
-            <div class="card h-100 shadow animacion" style="width: 20rem;">
+            <div class="card h-100 shadow animacion" style="width: 19rem;">
                 <img src="../assets/casa.ejemplo.png" class="card-img-top" alt="Casa de ejemplo">
                 <div class="card-body d-flex flex-column justify-content-between">
-                    <h5 class="card-title">San Pablo de los Montes, 8</h5>
-                    <div class="d-flex justify-content-between">
-                        <p class="card-text mb-0"><strong>Ciudad:</strong> Burguillos</p>
-                        <p class="card-text mb-0"><strong>Provincia:</strong> Toledo</p>
+                    <h5 class="card-title py-2">San Pablo de los Montes, 8</h5>
+                    <div class="d-flex">
+                        <p class="card-text mb-0"><strong>Localidad:</strong> Burguillos</p>
+                        <p class="card-text text-end mb-0"><strong>Provincia:</strong> Toledo</p>
                     </div>
                     <div class="d-flex justify-content-between">
                         <p class="card-text"><strong>CP:</strong> 28801</p>
-                        <p class="card-text"><strong>País:</strong> Espala</p>
+                        <p class="card-text text-end"><strong>País:</strong> Espala</p>
                     </div>
                     <div class="d-flex justify-content-between">
                         <div class="justify-content-start">
+                            <button data-bs-toggle="modal" data-bs-target="#editarCasaModal" class="btn btn-link text-decoration-none">
                             <i class="ri-pencil-line text-primary" style="font-size: xx-large;"></i>
+                            </button>
                         </div>
-                        <div class="justify-content-end">
-                            <i class="ri-eye-line text-primary" style="font-size: xx-large;"></i>
+                        <div class="justify-content-end mt-2">
+                            <i class="ri-eye-line text-primary"  style="font-size: xx-large;"></i>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col">
-            <div class="card shadow h-100 animacion" style="width: 20rem;">
-                <img src="../assets/casa.ejemplo.png" class="card-img-top" alt="Casa de ejemplo">
-                <div class="card-body d-flex flex-column justify-content-between">
-                    <h5 class="card-title">Otra dirección, 10</h5>
-                    <div class="d-flex justify-content-between">
-                        <p class="card-text mb-0"><strong>Ciudad:</strong> Alcalá</p>
-                        <p class="card-text mb-0"><strong>Provincia:</strong> Madrid</p>
-                    </div>
-                    <div class="d-flex justify-content-between">
-                        <p class="card-text"><strong>CP:</strong> 28801</p>
-                        <p class="card-text"><strong>País:</strong> Espala</p>
-                    </div>
-                    <div class="d-flex justify-content-between">
-                        <div class="justify-content-start">
-                            <i class="ri-pencil-line text-primary" style="font-size: xx-large;"></i>
-                        </div>
-                        <div class="justify-content-end">
-                            <i class="ri-eye-line text-primary" style="font-size: xx-large;"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Más cards, caben 4 por fila  -->
+        <!-- Más cards  -->
     </div>
 
     <!--AQUI METEMOS LA LOGICA DE LA CASAS PARA VER SI UN USUARIO TIENE O NO TIENE CASAS-->
@@ -93,3 +71,123 @@
         </button>
     </div>
 </div>
+
+<!-- Modal para editar la casa -->
+<div class="modal fade" id="editarCasaModal" tabindex="-1" aria-labelledby="editarCasaModalLabel" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content rounded-4 shadow-lg bg-light">
+            <!-- Encabezado de la modal -->
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title" id="editarCasaModalLabel"><i class="ri-edit-line me-2"></i> Editar Casa</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <!-- Cuerpo de la modal -->
+            <div class="modal-body p-4">
+                <form [formGroup]="rentForm" class="row g-3">
+                    <div class="col-md-6">
+                        <!-- Dirección -->
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control rounded-pill" id="direccion" placeholder="Dirección"
+                                formControlName="direccion">
+                            <label for="direccion"><i class="ri-map-pin-line me-2"></i> Dirección</label>
+                        </div>
+                        <div *ngIf="rentForm.get('direccion')?.invalid && rentForm.get('direccion')?.touched" class="text-danger">La dirección es requerida.
+                        </div>
+
+                        <!-- Localidad -->
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control rounded-pill" id="localidad" placeholder="Localidad"
+                                formControlName="localidad">
+                            <label for="localidad"><i class="ri-map-pin-2-line me-2"></i> Localidad</label>
+                        </div>
+                        <div *ngIf="rentForm.get('localidad')?.invalid && rentForm.get('localidad')?.touched" class="text-danger">La localidad es requerida.
+                        </div>
+
+                        <!-- Código Postal -->
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control rounded-pill" id="cp" placeholder="Código Postal"
+                                formControlName="cp">
+                            <label for="cp"><i class="ri-mail-line me-2"></i> Código Postal</label>
+                        </div>
+                        <div *ngIf="rentForm.get('cp')?.invalid && rentForm.get('cp')?.touched" class="text-danger">
+                            El código postal es requerido.
+                        </div>
+
+                        <!-- País -->
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control rounded-pill" id="pais" placeholder="País"
+                                formControlName="pais">
+                            <label for="pais"><i class="ri-earth-line me-2"></i> País</label>
+                        </div>
+                        <div *ngIf="rentForm.get('pais')?.invalid && rentForm.get('pais')?.touched" class="text-danger">
+                            El país es requerido.
+                        </div>
+
+                        <!-- Precio -->
+                        <div class="form-floating mb-3">
+                            <input type="number" class="form-control rounded-pill" id="precio" placeholder="Precio"
+                                formControlName="precio">
+                            <label for="precio"><i class="ri-money-euro-circle-line"></i> Precio</label>
+                        </div>
+                        <div *ngIf="rentForm.get('precio')?.invalid && rentForm.get('precio')?.touched" class="text-danger">
+                            El precio es requerido.
+                        </div>
+
+                        <!-- Tipo de Casa -->
+                        <div class="form-floating mb-3">
+                            <select class="form-select rounded-pill" id="tipo" formControlName="tipo"
+                                placeholder="Tipo de vivienda">
+                                <option value="" disabled selected>Selecciona una opción</option>
+                                <option value="apartamento">Apartamento</option>
+                                <option value="chalet">Chalet</option>
+                                <option value="casa_rural">Casa Rural</option>
+                                <option value="cabaña">Cabaña</option>
+                                <option value="bungalow">Bungalow</option>
+                            </select>
+                            <label for="tipo"><i class="ri-home-line me-2"></i> Tipo de vivienda</label>
+                        </div>
+                        <div *ngIf="rentForm.get('tipo')?.invalid && rentForm.get('tipo')?.touched" class="text-danger mt-1">
+                            El tipo de vivienda es requerido.
+                        </div>
+                    </div>
+
+                    <!-- Fotos -->
+                    <div class="col-md-6">
+                        <!-- Foto Principal -->
+                        <div class="mb-3">
+                            <label for="fotoPrincipal" class="form-label"><strong>Foto principal</strong></label>
+                            <div class="drop-zone border rounded-3 d-flex flex-column justify-content-center align-items-center p-4"
+                                (dragover)="onDragOver($event)" (dragleave)="onDragLeave($event)" (drop)="onDrop($event)">
+                                <i class="ri-image-line fs-1 text-muted"></i>
+                                <p class="text-muted">Arrastra y suelta una imagen aquí</p>
+                                <input type="file" id="fotoPrincipal" accept="image/*" (change)="onFileChange($event)" hidden>
+                            </div>
+                            <div *ngIf="selectedImage" class="mt-3">
+                                <img [src]="selectedImage" alt="Preview" class="img-thumbnail w-100">
+                            </div>
+                        </div>
+
+                        <!-- Fotos adicionales -->
+                        <div class="mb-3">
+                            <label for="fotosAdicionales" class="form-label"><strong>Fotos adicionales</strong></label>
+                            <input type="file" id="fotosAdicionales" multiple accept="image/*" (change)="onAdditionalFilesChange($event)"
+                                class="form-control rounded-pill">
+                            <div *ngIf="additionalImages.length > 0" class="mt-3 row">
+                                <div *ngFor="let image of additionalImages" class="col-4">
+                                    <img [src]="image" alt="Preview" class="img-thumbnail w-100">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Botones de Acción -->
+                    <div class="col-md-12 text-center">
+                        <button type="submit" class="btn btn-primary rounded-pill px-5 py-2 me-3" [disabled]="rentForm.invalid">
+                            <i class="ri-save-line me-2"></i> Guardar Cambios
+                        </button>
+                        <button type="button" class="btn btn-secondary rounded-pill px-5 py-2" data-bs-dismiss="modal">
+                            <i class="ri-close-line me-2"></i> Cancelar
+                        </button>
+                    </div>
+                </form>
+            </div>

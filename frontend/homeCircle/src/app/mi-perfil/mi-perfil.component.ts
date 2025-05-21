@@ -30,7 +30,6 @@ export class MiPerfilComponent implements OnInit {
 
     if (usuarioGuardado) {
       const usuarioParseado = JSON.parse(usuarioGuardado);
-
       // Asigna los datos del usuario a las variables
       this.idUsuario = usuarioParseado.id;
       this.nombreUsuario = usuarioParseado.nombre || usuarioParseado.name || 'Usuario';
@@ -40,8 +39,7 @@ export class MiPerfilComponent implements OnInit {
       this.dniUsuario = usuarioParseado.dni || 'DNI no disponible';
       this.sedeUsuario = usuarioParseado.sede || 'Sede no disponible';
       this.cuentabancariaUsuario = usuarioParseado.cuenta_banco || null;
-
-
+      
       // Inicializa el formulario con los datos del usuario
       this.editProfileForm = this.fb.group({
         id: [this.idUsuario, Validators.required],
@@ -57,7 +55,7 @@ export class MiPerfilComponent implements OnInit {
       console.log('No hay usuario guardado en localStorage');
     }
   }
-
+ 
   // Método para actualizar el perfil
   updateProfile(): void {
     if (this.editProfileForm.valid) {
@@ -67,7 +65,6 @@ export class MiPerfilComponent implements OnInit {
       if (usuarioGuardado) {
         const usuarioParseado = JSON.parse(usuarioGuardado);
         const userId = usuarioParseado.id;
-
         this.http.put<any>(`http://localhost:8020/usuarios/${userId}`, updatedData).subscribe(
           (response) => {
             // Actualiza localStorage y variables solo si el backend responde OK

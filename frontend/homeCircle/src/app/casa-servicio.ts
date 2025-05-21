@@ -1,30 +1,22 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
-export interface Casa {
-  id: number;
-  tipo: string;
-  direccion: string;
-  cp: string;
-  localidad: string;
-  provincia: string;
-  pais: string;
-  precio: number;
-}
+import { Casa } from './models/casa.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CasaServicio {
+export class CasaService {
 
-  private apiUrl = 'http://localhost:8080/api/casas'; //Metemos la api de las casas y la dejamos, mirar en el back por si acaso
+  private apiUrl = 'http://localhost:8020/casas'; 
 
   constructor(private http: HttpClient) {}
+
+  getCasas(): Observable<Casa[]> {
+    return this.http.get<Casa[]>(this.apiUrl);
+  }
 
   getCasasPorUsuario(idUsuario: number): Observable<Casa[]> {
     return this.http.get<Casa[]>(`${this.apiUrl}/usuario/${idUsuario}`);
   }
-
-  
 }

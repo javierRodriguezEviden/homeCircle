@@ -2,6 +2,9 @@ package com.app.homeCircle.Entity;
 
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -55,6 +58,7 @@ public class Reserva {
 
     @ManyToOne
     @JoinColumn(name = "id_casa")
+    @JsonIgnore
     private Casa casa;
 
 }
