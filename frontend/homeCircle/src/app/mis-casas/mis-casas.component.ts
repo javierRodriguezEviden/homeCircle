@@ -11,20 +11,31 @@ import { CasaServicio, Casa } from '../casa-servicio';
 export class MisCasasComponent implements OnInit {
 
   casas: Casa[] = [];
-  idUsuario: number = 1; // Aquí puedes obtener el ID del usuario logueado desde AuthService o localStorage
-  rentForm!: FormGroup; // Formulario reactivo para editar la casa
-  casaSeleccionada: Casa | null = null; // Almacena la casa seleccionada para editar
-  selectedImage: string | null = null; // Foto principal
-  additionalImages: string[] = [];    // Fotos adicionales
+  idUsuario: number | null = null;
+  rentForm: any;
+  fb: any;
+  selectedImage: any;
+  additionalImages: any;
 
-  constructor(
-    private casaServicio: CasaServicio,
-    private fb: FormBuilder // Inyectamos FormBuilder para crear el formulario reactivo
-  ) {}
+  constructor(private casaServicio: CasaServicio) {}
 
   ngOnInit(): void {
-    this.inicializarFormulario();
-    this.obtenerCasas();
+    this.obtenerIdUsuarioDesdeToken();
+  }
+
+  obtenerIdUsuarioDesdeToken(): void {
+    const token = localStorage.getItem('auth_token'); //Guardo el token
+    if (token) {
+      try {
+        const payload = JSON.parse(atob(token.split('.')[1])); 
+        this.idUsuario = payload.id_usuario; // Este campo tiene que estar
+        this.obtenerCasas();
+      } catch (e) {
+        console.error('Error al decodificar el token');
+      }
+    } else {
+      console.error('No hay token en localStorage');
+    }
   }
 
   // Inicializa el formulario reactivo
@@ -41,14 +52,16 @@ export class MisCasasComponent implements OnInit {
 
   // Obtiene las casas del usuario
   obtenerCasas(): void {
-    this.casaServicio.getCasasPorUsuario(this.idUsuario).subscribe(
-      (data) => {
-        this.casas = data;
-      },
-      (error) => {
-        console.error('Error al cargar las casas', error);
-      }
-    );
+    if (this.idUsuario !== null) {
+      this.casaServicio.getCasasPorUsuario(this.idUsuario).subscribe(
+        (data) => {
+          this.casas = data;
+        },
+        (error) => {
+          console.error('Error al cargar las casas', error);
+        }
+      );
+    }
   }
 
   // Manejar cambio de archivo en el input oculto (foto principal)
