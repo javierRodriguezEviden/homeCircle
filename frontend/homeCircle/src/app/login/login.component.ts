@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { AuthService } from '../auth.service'; // ✅ Importa el servicio
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-login',
@@ -15,25 +15,22 @@ export class LoginComponent {
   password: string = '';
   mensajeLogin: string = '';
   logueado: boolean = false;
-
-  // Para almacenar los errores de validación
   errores: { [key: string]: string } = {};
 
-  private apiUrl = '/api/auth/login';
+  private apiUrl = 'http://localhost:8020/auth/login'; // Asegúrate de que sea la URL correcta
 
   constructor(
     private http: HttpClient,
     private router: Router,
-    private authService: AuthService // ✅ Inyecta el servicio
+    private authService: AuthService
   ) { }
 
-  // Método para iniciar sesión
   loguearUsuario(): void {
     this.errores = {};
     this.mensajeLogin = '';
     this.logueado = false;
 
-    const credentials = { email: this.email, password: this.password };
+    const credentials = { email: this.email, password: this.password};
 
     this.http.post<any>(this.apiUrl, credentials).subscribe(
       (response) => {
@@ -42,7 +39,7 @@ export class LoginComponent {
 
         // Guardamos el usuario en localStorage
         localStorage.setItem('usuario', JSON.stringify(response));
-
+        localStorage.setItem('token', response.token);
         console.log('Login exitoso', response);
 
         // ✅ Usamos el servicio para guardar el estado

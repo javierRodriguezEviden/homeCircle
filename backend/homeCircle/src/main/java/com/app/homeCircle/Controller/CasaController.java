@@ -2,6 +2,7 @@ package com.app.homeCircle.Controller;
 
 import java.util.List;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,6 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.app.homeCircle.Entity.Casa;
 import com.app.homeCircle.Service.CasaService;
+import com.app.homeCircle.Entity.CasaRepository;
+
 
 import lombok.RequiredArgsConstructor;
 
@@ -21,19 +24,23 @@ import lombok.RequiredArgsConstructor;
 public class CasaController {
 
     private final CasaService casaService;
+    private final CasaRepository casaRepository;
 
     @PostMapping
-    private void createCasa(@RequestBody Casa casa){
+    public void createCasa(@RequestBody Casa casa) {
         casaService.createCasa(casa);
     }
 
     @GetMapping
-    public List<Casa> searchCasas(){
-        return casaService.searchCasas();
+     public ResponseEntity<List<Casa>> searchCasas() {
+        List<Casa> casas = casaService.findAll();
+        return ResponseEntity.ok(casas);
     }
 
+    
+
     @DeleteMapping("/{id}")
-    public void deleteCasa(@PathVariable Integer id){
+    public void deleteCasa(@PathVariable Integer id) {
         casaService.deleteCasa(id);
     }
 }

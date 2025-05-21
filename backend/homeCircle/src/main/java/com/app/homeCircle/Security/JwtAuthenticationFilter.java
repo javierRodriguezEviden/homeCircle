@@ -93,3 +93,4 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         return null; // Si no hay token, devuelve null.
     }
 }
+

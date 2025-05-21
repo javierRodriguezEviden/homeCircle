@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { CasaServicio, Casa } from '../casa-servicio';
+import { ActivatedRoute } from '@angular/router';
+import { CasaService } from '../casa-servicio';
+import { Casa } from '../models/casa.model';
+import { Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-mis-casas',
@@ -17,7 +19,7 @@ export class MisCasasComponent implements OnInit {
   selectedImage: any;
   additionalImages: any;
 
-  constructor(private casaServicio: CasaServicio) {}
+  constructor(private casaServicio: CasaService) {}
 
   ngOnInit(): void {
     this.obtenerIdUsuarioDesdeToken();

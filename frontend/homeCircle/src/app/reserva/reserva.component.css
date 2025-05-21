@@ -12,7 +12,7 @@
     transform: translateX(-50%);
     width: 150%;
     height: 3px;
-    background-color: #FFA500;
+    background-color: var(--color-amarillo);
   }
  
   .no-border-bottom {
@@ -36,3 +36,6 @@
   transform: scale(1.02); /* Aumenta el tamaño del card un 5% */
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Añade una sombra más pronunciada al hover */
 }
+
+/* reserva.component.css */
+

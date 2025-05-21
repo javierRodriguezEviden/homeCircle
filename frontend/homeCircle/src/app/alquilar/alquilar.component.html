@@ -2,7 +2,7 @@
   <div class="container mt-5 py-4">
     <div class="card shadow-lg rounded-3 p-4">
       <h3 class="text-center mb-4 text-primary"><strong>Poner mi casa en alquiler</strong></h3>
- 
+
       <!-- Formulario -->
       <form (ngSubmit)="registrarCasa($event)" [formGroup]="rentForm" class="row g-3 py-2 mb-2">
         <!-- Dirección -->
@@ -16,7 +16,6 @@
             La dirección es requerida.
           </div>
         </div>
- 
  
         <!-- Localidad -->
         <div class="col-md-6">
@@ -79,13 +78,16 @@
             </select>
             <label for="tipo"><i class="ri-home-line me-2"></i> Tipo de vivienda</label>
           </div>
+
+        
  
           <!-- Mensaje de error -->
           <div *ngIf="rentForm.get('tipo')?.invalid && rentForm.get('tipo')?.touched" class="text-danger mt-1">
             El tipo de vivienda es requerido.
           </div>
         </div>
- 
+
+        
         <!-- Provincia -->
         <div class="col-md-6">
           <div class="form-floating">
@@ -99,9 +101,7 @@
         </div>
  
  
- 
- 
- 
+
         <!-- Foto Principal (Drag & Drop) -->
         <div class="col-md-12">
           <label for="fotoPrincipal" class="form-label"><strong>Foto principal</strong></label>

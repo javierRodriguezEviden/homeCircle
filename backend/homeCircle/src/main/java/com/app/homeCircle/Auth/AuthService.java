@@ -52,6 +52,7 @@ public class AuthService {
             String token = jwtService.getToken(usuario.getEmail());
             // Devuelve información del usuario y el token
             response.put("token", token);
+            response.put("id", usuario.getId());
             response.put("name", usuario.getNombre());
             response.put("apellidos", usuario.getApellidos());
             response.put("email", usuario.getEmail());

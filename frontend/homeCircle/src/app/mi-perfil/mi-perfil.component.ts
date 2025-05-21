@@ -39,6 +39,7 @@ export class MiPerfilComponent implements OnInit {
       this.dniUsuario = usuarioParseado.dni || 'DNI no disponible';
       this.sedeUsuario = usuarioParseado.sede || 'Sede no disponible';
       this.cuentabancariaUsuario = usuarioParseado.cuenta_banco || null;
+      
       // Inicializa el formulario con los datos del usuario
       this.editProfileForm = this.fb.group({
         id: [this.idUsuario, Validators.required],
@@ -60,6 +61,7 @@ export class MiPerfilComponent implements OnInit {
     if (this.editProfileForm.valid) {
       const updatedData = this.editProfileForm.value;
       const usuarioGuardado = localStorage.getItem('usuario');
+
       if (usuarioGuardado) {
         const usuarioParseado = JSON.parse(usuarioGuardado);
         const userId = usuarioParseado.id;

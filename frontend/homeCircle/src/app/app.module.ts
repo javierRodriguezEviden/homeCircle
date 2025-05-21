@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
+import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
 import { BrowserModule, withEventReplay } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+
+import { AuthInterceptor } from './auth.interceptor';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,6 +24,7 @@ import { AlquilarComponent } from './alquilar/alquilar.component';
 import { MapaCasaComponent } from './mapa-casa/mapa-casa.component';
 import { ClimaCasasComponent } from './clima-casas/clima-casas.component';
 import { FooterComponent } from '../footer.component';
+import { FormBuilder } from '@angular/forms';
 
 
 //Creamos la variable const routes para establecer las rutas
@@ -68,11 +72,17 @@ const appRoutes:Routes=[
     FormsModule,
     RouterModule.forRoot(appRoutes),
     ReactiveFormsModule,
-    HttpClientModule 
+    HttpClientModule
   ],
   providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    },
     provideHttpClient(),
     LoginComponent,
+    
   ],
   bootstrap: [AppComponent]
 })

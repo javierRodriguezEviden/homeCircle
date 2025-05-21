@@ -32,27 +32,27 @@ export class AlquilarComponent {
       tipo: ['', Validators.required],
     });
   }
- 
+
   registrarCasa(event: Event) {
     event.preventDefault();
- 
+
     if (this.rentForm.invalid) {
       this.mensajeCreacion = 'Por favor completa todos los campos obligatorios.';
       this.añadido = false;
       return;
     }
- 
+
     const userData = this.rentForm.value;
- 
+
     // Obtener el token desde localStorage
     const token = localStorage.getItem('token');
- 
+
     // Configurar las cabeceras con el token
     const headers = new HttpHeaders({
       'Authorization': 'Bearer ' + token,
       'Content-Type': 'application/json'
     });
- 
+
     // Hacer la petición POST con las cabeceras
     this.http.post('http://localhost:8020/casas', userData, { headers }).subscribe({
       next: (response: any) => {
@@ -64,7 +64,7 @@ export class AlquilarComponent {
       },
       error: (error) => {
         console.error('Error al crear la casa:', error);
- 
+
         this.añadido = false;
         if (error.status === 401) {
           this.mensajeCreacion = 'No estás autenticado. Inicia sesión.';
@@ -78,7 +78,7 @@ export class AlquilarComponent {
       }
     });
   }
- 
+
   // Manejar cambio de archivo en el input oculto (foto principal)
   onFileChange(event: any): void {
     const file = event.target.files[0];
@@ -90,7 +90,7 @@ export class AlquilarComponent {
       reader.readAsDataURL(file);
     }
   }
- 
+
   // Manejar archivos adicionales
   onAdditionalFilesChange(event: any): void {
     const files = event.target.files;
@@ -103,17 +103,17 @@ export class AlquilarComponent {
       reader.readAsDataURL(file);
     }
   }
- 
+
   onDragOver(event: DragEvent): void {
     event.preventDefault();
     event.stopPropagation();
   }
- 
+
   onDragLeave(event: DragEvent): void {
     event.preventDefault();
     event.stopPropagation();
   }
- 
+
   onDrop(event: DragEvent): void {
     event.preventDefault();
     event.stopPropagation();

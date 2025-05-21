@@ -2,10 +2,8 @@
 
     <div class="login">
 
-
-
         <form action="" class="login__form">
-            <h1 class="login__title bold"><strong>Inicia sesión</strong></h1>
+<!--             <h1 class="login__title"><strong>Iniciar sesión</strong></h1> -->
 
             <div class="col-md-12">
                 <div class="form-floating">
@@ -27,40 +25,15 @@
                 {{ mensajeLogin }}
             </div>
 
-            <button type="submit" class="btn btn-primary rounded-pill mt-3 py-2" value="Loguear"
+            <button type="submit" class="btn btn-azul rounded-pill mt-3 py-2" value="Loguear"
                 (click)="loguearUsuario()">Iniciar sesión</button>
 
-
-            <!-- <div class="login__inputs">
-                <div class="login__box">
-                    <input type="email" placeholder="Email" required class="login__input" name="email"
-                        [(ngModel)]="email">
-                    <i class="ri-mail-fill"></i>
-                </div>
-
-                <div class="login__box">
-                    <input type="password" placeholder="Contraseña" required class="login__input" name="password"
-                        [(ngModel)]="password">
-                    <i class="ri-lock-2-fill"></i>
-                </div>
-            </div> -->
-
-
-
-           <!--  <button type="submit" class="login_button" value="Loguear" (click)="loguearUsuario()">Iniciar
-                sesión</button> -->
 
             <div class="login__register">
                 ¿No tienes una cuenta? <a href="/registro">Regístrate</a>
             </div>
 
-            <!--Se deja este trozo de codigo como mensaje en caso de que  el usuario entre-->
-            <!-- <div class="container">
-                <strong><p *ngIf="logueado">{{mensajeLogin}}</p></strong>
-            </div> -->
         </form></div>
-
-    <!--Hacemos llamamiento en caso de que sea registrado el usuario-->
 
 
 </div>

@@ -2,6 +2,10 @@ package com.app.homeCircle.Entity;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIncludeProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -13,6 +17,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -25,6 +30,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 @Table(name = "casa")
+@JsonIncludeProperties({
+    "id", "tipo", "direccion", "cp", "localidad", "provincia", "pais", "precio"
+})
 public class Casa {
 
     public enum Tipo_casa {
@@ -39,7 +47,7 @@ public class Casa {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @NotBlank(message = "El campo nombre no puede estar vacio")
+    @NotNull(message = "El tipo de casa no puede estar vacío")
     @Enumerated(EnumType.STRING)
     private Tipo_casa tipo;
 
@@ -62,7 +70,7 @@ public class Casa {
     @Size(max = 20, message = "El pais no puede tener mas de 20 caracteres")
     private String pais;
 
-    @NotBlank(message = "El campo precio no puede estar vacio")
+    @NotNull
     private int precio;
 
     @ManyToOne
