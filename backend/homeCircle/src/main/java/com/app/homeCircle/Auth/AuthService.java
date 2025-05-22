@@ -49,17 +49,9 @@ public class AuthService {
             }
 
             // Generar el token JWT para el usuario autenticado.
-            String token = jwtService.getToken(usuario.getEmail());
+            String token = jwtService.getToken(usuario.getEmail(), usuario.getNombre());
             // Devuelve información del usuario y el token
             response.put("token", token);
-            response.put("id", usuario.getId());
-            response.put("name", usuario.getNombre());
-            response.put("apellidos", usuario.getApellidos());
-            response.put("email", usuario.getEmail());
-            response.put("telefono", usuario.getTelefono());
-            response.put("dni", usuario.getDni());
-            response.put("sede", usuario.getSede());
-            response.put("cuenta_banco", usuario.getCuenta_banco());
             response.put("message", "Inicio de sesión exitoso.");
             return new ResponseEntity<>(response, HttpStatus.OK);
 
@@ -102,7 +94,7 @@ public class AuthService {
             userRepository.save(usuario);
 
             // Generar el token JWT
-            String token = jwtService.getToken(usuario.getEmail());
+            String token = jwtService.getToken(usuario.getEmail(), usuario.getNombre());
             response.put("message", "Usuario registrado correctamente");
             response.put("token", token);
             return new ResponseEntity<>(response, HttpStatus.CREATED); // Código 201
