@@ -28,7 +28,20 @@
             La localidad es requerida.
           </div>
         </div>
- 
+        
+        
+        <!-- Provincia -->
+        <div class="col-md-6">
+          <div class="form-floating">
+            <input type="text" class="form-control rounded-pill" id="provincia" placeholder="Provincia"
+              formControlName="provincia">
+            <label for="provincia"><i class="ri-map-pin-2-line me-2"></i> Provincia</label>
+          </div>
+          <div *ngIf="rentForm.get('provincia')?.invalid && rentForm.get('provincia')?.touched" class="text-danger">
+            La provincia es requerida.
+          </div>
+        </div>
+
         <!-- Código Postal -->
         <div class="col-md-6">
           <div class="form-floating">
@@ -63,9 +76,9 @@
             El precio es requerido.
           </div>
         </div>
- 
+
         <!--Tipo de casa-->
- 
+
         <div class="col-md-6">
           <div class="form-floating">
             <select class="form-select rounded-pill" id="tipo" formControlName="tipo" placeholder="Tipo de vivienda">
@@ -80,27 +93,12 @@
           </div>
 
         
- 
+
           <!-- Mensaje de error -->
           <div *ngIf="rentForm.get('tipo')?.invalid && rentForm.get('tipo')?.touched" class="text-danger mt-1">
             El tipo de vivienda es requerido.
           </div>
         </div>
-
-        
-        <!-- Provincia -->
-        <div class="col-md-6">
-          <div class="form-floating">
-            <input type="text" class="form-control rounded-pill" id="provincia" placeholder="Provincia"
-              formControlName="provincia">
-            <label for="provincia"><i class="ri-map-pin-2-line me-2"></i> Provincia</label>
-          </div>
-          <div *ngIf="rentForm.get('provincia')?.invalid && rentForm.get('provincia')?.touched" class="text-danger">
-            La provincia es requerida.
-          </div>
-        </div>
- 
- 
 
         <!-- Foto Principal (Drag & Drop) -->
         <div class="col-md-12">

@@ -80,7 +80,7 @@ export class MiPerfilComponent implements OnInit {
             this.nombreUsuario = response.nombre || response.name || 'Usuario';
             this.apellidosUsuario = response.apellidos || 'Apellidos no disponibles';
             this.gmailUsuario = response.email || 'Correo no disponible';
-            this.tlfUsuario = response.telefono || null;
+            this.tlfUsuario = response.telefono || 'Teléfono no disponible';
             this.dniUsuario = response.dni || 'DNI no disponible';
             this.sedeUsuario = response.sede || 'Sede no disponible';
             this.cuentabancariaUsuario = response.cuenta_banco || null;
