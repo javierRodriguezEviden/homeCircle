@@ -28,6 +28,16 @@ export class LoginComponent {
     private authService: AuthService
   ) { }
 
+  private decodificarToken(token: string): any {
+    try {
+      const payload = token.split('.')[1];
+      const decoded = atob(payload.replace(/-/g, '+').replace(/_/g, '/'));
+      return JSON.parse(decoded);
+    } catch (e) {
+      return null;
+    }
+  }
+
   // Método que se llama al hacer login
   loguearUsuario(): void {
     this.errores = {};
@@ -40,42 +50,40 @@ export class LoginComponent {
     // Hace la petición POST al backend para autenticar
     this.http.post<any>(this.apiUrl, credentials).subscribe(
       (response) => {
-        // Si el login es correcto, guarda usuario y token en localStorage
-        localStorage.setItem('usuario', JSON.stringify(response));
         localStorage.setItem('token', response.token);
 
-        // Llama al servicio de autenticación para actualizar el estado
-        this.authService.login(credentials).subscribe(
-          (response) => {
-            // Si todo va bien, vuelve a guardar token y usuario
-            localStorage.setItem('token', response.token);
-            localStorage.setItem('usuario', JSON.stringify({ email: credentials.email }));
-            // Marca como logueado y muestra mensaje
-            // (No deberías acceder a usuarioLogueado directamente, mejor hacerlo solo en el servicio)
-            this.authService.usuarioLogueado.next(true);
-            this.mensajeLogin = 'Bienvenido a tu perfil, ' + this.email;
-            // Redirige al usuario a la página principal
-            setTimeout(() => {
-              this.router.navigate(['/homeRegistrado']);
-            }, 0);
-          },
-          (error) => {
-            // Si hay error, muestra el mensaje correspondiente
-            if (error.status === 400 && error.error) {
-              if (Array.isArray(error.error.errors)) {
-                this.mensajeLogin = error.error.errors.join('\n');
-              } else if (error.error.message) {
-                this.mensajeLogin = error.error.message;
-              } else {
-                this.mensajeLogin = 'Error inesperado. Inténtalo de nuevo.';
-              }
-            } else {
-              this.mensajeLogin = 'Error inesperado. Inténtalo de nuevo.';
-            }
-            this.logueado = false;
-          }
-        );
+        // Decodifica el token para obtener los datos del usuario
+        const datosUsuario = this.decodificarToken(response.token);
+        if (datosUsuario) {
+          localStorage.setItem('email', datosUsuario.sub); // email del usuario
+          localStorage.setItem('nombre', datosUsuario.nombre); // nombre del usuario
+        }
+
+        //!Console log de prueba
+        //console.log('Usuario logueado response:', response);
+        //console.log('Datos extraídos del token:', datosUsuario);
+
+        this.authService.usuarioLogueado.next(true);
+        this.mensajeLogin = response.message;
+        setTimeout(() => {
+          this.router.navigate(['/homeRegistrado']);
+        }, 0);
       },
+      (error) => {
+        // Si hay error, muestra el mensaje correspondiente
+        if (error.status === 400 && error.error) {
+          if (Array.isArray(error.error.errors)) {
+            this.mensajeLogin = error.error.errors.join('\n');
+          } else if (error.error.message) {
+            this.mensajeLogin = error.error.message;
+          } else {
+            this.mensajeLogin = 'Error inesperado. Inténtalo de nuevo.';
+          }
+        } else {
+          this.mensajeLogin = 'Error inesperado. Inténtalo de nuevo.';
+        }
+        this.logueado = false;
+      }
     );
   }
 }

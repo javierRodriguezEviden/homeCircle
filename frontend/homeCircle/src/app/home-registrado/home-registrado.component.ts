@@ -10,8 +10,6 @@ export class HomeRegistradoComponent implements OnInit {
 
   // Variables para almacenar los datos del usuario
   nombreUsuario: string | null = null;
-  gmailUsuario: string | null = null;
-  tlfUsuario: Number | null = null;
 
   // Método que se ejecuta al inicializar el componente
   ngOnInit(): void {
