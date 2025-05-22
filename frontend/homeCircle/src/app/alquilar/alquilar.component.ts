@@ -13,10 +13,10 @@ export class AlquilarComponent {
   rentForm: FormGroup;
   selectedImage: string | null = null;
   additionalImages: string[] = [];
- 
+
   mensajeCreacion = '';
   añadido = false;
- 
+
   constructor(
     private fb: FormBuilder,
     private http: HttpClient,

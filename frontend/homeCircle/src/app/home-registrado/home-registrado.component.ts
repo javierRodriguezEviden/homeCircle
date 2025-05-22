@@ -33,18 +33,4 @@ export class HomeRegistradoComponent implements OnInit {
       console.log('No hay usuario guardado en localStorage');
     }
   }
-/*
-  // ✅ Inyectamos el servicio en el constructor
-  constructor(private authService: AuthService) {}
-
-  ngOnInit(): void {
-    // ✅ Te suscribes al observable para saber si está logueado
-    this.authService.isLoggedIn$.subscribe(loggedIn => {
-      if (loggedIn) {
-        const user = this.authService.getUsuario();
-        console.log('Usuario logueado:', user);
-        // Aquí puedes cargar datos personalizados del usuario
-      }
-    });
-  }*/
 }

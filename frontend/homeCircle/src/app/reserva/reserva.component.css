@@ -3,7 +3,7 @@
     display: inline-block;
     text-align: center;
   }
- 
+
   .underline-title::after {
     content: '';
     position: absolute;
@@ -14,23 +14,23 @@
     height: 3px;
     background-color: var(--color-amarillo);
   }
- 
+
   .no-border-bottom {
   border-bottom: none !important; /* Elimina el borde inferior */
 }
- 
+
 .list-group-flush .list-group-item {
   border: none; /* Elimina todos los bordes */
 }
- 
+
 .list-group-flush .list-group-item:last-child {
   border-bottom: 1px solid rgba(0, 0, 0, 0.125); /* Mantén el borde inferior solo en el último elemento */
 }
- 
- .card {
+
+.card {
   transition: transform 0.3s ease; /* Añade una transición suave */
 }
- 
+
 /* Animación al hover */
 .card:hover {
   transform: scale(1.02); /* Aumenta el tamaño del card un 5% */

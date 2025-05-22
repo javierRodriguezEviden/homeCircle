@@ -13,18 +13,17 @@ import { OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
   
 constructor(
-      private route: ActivatedRoute,
-      private viewportScroller: ViewportScroller
-    ) {}
+  private route: ActivatedRoute,
+  private viewportScroller: ViewportScroller ) {}
   
-    ngOnInit(): void {
-      this.route.fragment.subscribe(fragment => {
-        if (fragment) {
-          setTimeout(() => {
-            this.viewportScroller.scrollToAnchor(fragment);
-          }, 100);
-        }
-      });
-    }
+  ngOnInit(): void {
+  this.route.fragment.subscribe(fragment => {
+  if (fragment) {
+  setTimeout(() => {
+  this.viewportScroller.scrollToAnchor(fragment);
+  }, 100);
+  }
+  });
+  }
   }
   
