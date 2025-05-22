@@ -52,7 +52,7 @@ public class CasaControllerTest {
 
         verify(casaService, times(1)).searchCasas();
     }
-
+              
     @Test
     void searchCasas_ShouldReturnEmptyList() throws Exception {
         when(casaService.searchCasas()).thenReturn(Collections.emptyList());
