@@ -2,6 +2,7 @@ package com.app.homeCircle.Controller;
 
 import java.util.List;
 
+import com.app.homeCircle.dto.UsuarioBasicDTO;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,7 +35,8 @@ public class UsuarioController {
         return usuarioService.searchUsuarios();
     }
 
-    @GetMapping("/{id}")
+    //EN RESERVA
+    /*@GetMapping("/{id}")
     public ResponseEntity<Usuario> getUsuarioById(@PathVariable Integer id) {
         Usuario usuario = usuarioService.searchById(id);
         if (usuario != null) {
@@ -42,11 +44,17 @@ public class UsuarioController {
         } else {
             return ResponseEntity.notFound().build();
         }
-    }
+    }*/
 
-    @GetMapping("/{email}")
-    public Usuario searchByEmail(@PathVariable String email) {
-        return usuarioService.searchByEmail(email);
+    // Metodo para buscar los datos del usuario por email
+    @PostMapping("/search")
+    public ResponseEntity<UsuarioBasicDTO> searchByEmail(@RequestBody String email) {
+        UsuarioBasicDTO usuario = usuarioService.searchByEmail(email);
+        if (usuario != null) {
+            return ResponseEntity.ok(usuario);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     /* Metodo para actualizar el usuario en el perfil */

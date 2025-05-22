@@ -2,6 +2,7 @@ package com.app.homeCircle.Service;
 
 import java.util.List;
 
+import com.app.homeCircle.dto.UsuarioBasicDTO;
 import org.springframework.stereotype.Service;
 
 import com.app.homeCircle.Entity.Usuario;
@@ -29,9 +30,21 @@ public class UsuarioService {
     }
 
     // buscar usuario por email
-    public Usuario searchByEmail(String email) {
-        return usuarioRepository.findByEmail(email).orElse(null);
+    public UsuarioBasicDTO searchByEmail(String email) {
+        Usuario usuario = usuarioRepository.findByEmail(email).orElse(null);
+        if (usuario == null) {
+            return null;
+        }
+        return new UsuarioBasicDTO(
+                usuario.getNombre(),
+                usuario.getApellidos(),
+                usuario.getEmail(),
+                usuario.getTelefono(),
+                usuario.getDni(),
+                usuario.getSede()
+        );
     }
+
 
     public Usuario updateUsuario(Integer id, Usuario usuarioData) {
         return usuarioRepository.findById(id).map(usuario -> {

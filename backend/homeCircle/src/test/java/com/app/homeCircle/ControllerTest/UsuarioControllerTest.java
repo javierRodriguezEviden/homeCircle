@@ -3,6 +3,7 @@ package com.app.homeCircle.ControllerTest;
 import com.app.homeCircle.Controller.UsuarioController;
 import com.app.homeCircle.Entity.Usuario;
 import com.app.homeCircle.Service.UsuarioService;
+import com.app.homeCircle.dto.UsuarioBasicDTO;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -67,26 +68,39 @@ public class UsuarioControllerTest {
 
     @Test
     void searchByEmail_ShouldReturnUser() throws Exception {
-        Usuario usuario = new Usuario();
-        usuario.setEmail("test@example.com");
-        when(usuarioService.searchByEmail("test@example.com")).thenReturn(usuario);
+        // Arrange
+        String email = "test@example.com";
+        UsuarioBasicDTO expectedDto = new UsuarioBasicDTO(
+                "Nombre",
+                "Apellidos",
+                "test@example.com",
+                "123456789",
+                "12345678A",
+                "SedeApellidos"
+        );
+        when(usuarioService.searchByEmail(email)).thenReturn(expectedDto);
 
-        mockMvc.perform(get("/usuarios/test@example.com"))
+        // Act & Assert
+        mockMvc.perform(get("/{email}", email))
                 .andExpect(status().isOk())
-                .andExpect(content().contentType(MediaType.APPLICATION_JSON));
-
-        verify(usuarioService, times(1)).searchByEmail("test@example.com");
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$.nombre").value(expectedDto.getNombre()))
+                .andExpect(jsonPath("$.apellidos").value(expectedDto.getApellidos()))
+                .andExpect(jsonPath("$.email").value(expectedDto.getEmail()))
+                .andExpect(jsonPath("$.telefono").value(expectedDto.getTelefono()))
+                .andExpect(jsonPath("$.dni").value(expectedDto.getDni()))
+                .andExpect(jsonPath("$.sedeapellidos").value(expectedDto.getSede()));
     }
 
     @Test
     void searchByEmail_ShouldReturnNotFound() throws Exception {
-        when(usuarioService.searchByEmail("notfound@example.com")).thenReturn(null);
+        // Arrange
+        String email = "noexiste@example.com";
+        when(usuarioService.searchByEmail(email)).thenReturn(null);
 
-        mockMvc.perform(get("/usuarios/notfound@example.com"))
-                .andExpect(status().isOk())
-                .andExpect(content().string(""));
-
-        verify(usuarioService, times(1)).searchByEmail("notfound@example.com");
+        // Act & Assert
+        mockMvc.perform(get("/{email}", email))
+                .andExpect(status().isNotFound());
     }
 
     @Test
