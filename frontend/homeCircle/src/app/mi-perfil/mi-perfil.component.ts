@@ -22,9 +22,6 @@ export class MiPerfilComponent implements OnInit {
   //Formulario reactivo para editar la cuenta del banco
   editBancForm!: FormGroup;
   
-
-
-
   // Formulario reactivo para editar el perfil
   editProfileForm!: FormGroup;
 

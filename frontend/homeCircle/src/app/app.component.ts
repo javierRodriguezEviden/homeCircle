@@ -10,6 +10,9 @@ import { Router } from '@angular/router';
   standalone: false
 })
 export class AppComponent implements OnInit {
+  title(title: any) {
+    throw new Error('Method not implemented.');
+  }
 
   // Variable que indica si el usuario está logueado
   estaLogueado = false;
