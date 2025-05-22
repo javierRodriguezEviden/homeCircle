@@ -15,14 +15,17 @@ export class HomeRegistradoComponent implements OnInit {
 
   // Método que se ejecuta al inicializar el componente
   ngOnInit(): void {
-    // Obtiene el usuario guardado en localStorage (si existe)
+
+    this.nombreUsuario = localStorage.getItem('nombre') || 'Usuario';
+
+
+/*     // Obtiene el usuario guardado en localStorage (si existe)
     const usuarioGuardado = localStorage.getItem('usuario');
 
     // Si el usaurio esta logueado, guarda datos en variables y las muestra
     if (usuarioGuardado) {
       const usuarioParseado = JSON.parse(usuarioGuardado);
       // Asigna nombre y apellidos, o 'Usuario' si no existen
-      this.nombreUsuario = usuarioParseado.name || 'Usuario';
       // Asigna email, o mensaje por defecto si no existe
       this.gmailUsuario = usuarioParseado.email || 'Correo no disponible';
       // Asigna teléfono, o mensaje por defecto si no existe
@@ -31,7 +34,7 @@ export class HomeRegistradoComponent implements OnInit {
     } else {
       // Si no hay usuario guardado, muestra mensaje en consola
       console.log('No hay usuario guardado en localStorage');
-    }
+    } */
   }
 /*
   // ✅ Inyectamos el servicio en el constructor

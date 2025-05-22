@@ -3,7 +3,7 @@
   <!-- Hero de bienvenida -->
   <section class="py-5 text-white text-center align-items-center w-100 vh-50" id="section-banner-bienvenida">
     <div class="container">
-      <div *ngIf="nombreUsuario && gmailUsuario">
+      <div *ngIf="nombreUsuario">
       <h1 class="display-4 fw-bold">Bienvenid&#64;, <span class="text-ligth">{{ nombreUsuario }}</span></h1>
       </div>
       <p class="lead">Explora todas las opciones que tienes como usuari&#64; dentro de tu perfil</p>
@@ -15,11 +15,11 @@
       <h2>¡Bienvenido, {{ nombreUsuario }}!</h2>
       <p>Tu correo es: {{ gmailUsuario }}</p>
       <p>Tu telefono es: {{ tlfUsuario }}</p>
-  </div> -->
+  </div>
 
   <div *ngIf="!nombreUsuario || !gmailUsuario">
       <p>No has iniciado sesión.</p>
-  </div>
+  </div> -->
 
 
   <!-- Opciones del menú centradas -->
