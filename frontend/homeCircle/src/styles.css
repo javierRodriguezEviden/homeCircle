@@ -1,6 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
 @import "leaflet/dist/leaflet.css";
 
+@font-face {
+  font-family: 'PTSans';
+  src: url('assets/fonts/LucidaSansUnicodeRegular/PT_Sans/PTSans-Regular.ttf') format('truetype');
+}
+
+body {
+  font-family: 'PTSans', Geneva, Verdana, sans-serif;
+}
+
 /* Estilos generales de colores para iconos */
 :root{
   --color-azul: #2e7da1;

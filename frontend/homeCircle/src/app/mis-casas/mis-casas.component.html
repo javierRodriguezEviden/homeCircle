@@ -1,85 +1,98 @@
-<div class="d-flex justify-content-center py-4">
-    <h4 class="underline-title">Mis casas</h4>
-</div>
 <div class="container py-4">
-    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4 justify-content-center">
+    <!-- Título "Mis casas" -->
+    <div class="d-flex justify-content-center py-4">
+        <h4 class="underline-title">Mis casas</h4>
+    </div>
+
+    <!-- Contenedor de las cards -->
+    <div class="row pt-3 row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4 justify-content-center">
         <div class="col px-0">
-            <div class="card h-100 shadow animacion" style="width: 19rem;">
+            <div class="card h-100 shadow animacion" style="width: 21rem;">
                 <img src="../assets/casa.ejemplo.png" class="card-img-top" alt="Casa de ejemplo">
-                <div class="card-body d-flex flex-column justify-content-between">
+
+                <div class="card-body">
+                    <!-- Título de la card -->
                     <h5 class="card-title py-2">San Pablo de los Montes, 8</h5>
-                    <div class="d-flex">
-                        <p class="card-text mb-0"><strong>Localidad:</strong> Burguillos</p>
-                        <p class="card-text text-end mb-0"><strong>Provincia:</strong> Toledo</p>
-                    </div>
-                    <div class="d-flex justify-content-between">
-                        <p class="card-text"><strong>CP:</strong> 28801</p>
-                        <p class="card-text text-end"><strong>País:</strong> Espala</p>
-                    </div>
-                    <div class="d-flex justify-content-between">
-                        <div class="justify-content-start">
-                            <button data-bs-toggle="modal" data-bs-target="#editarCasaModal" class="btn btn-link text-decoration-none">
-                            <i class="ri-pencil-line text-primary" style="font-size: xx-large;"></i>
-                            </button>
+
+                    <!-- Información de la casa -->
+                    <div class="d-flex justify-content-between mb-2">
+                        <div>
+                            <p class="card-text mb-0"><strong>Localidad:</strong> Burguillos</p>
+                            <p class="card-text mb-0"><strong>CP:</strong> 28801</p>
                         </div>
-                        <div class="justify-content-end mt-2">
-                            <i class="ri-eye-line text-primary"  style="font-size: xx-large;"></i>
+                        <div>
+                            <p class="card-text mb-0"><strong>Provincia:</strong> Toledo</p>
+                            <p class="card-text mb-0"><strong>País:</strong> España</p>
+                        </div>
+                    </div>
+
+                    <!-- Botones de edición y vista previa -->
+                    <div class="d-flex justify-content-between">
+                        <button type="button" class="btn btn-link text-decoration-none" data-bs-toggle="modal"
+                            data-bs-target="#editarCasaModal">
+                            <i class="ri-pencil-line text-primary" style="font-size: xx-large;"></i>
+                        </button>
+                        <div class="mt-2">
+                            <i class="ri-eye-line text-primary" style="font-size: xx-large;"></i>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Más cards  -->
-    </div>
 
-    <!--AQUI METEMOS LA LOGICA DE LA CASAS PARA VER SI UN USUARIO TIENE O NO TIENE CASAS-->
-
-    <h2>Mis Casas</h2>
-
-    <div *ngIf="casas.length === 0" class="no-casas">
-        No tienes ninguna casa registrada.
-    </div>
-
-    <div class="lista-casas">
-        <div class="casa-card" *ngFor="let casa of casas">
-            <h3>{{ casa.tipo }}</h3>
-            <p><strong>Dirección:</strong> {{ casa.direccion }}</p>
-            <p><strong>Código Postal:</strong> {{ casa.cp }}</p>
-            <p><strong>Localidad:</strong> {{ casa.localidad }}</p>
-            <p><strong>Precio:</strong> {{ casa.precio }} € / noche</p>
-            <hr>
-        </div>
-    </div>
-    <div class="d-flex flex-column align-items-center justify-content-center py-4" style="min-height: 100px;">
-        <button class="btn btn-primary mb-3" type="button" data-bs-toggle="collapse"
-            data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
-            Información
-        </button>
-        <div class="collapse" id="collapseWidthExample">
-            <div class="card card-body text-center mb-3" style="width: 300px;">
-                La información sobre tus casas solo será visible para los usuarios que ya estén
-                registrados.
-            </div>
-        </div>
-    </div>
-    <h4 class="text-center">Vaya... <i class="ri-emotion-sad-line"></i> Aún no has alquilado ninguna de tus casas
-    </h4>
-    <h5 class="text-center">¿Deseas hacerlo?</h5>
-    <div class="text-center py-3">
-        <button type="button" class="btn btn-primary">
-            <a href="/alquilar" class="text-white text-decoration-none">¡Alquilala ya!</a>
-        </button>
+        <!-- Más cards aquí -->
     </div>
 </div>
+<!--AQUI METEMOS LA LOGICA DE LA CASAS PARA VER SI UN USUARIO TIENE O NO TIENE CASAS-->
+
+<h2>Mis Casas</h2>
+
+<div *ngIf="casas.length === 0" class="no-casas">
+    No tienes ninguna casa registrada.
+</div>
+
+<div class="lista-casas">
+    <div class="casa-card" *ngFor="let casa of casas">
+        <h3>{{ casa.tipo }}</h3>
+        <p><strong>Dirección:</strong> {{ casa.direccion }}</p>
+        <p><strong>Código Postal:</strong> {{ casa.cp }}</p>
+        <p><strong>Localidad:</strong> {{ casa.localidad }}</p>
+        <p><strong>Precio:</strong> {{ casa.precio }} € / noche</p>
+        <hr>
+    </div>
+</div>
+<div class="d-flex flex-column align-items-center justify-content-center py-4" style="min-height: 100px;">
+    <button class="btn btn-primary mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample"
+        aria-expanded="false" aria-controls="collapseWidthExample">
+        Información
+    </button>
+    <div class="collapse" id="collapseWidthExample">
+        <div class="card card-body text-center mb-3" style="width: 300px;">
+            La información sobre tus casas solo será visible para los usuarios que ya estén
+            registrados.
+        </div>
+    </div>
+</div>
+<h4 class="text-center">Vaya... <i class="ri-emotion-sad-line"></i> Aún no has alquilado ninguna de tus casas
+</h4>
+<h5 class="text-center">¿Deseas hacerlo?</h5>
+<div class="text-center py-3">
+    <button type="button" class="btn btn-primary">
+        <a href="/alquilar" class="text-white text-decoration-none">¡Alquilala ya!</a>
+    </button>
+</div>
+
 
 <!-- Modal para editar la casa -->
-<div class="modal fade" id="editarCasaModal" tabindex="-1" aria-labelledby="editarCasaModalLabel" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true">
+<div class="modal fade" id="editarCasaModal" tabindex="-1" aria-labelledby="editarCasaModalLabel"
+    data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content rounded-4 shadow-lg bg-light">
             <!-- Encabezado de la modal -->
             <div class="modal-header bg-primary text-white">
                 <h5 class="modal-title" id="editarCasaModalLabel"><i class="ri-edit-line me-2"></i> Editar Casa</h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                    aria-label="Close"></button>
             </div>
             <!-- Cuerpo de la modal -->
             <div class="modal-body p-4">
@@ -91,7 +104,8 @@
                                 formControlName="direccion">
                             <label for="direccion"><i class="ri-map-pin-line me-2"></i> Dirección</label>
                         </div>
-                        <div *ngIf="rentForm.get('direccion')?.invalid && rentForm.get('direccion')?.touched" class="text-danger">La dirección es requerida.
+                        <div *ngIf="rentForm.get('direccion')?.invalid && rentForm.get('direccion')?.touched"
+                            class="text-danger">La dirección es requerida.
                         </div>
 
                         <!-- Localidad -->
@@ -100,7 +114,8 @@
                                 formControlName="localidad">
                             <label for="localidad"><i class="ri-map-pin-2-line me-2"></i> Localidad</label>
                         </div>
-                        <div *ngIf="rentForm.get('localidad')?.invalid && rentForm.get('localidad')?.touched" class="text-danger">La localidad es requerida.
+                        <div *ngIf="rentForm.get('localidad')?.invalid && rentForm.get('localidad')?.touched"
+                            class="text-danger">La localidad es requerida.
                         </div>
 
                         <!-- Código Postal -->
@@ -129,7 +144,8 @@
                                 formControlName="precio">
                             <label for="precio"><i class="ri-money-euro-circle-line"></i> Precio</label>
                         </div>
-                        <div *ngIf="rentForm.get('precio')?.invalid && rentForm.get('precio')?.touched" class="text-danger">
+                        <div *ngIf="rentForm.get('precio')?.invalid && rentForm.get('precio')?.touched"
+                            class="text-danger">
                             El precio es requerido.
                         </div>
 
@@ -146,7 +162,8 @@
                             </select>
                             <label for="tipo"><i class="ri-home-line me-2"></i> Tipo de vivienda</label>
                         </div>
-                        <div *ngIf="rentForm.get('tipo')?.invalid && rentForm.get('tipo')?.touched" class="text-danger mt-1">
+                        <div *ngIf="rentForm.get('tipo')?.invalid && rentForm.get('tipo')?.touched"
+                            class="text-danger mt-1">
                             El tipo de vivienda es requerido.
                         </div>
                     </div>
@@ -157,10 +174,12 @@
                         <div class="mb-3">
                             <label for="fotoPrincipal" class="form-label"><strong>Foto principal</strong></label>
                             <div class="drop-zone border rounded-3 d-flex flex-column justify-content-center align-items-center p-4"
-                                (dragover)="onDragOver($event)" (dragleave)="onDragLeave($event)" (drop)="onDrop($event)">
+                                (dragover)="onDragOver($event)" (dragleave)="onDragLeave($event)"
+                                (drop)="onDrop($event)">
                                 <i class="ri-image-line fs-1 text-muted"></i>
                                 <p class="text-muted">Arrastra y suelta una imagen aquí</p>
-                                <input type="file" id="fotoPrincipal" accept="image/*" (change)="onFileChange($event)" hidden>
+                                <input type="file" id="fotoPrincipal" accept="image/*" (change)="onFileChange($event)"
+                                    hidden>
                             </div>
                             <div *ngIf="selectedImage" class="mt-3">
                                 <img [src]="selectedImage" alt="Preview" class="img-thumbnail w-100">
@@ -170,8 +189,8 @@
                         <!-- Fotos adicionales -->
                         <div class="mb-3">
                             <label for="fotosAdicionales" class="form-label"><strong>Fotos adicionales</strong></label>
-                            <input type="file" id="fotosAdicionales" multiple accept="image/*" (change)="onAdditionalFilesChange($event)"
-                                class="form-control rounded-pill">
+                            <input type="file" id="fotosAdicionales" multiple accept="image/*"
+                                (change)="onAdditionalFilesChange($event)" class="form-control rounded-pill">
                             <div *ngIf="additionalImages.length > 0" class="mt-3 row">
                                 <div *ngFor="let image of additionalImages" class="col-4">
                                     <img [src]="image" alt="Preview" class="img-thumbnail w-100">
@@ -182,7 +201,8 @@
 
                     <!-- Botones de Acción -->
                     <div class="col-md-12 text-center">
-                        <button type="submit" class="btn btn-primary rounded-pill px-5 py-2 me-3" [disabled]="rentForm.invalid">
+                        <button type="submit" class="btn btn-primary rounded-pill px-5 py-2 me-3"
+                            [disabled]="rentForm.invalid">
                             <i class="ri-save-line me-2"></i> Guardar Cambios
                         </button>
                         <button type="button" class="btn btn-secondary rounded-pill px-5 py-2" data-bs-dismiss="modal">
