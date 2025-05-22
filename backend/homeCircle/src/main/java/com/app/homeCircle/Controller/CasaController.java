@@ -32,10 +32,7 @@ public class CasaController {
     }
 
     @GetMapping
-     public ResponseEntity<List<Casa>> searchCasas() {
-        List<Casa> casas = casaService.findAll();
-        return ResponseEntity.ok(casas);
-    }
+    public List<Casa> searchCasas() {    return casaService.searchCasas();}
 
     
 

@@ -34,13 +34,9 @@ public class CasaService {
     return casaRepository.save(casa);
 }
 
-        //? buscar todas las reservas, introducido por alberto
-    public List<Casa> findAll() {
-    List<Casa> casas = casaRepository.findAll();
-
-    //Meto esto para ver que está pasando
-    System.out.println("Casas encontradas: " + casas.size());
-    return casas;
+    //? buscar todas las reservas, introducido por alberto
+    public List<Casa> searchCasas() {
+        return casaRepository.findAll();
     }
 
     public void updateCasa(Integer id, Casa casaData) {
