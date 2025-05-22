@@ -1,5 +1,6 @@
 package com.app.homeCircle.Auth;
 
+import java.security.AlgorithmParameters;
 import java.security.Key;
 import java.util.Date;
 import java.util.function.Function;
@@ -25,13 +26,14 @@ public class JwtService {
      * @param email El email del usuario que será el subject del token.
      * @return El token JWT generado.
      */
-    public String getToken(String email) {
+    public String getToken(String email, String nombre) {
         return Jwts.builder()
-            .setSubject(email) // Establece el email como el subject del token.
-            .setIssuedAt(new Date()) // Fecha de emisión del token.
-            .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10)) // Fecha de expiración (10 horas).
-            .signWith(getKey(), SignatureAlgorithm.HS256) // Firma el token con la clave secreta y el algoritmo HS256.
-            .compact(); // Compacta y devuelve el token como una cadena.
+                .setSubject(email) // Establece el email como el subject del token.// Subject (email)
+                .claim("nombre", nombre)
+                .setIssuedAt(new Date()) // Fecha de emisión del token.
+                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10)) // Fecha de expiración (10 horas).
+                .signWith(getKey(), SignatureAlgorithm.HS256) // Firma el token con la clave secreta y el algoritmo HS256.
+                .compact(); // Compacta y devuelve el token como una cadena.
     }
 
     /**
@@ -111,5 +113,9 @@ public class JwtService {
     private Key getKey() {
         byte[] keyBytes = Decoders.BASE64.decode(SECRET_KEY); // Decodifica la clave secreta en formato Base64.
         return Keys.hmacShaKeyFor(keyBytes); // Crea una clave HMAC-SHA a partir de los bytes decodificados.
+    }
+
+    public AlgorithmParameters getSigningKey() {
+        return null;
     }
 }

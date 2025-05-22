@@ -4,47 +4,77 @@ import com.app.homeCircle.Auth.JwtService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
-import org.mockito.MockitoAnnotations;
-import org.springframework.security.core.userdetails.User;
+import org.mockito.Mock;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.ArrayList;
-
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.when;
 
+@WebMvcTest(JwtService.class)
 public class JwtServiceTest {
 
     @InjectMocks
-    private JwtService jwtService; // Inyectamos la instancia real de JwtService
+    private JwtService jwtService;
 
-    private String token;
+    @Mock
+    private UserDetails userDetails;
+
+    private final String TEST_EMAIL = "test@example.com";
+    private final String TEST_NOMBRE = "Test User";
 
     @BeforeEach
-    void setUp() {
-        MockitoAnnotations.openMocks(this);
-        token = jwtService.getToken("test@example.com"); // Generamos un token de prueba
+    void setup() {
+        when(userDetails.getUsername()).thenReturn(TEST_EMAIL);
     }
 
     @Test
-    void testGenerarToken() {
-        assertNotNull(token); // Verificar que el token generado no es nulo
-        assertFalse(token.isEmpty()); // Verificar que el token tiene contenido
+    void testGenerateToken() {
+        // Act
+        String token = jwtService.getToken(TEST_EMAIL, TEST_NOMBRE);
+
+        // Assert
+        assertNotNull(token);
+        assertTrue(token.length() > 0);
     }
 
     @Test
-    void testExtraerEmailDesdeToken() {
-        String email = jwtService.getEmailFromToken(token);
-        assertEquals("test@example.com", email); // Verificar que el email es correcto
+    void testGetEmailFromToken() {
+        // Arrange
+        String token = jwtService.getToken(TEST_EMAIL, TEST_NOMBRE);
+
+        // Act
+        String extractedEmail = jwtService.getEmailFromToken(token);
+
+        // Assert
+        assertEquals(TEST_EMAIL, extractedEmail);
     }
 
     @Test
-    void testValidarTokenCorrecto() {
-        UserDetails user = new User("test@example.com", "password", new ArrayList<>());
-        assertTrue(jwtService.isTokenValid(token, user)); // El token debe ser válido para el usuario
+    void testValidToken() {
+        // Arrange
+        String token = jwtService.getToken(TEST_EMAIL, TEST_NOMBRE);
+
+        // Act & Assert
+        assertTrue(jwtService.isTokenValid(token, userDetails));
     }
 
     @Test
-    void testTokenExpirado() {
-        assertFalse(jwtService.isTokenExpired(token)); // Un token recién generado no debe estar expirado
+    void testInvalidToken() {
+        // Arrange
+        String invalidToken = "invalid.token.here";
+
+        // Act & Assert
+        assertFalse(jwtService.isTokenValid(invalidToken, userDetails));
+    }
+
+    @Test
+    void testInvalidTokenWithDifferentUser() {
+        // Arrange
+        String token = jwtService.getToken(TEST_EMAIL, TEST_NOMBRE);
+        when(userDetails.getUsername()).thenReturn("diferente@example.com");
+
+        // Act & Assert
+        assertFalse(jwtService.isTokenValid(token, userDetails));
     }
 }
