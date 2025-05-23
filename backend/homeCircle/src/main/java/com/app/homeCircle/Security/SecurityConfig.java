@@ -36,8 +36,14 @@ public class SecurityConfig {
                 .cors(withDefaults())
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+                        .requestMatchers(HttpMethod.OPTIONS,  "/**").permitAll()
+                        .requestMatchers(HttpMethod.GET,  "/**").permitAll()
+                        .requestMatchers(HttpMethod.PUT,  "/**").permitAll()
+                        .requestMatchers(HttpMethod.POST,  "/**").permitAll()
+                        .requestMatchers(HttpMethod.DELETE,  "/**").permitAll()
+
                         .requestMatchers("/auth/**").permitAll()
+                        .requestMatchers("/usuarios/**").permitAll()
                         .anyRequest().authenticated())
                 .sessionManagement(session -> session
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS))

@@ -92,7 +92,7 @@
 
                 <!-- Cuerpo de la modal -->
                 <div class="modal-body">
-                    <form [formGroup]="editProfileForm" class="m-auto">
+                    <form *ngIf="editProfileForm" [formGroup]="editProfileForm" (ngSubmit)="updateProfile()">
                         <!-- Nombre -->
                         <div class="mb-3 align-items-center">
                             <div class="row d-flex justify-content-center">

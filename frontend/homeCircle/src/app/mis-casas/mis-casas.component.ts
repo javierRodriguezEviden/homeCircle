@@ -26,7 +26,7 @@ export class MisCasasComponent implements OnInit {
   }
 
   obtenerIdUsuarioDesdeToken(): void {
-    const token = localStorage.getItem('auth_token'); //Guardo el token
+    const token = localStorage.getItem('token'); //Guardo el token
     if (token) {
       try {
         const payload = JSON.parse(atob(token.split('.')[1])); 

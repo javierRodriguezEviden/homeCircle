@@ -47,30 +47,31 @@ public class UsuarioController {
     }*/
 
     // Metodo para buscar los datos del usuario por email
-    @PostMapping("/search")
-    public ResponseEntity<UsuarioBasicDTO> searchByEmail(@RequestBody String email) {
+    @GetMapping("/search/{email}")
+    public ResponseEntity<UsuarioBasicDTO> searchByEmail(@PathVariable(name = "email") String emailCodificado) {
+        // Decodificar el email
+        String email = URLDecoder.decode(emailCodificado, StandardCharsets.UTF_8);
         UsuarioBasicDTO usuario = usuarioService.searchByEmail(email);
         if (usuario != null) {
             return ResponseEntity.ok(usuario);
         } else {
             return ResponseEntity.notFound().build();
+    }}
+
+        /* Metodo para actualizar el usuario en el perfil */
+        @PutMapping("/{id}")
+        public ResponseEntity<Usuario> updateUsuario (@PathVariable Integer id, @RequestBody Usuario usuarioData){
+            Usuario usuarioActualizado = usuarioService.updateUsuario(id, usuarioData);
+            if (usuarioActualizado != null) {
+                return ResponseEntity.ok(usuarioActualizado);
+            } else {
+                return ResponseEntity.notFound().build();
+            }
         }
-    }
 
-    /* Metodo para actualizar el usuario en el perfil */
-    @PutMapping("/{id}")
-    public ResponseEntity<Usuario> updateUsuario(@PathVariable Integer id, @RequestBody Usuario usuarioData) {
-        Usuario usuarioActualizado = usuarioService.updateUsuario(id, usuarioData);
-        if (usuarioActualizado != null) {
-            return ResponseEntity.ok(usuarioActualizado);
-        } else {
-            return ResponseEntity.notFound().build();
+        @DeleteMapping("/{id}")
+        public void deleteUsuario (@PathVariable Integer id){
+            usuarioService.deleteUsuario(id);
         }
-    }
 
-    @DeleteMapping("/{id}")
-    public void deleteUsuario(@PathVariable Integer id) {
-        usuarioService.deleteUsuario(id);
     }
-
-}
