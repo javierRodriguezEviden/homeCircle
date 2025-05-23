@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { CasaService } from '../casa-servicio';
 import { Casa } from '../models/casa.model';
 import { Validators } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-mis-casas',
@@ -19,17 +21,35 @@ export class MisCasasComponent implements OnInit {
   selectedImage: any;
   additionalImages: any;
 
-  constructor(private casaServicio: CasaService) {}
+  constructor(private casaServicio: CasaService, private http: HttpClient) { }
 
   ngOnInit(): void {
-    this.obtenerIdUsuarioDesdeToken();
+
+    //! Aqui mostrar las casas por get pasando el gmail del usuario
+    const gmailUsuario = localStorage.getItem('email');
+    //const token = localStorage.getItem('token');
+
+    if (gmailUsuario) {
+      const emailCodificado = encodeURIComponent(gmailUsuario);
+      //const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+      this.http.get<any>(`http://localhost:8020/casas/search/${emailCodificado}`).subscribe(
+          (response) => {
+
+            //! recoger la información de las casas
+            this.casas = response;
+
+          });
+    }
+
+
   }
 
   obtenerIdUsuarioDesdeToken(): void {
     const token = localStorage.getItem('token'); //Guardo el token
     if (token) {
       try {
-        const payload = JSON.parse(atob(token.split('.')[1])); 
+        const payload = JSON.parse(atob(token.split('.')[1]));
         this.idUsuario = payload.id_usuario; // Este campo tiene que estar
         this.obtenerCasas();
       } catch (e) {

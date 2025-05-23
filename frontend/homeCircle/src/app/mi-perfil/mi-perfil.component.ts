@@ -26,19 +26,17 @@ export class MiPerfilComponent implements OnInit {
 
   ngOnInit(): void {
     const gmailUsuario = localStorage.getItem('email');
-    const token = localStorage.getItem('token');
+    //const token = localStorage.getItem('token');
 
-    if (gmailUsuario && token) {
+    if (gmailUsuario) {
       const emailCodificado = encodeURIComponent(gmailUsuario);
-      const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+      //const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
       this.http.get<any>(
-        `http://localhost:8020/usuarios/search/${emailCodificado}`,
-        { headers }
-      ).subscribe(
+        `http://localhost:8020/usuarios/search/${emailCodificado}`).subscribe(
         (response) => {
           // Asigna los datos del usuario a las variables
-          //this.idUsuario = response.id; // <-- Importante para update
+          this.idUsuario = response.id; // <-- Importante para update
           this.nombreUsuario = response.nombre || response.name || 'Usuario';
           this.apellidosUsuario = response.apellidos || 'Apellidos no disponibles';
           this.gmailUsuario = response.email || 'Correo no disponible';
@@ -71,17 +69,14 @@ export class MiPerfilComponent implements OnInit {
   updateProfile(): void {
     if (this.editProfileForm.valid && this.idUsuario) {
       const updatedData = this.editProfileForm.value;
-      const token = localStorage.getItem('token');
-      const headers = token ? new HttpHeaders().set('Authorization', `Bearer ${token}`) : undefined;
 
+      //!Aqui poner ruta con el gmail del usuario
       this.http.put<any>(
-        `http://localhost:8020/usuarios/${this.idUsuario}`,
-        updatedData,
-        { headers }
+        `http://localhost:8020/usuarios/${this.gmailUsuario}`,
+        updatedData
       ).subscribe(
         (response) => {
           // Actualiza localStorage y variables solo si el backend responde OK
-          localStorage.setItem('usuario', JSON.stringify(response));
           this.idUsuario = response.id;
           this.nombreUsuario = response.nombre || response.name || 'Usuario';
           this.apellidosUsuario = response.apellidos || 'Apellidos no disponibles';
@@ -89,7 +84,7 @@ export class MiPerfilComponent implements OnInit {
           this.tlfUsuario = response.telefono || null;
           this.dniUsuario = response.dni || 'DNI no disponible';
           this.sedeUsuario = response.sede || 'Sede no disponible';
-          this.cuentabancariaUsuario = response.cuenta_banco || null;
+          //this.cuentabancariaUsuario = response.cuenta_banco || null; //!Esto en otro apartado para cambiar la cuenta bancaria
           alert('Perfil actualizado correctamente');
         },
         (error) => {

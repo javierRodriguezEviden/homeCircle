@@ -58,6 +58,7 @@ public class UsuarioController {
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
+    }
 
     // Endpoint para buscar los datos bancarios de usuario por email
     @GetMapping("/cbsearch/{email}")
